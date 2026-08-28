@@ -19,7 +19,7 @@ test('the CLI demo writes JSON and Markdown without setup @claim:cli-demo @claim
   const output = await mkdtemp(join(tmpdir(), 'github-exit-claim-'));
   const result = await run('cargo', ['run', '--quiet', '--', 'demo', '--output', output]);
   expect(result.code).toBe(0);
-  expect(result.stdout).toContain('Report written to');
+  expect(result.stderr).toContain('Report written to');
   const json = JSON.parse(await readFile(join(output, 'inventory.json'), 'utf8'));
   const markdown = await readFile(join(output, 'migration-checklist.md'), 'utf8');
   expect(json.summary.repositories).toBe(3);
@@ -84,11 +84,15 @@ test('sample JSON downloads with the report counts @claim:json-export', async ({
   expect(data.checklist.length).toBeGreaterThan(5);
 });
 
-test('the paid tier has one price and keeps repository scans free @claim:paid-scope', async ({ page }) => {
+test('the paid tier has one price, keeps repository scans free, and starts checkout @claim:paid-scope', async ({ page, request }) => {
   await page.goto('/#price');
   await expect(page.getByText('$39', { exact: true })).toBeVisible();
   await expect(page.getByText('The free command scans one repository.')).toBeVisible();
-  await expect(page.getByRole('link', { name: 'Buy the team scan license' })).toHaveAttribute('href', 'https://api.sociobot.in/api/v1/products/github-dependency-exit/checkout');
+  const checkout = page.getByRole('link', { name: 'Buy the team scan license' });
+  await expect(checkout).toHaveAttribute('href', 'https://api.sociobot.in/api/v1/products/github-dependency-exit/checkout');
+  const response = await request.get('https://api.sociobot.in/api/v1/products/github-dependency-exit/checkout', { maxRedirects: 0 });
+  expect(response.status()).toBe(303);
+  expect(response.headers().location).toMatch(/^https:\/\/checkout\.dodopayments\.com\/session\//);
 });
 
 for (const route of ['/', '/demo', '/privacy', '/terms', '/missing-route']) {

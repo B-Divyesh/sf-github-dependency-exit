@@ -13,7 +13,7 @@ Audited from the rendered `/` route on 2026-08-28. Counts treat hyphenated terms
 | Opens a browser report. | 4 |
 | No account or token. | 4 |
 | Read-only GitHub requests | 3 |
-| No telemetry or metadata uploads | 5 |
+| Reports stay in your output folder | 6 |
 | $39 once; one-repository scans stay free | 6 |
 | A concrete repository model with moss tracing dependency paths through its joints. | 12 |
 | Repository structure, seen as accumulated load. | 6 |

@@ -8,12 +8,15 @@
     "build": "npm run build:site",
     "build:site": "cargo build --release && vite build --config site/vite.config.ts && mkdir -p dist/site/downloads && cp target/release/github-exit dist/site/downloads/github-exit-linux-x86_64",
     "preview": "vite preview --config site/vite.config.ts",
+    "typecheck": "tsc --noEmit -p tsconfig.json",
+    "lint": "cargo fmt --check && cargo clippy --all-targets --all-features -- -D warnings",
     "test": "cargo test && playwright test",
     "test:site": "playwright test"
   },
   "devDependencies": {
     "@axe-core/playwright": "4.10.2",
     "@playwright/test": "1.58.2",
+    "@types/node": "^22.19.14",
     "typescript": "5.9.3",
     "vite": "7.3.6"
   }

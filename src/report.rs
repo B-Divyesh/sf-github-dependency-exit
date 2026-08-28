@@ -11,37 +11,108 @@ pub fn markdown(inventory: &Inventory) -> String {
 
     writeln!(out, "## Exit surface\n").unwrap();
     writeln!(out, "| Repositories | Workflows | Actions | Webhooks | Packages | Releases | Rules | Unknown checks | Risk points |").unwrap();
-    writeln!(out, "| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |").unwrap();
+    writeln!(
+        out,
+        "| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"
+    )
+    .unwrap();
     let s = &inventory.summary;
-    writeln!(out, "| {} | {} | {} | {} | {} | {} | {} | {} | {} |\n", s.repositories, s.workflows, s.action_dependencies, s.webhooks, s.packages, s.releases, s.rules, s.unknown_checks, s.risk_points).unwrap();
-    writeln!(out, "Risk points rank review work only. They are not a migration-time estimate.\n").unwrap();
+    writeln!(
+        out,
+        "| {} | {} | {} | {} | {} | {} | {} | {} | {} |\n",
+        s.repositories,
+        s.workflows,
+        s.action_dependencies,
+        s.webhooks,
+        s.packages,
+        s.releases,
+        s.rules,
+        s.unknown_checks,
+        s.risk_points
+    )
+    .unwrap();
+    writeln!(
+        out,
+        "Risk points rank review work only. They are not a migration-time estimate.\n"
+    )
+    .unwrap();
 
     writeln!(out, "## Migration checklist\n").unwrap();
     for item in &inventory.checklist {
-        let mark = if item.status == CheckStatus::Verified { "[ ]" } else { "[?]" };
-        writeln!(out, "- {} **{} · {}** — {}", mark, item.repository, item.area, item.finding).unwrap();
+        let mark = if item.status == CheckStatus::Verified {
+            "[ ]"
+        } else {
+            "[?]"
+        };
+        writeln!(
+            out,
+            "- {} **{} · {}** — {}",
+            mark, item.repository, item.area, item.finding
+        )
+        .unwrap();
         writeln!(out, "  - Next: {}", item.next_step).unwrap();
-        writeln!(out, "  - Candidate: {} — **{}**", item.alternative, status(&item.alternative_status)).unwrap();
+        writeln!(
+            out,
+            "  - Candidate: {} — **{}**",
+            item.alternative,
+            status(&item.alternative_status)
+        )
+        .unwrap();
         writeln!(out, "  - Evidence: {}\n", item.alternative_evidence).unwrap();
     }
 
     writeln!(out, "## Repository evidence\n").unwrap();
     for repo in &inventory.repositories {
         writeln!(out, "### {}\n", repo.full_name).unwrap();
-        writeln!(out, "`{}` · default `{}` · issues {}\n", repo.visibility, repo.default_branch, if repo.issues_enabled { "enabled" } else { "disabled" }).unwrap();
+        writeln!(
+            out,
+            "`{}` · default `{}` · issues {}\n",
+            repo.visibility,
+            repo.default_branch,
+            if repo.issues_enabled {
+                "enabled"
+            } else {
+                "disabled"
+            }
+        )
+        .unwrap();
         for evidence in &repo.evidence {
-            writeln!(out, "- **{} · {}** — {} (`{}`)", evidence.area, status(&evidence.status), evidence.note, evidence.source).unwrap();
+            writeln!(
+                out,
+                "- **{} · {}** — {} (`{}`)",
+                evidence.area,
+                status(&evidence.status),
+                evidence.note,
+                evidence.source
+            )
+            .unwrap();
         }
         if !repo.action_dependencies.is_empty() {
             writeln!(out, "\nActions used:").unwrap();
             for action in &repo.action_dependencies {
-                writeln!(out, "- `{}` in `{}`{}", action.uses, action.workflow, if action.pinned_to_commit { " (commit pinned)" } else { "" }).unwrap();
+                writeln!(
+                    out,
+                    "- `{}` in `{}`{}",
+                    action.uses,
+                    action.workflow,
+                    if action.pinned_to_commit {
+                        " (commit pinned)"
+                    } else {
+                        ""
+                    }
+                )
+                .unwrap();
             }
         }
         if !repo.app_oauth_references.is_empty() {
             writeln!(out, "\nApp and OAuth signals:").unwrap();
             for reference in &repo.app_oauth_references {
-                writeln!(out, "- **{}:** {} — {}", reference.kind, reference.name, reference.evidence).unwrap();
+                writeln!(
+                    out,
+                    "- **{}:** {} — {}",
+                    reference.kind, reference.name, reference.evidence
+                )
+                .unwrap();
             }
         }
         writeln!(out).unwrap();

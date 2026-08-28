@@ -61,5 +61,47 @@
     "where": "landing boundaries, README",
     "test": "npm test -- --grep @claim:no-migration",
     "sandbox": "local fake GitHub API; assert every request is GET and the repository fixture stays unchanged"
+  },
+  {
+    "id": "workflow-step-syntax",
+    "claim": "Finds normal GitHub Actions step references",
+    "where": "README",
+    "test": "npm test -- --grep @claim:workflow-step-syntax",
+    "sandbox": "local API fixture; normal '- uses:' lines including a commit-pinned action"
+  },
+  {
+    "id": "unknown-access",
+    "claim": "Unreadable GitHub metadata becomes unknown checklist work",
+    "where": "landing preview, README",
+    "test": "npm test -- --grep @claim:unknown-access",
+    "sandbox": "private-repository fixture; denied workflow content, package access, and branch 404"
+  },
+  {
+    "id": "paginated-inventory",
+    "claim": "Checks every page of GitHub list results",
+    "where": "README",
+    "test": "npm test -- --grep @claim:paginated-inventory",
+    "sandbox": "local workflow fixture with 101 items over two pages"
+  },
+  {
+    "id": "rate-limit-stop",
+    "claim": "Stops when GitHub reports a rate limit",
+    "where": "README",
+    "test": "npm test -- --grep @claim:rate-limit-stop",
+    "sandbox": "local API fixture; first follow-up request returns 403 with x-ratelimit-remaining: 0"
+  },
+  {
+    "id": "script-json",
+    "claim": "JSON mode writes one parseable inventory to stdout",
+    "where": "README",
+    "test": "npm test -- --grep @claim:script-json",
+    "sandbox": "run bundled demo with --json; JSON.parse stdout and assert progress is stderr"
+  },
+  {
+    "id": "token-not-reported",
+    "claim": "The token is never written to a report",
+    "where": "README",
+    "test": "npm test -- --grep @claim:token-not-reported",
+    "sandbox": "local API fixture; scan with a known token and assert inventory.json excludes it"
   }
 ]

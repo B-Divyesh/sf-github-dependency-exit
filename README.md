@@ -7,7 +7,7 @@ One-click sample: <https://github-dependency-exit.sociobot.in/demo>
 
 ## Try the bundled demo
 
-The demo needs no account, token, or network request.
+The demo needs no account or token.
 
 ```sh
 cargo run -- demo
@@ -46,9 +46,9 @@ For a private repository, pass a fine-grained token through the environment:
 GITHUB_TOKEN=github_pat_… github-exit scan --repo octo-org/private-api --output exit-report
 ```
 
-Start with repository **Metadata: read**. Add read access for Actions, administration, webhooks, and packages only when those checks matter. GitHub returns an unknown check when the token cannot read an endpoint. The token is never written to a report.
+Start with repository **Metadata: read**. Add read access for Actions, administration, webhooks, and packages only when those checks matter. The report creates unknown checklist work when GitHub access is incomplete. The token is never written to a report.
 
-Use `--json` to print the inventory for a script. Use `--api-base` for a GitHub Enterprise Server API.
+Use `--json` to write one parseable inventory to stdout for a script. The CLI sends progress to stderr. It follows every page of GitHub list results and stops when GitHub reports a rate limit. Use `--api-base` for a GitHub Enterprise Server API.
 
 ## Scan an owner with a team license
 
@@ -88,7 +88,7 @@ cargo package --allow-dirty
 
 ## Privacy and security
 
-The CLI has no telemetry. Live scans call the chosen GitHub API. Owner-wide scans also verify the supplied license with Sociobot. Browser demo data is bundled into the site and sends no data off site. Read [Privacy](https://github-dependency-exit.sociobot.in/privacy) and [Terms](https://github-dependency-exit.sociobot.in/terms).
+Live scans call the chosen GitHub API. Owner-wide scans also verify the supplied license with Sociobot. Browser demo data is bundled into the site and sends no data off site. Read [Privacy](https://github-dependency-exit.sociobot.in/privacy) and [Terms](https://github-dependency-exit.sociobot.in/terms).
 
 ## License
 
