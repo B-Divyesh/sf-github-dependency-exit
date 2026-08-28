@@ -4,7 +4,7 @@ body { margin: 0; min-width: 320px; font-size: 17px; line-height: 1.5; }
 a { color: #31552f; text-underline-offset: 3px; text-decoration-thickness: 2px; }
 header, footer { padding: 20px clamp(16px, 4vw, 64px); font-weight: 800; }
 header { display: flex; align-items: center; justify-content: space-between; gap: 24px; border-bottom: 3px solid #171a16; }
-header a, footer a { display: inline-flex; align-items: center; min-height: 44px; }
+header a, footer a { display: inline-flex; align-items: center; min-width: 44px; min-height: 44px; }
 .wordmark { color: #171a16; gap: 12px; }
 .wordmark span { display: grid; flex: 0 0 auto; place-items: center; width: 44px; height: 44px; background: #171a16; color: #d9ec69; }
 nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; }
