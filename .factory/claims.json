@@ -103,5 +103,33 @@
     "where": "README",
     "test": "npm test -- --grep @claim:token-not-reported",
     "sandbox": "local API fixture; scan with a known token and assert inventory.json excludes it"
+  },
+  {
+    "id": "sourced-evidence",
+    "claim": "Every checked area keeps its source",
+    "where": "landing product preview",
+    "test": "npm test -- --grep @claim:sourced-evidence",
+    "sandbox": "local representative API fixture; assert source records for successful, empty, denied, and unknown checks"
+  },
+  {
+    "id": "documented-alternatives",
+    "claim": "Alternatives are verified only when target-forge documentation is linked",
+    "where": "README evidence guide",
+    "test": "npm test -- --grep @claim:documented-alternatives",
+    "sandbox": "local scan fixture; assert a verified documented alternative and an unsupported unknown alternative"
+  },
+  {
+    "id": "sociobot-metadata-privacy",
+    "claim": "Repository metadata is not sent to Sociobot",
+    "where": "privacy page and README",
+    "test": "npm test -- --grep @claim:sociobot-metadata-privacy",
+    "sandbox": "local GitHub and license fixtures; capture a full owner scan and assert Sociobot receives only the license"
+  },
+  {
+    "id": "cli-demo-no-network",
+    "claim": "The CLI demo does not call GitHub or Sociobot",
+    "where": "landing terminal and .factory/demo.md",
+    "test": "npm test -- --grep @claim:cli-demo-no-network",
+    "sandbox": "fresh temporary directory with all standard HTTP proxies pointed to a rejecting local tripwire; assert zero requests and both reports"
   }
 ]

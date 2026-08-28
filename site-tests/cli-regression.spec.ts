@@ -107,6 +107,133 @@ test('JSON mode reserves stdout for one parseable inventory @claim:script-json',
   expect(result.stderr).toContain('Report written to');
 });
 
+test('every checked area keeps a source for results, empty lists, and errors @claim:sourced-evidence', async () => {
+  const workflow = workflowRecord();
+  const fixture = await startFixture((request, response) => {
+    const path = request.url ?? '';
+    if (path === '/repos/source/repo') return json(response, repository('source/repo'));
+    if (path.includes('/actions/workflows')) return json(response, { workflows: [workflow] });
+    if (path.includes('/contents/')) return json(response, { message: 'Resource not accessible' }, 403);
+    if (path.includes('/releases')) return json(response, { message: 'Resource not accessible' }, 403);
+    if (path.includes('/branches/main/protection')) return json(response, { required_status_checks: {} });
+    if (path.includes('/packages') && path.includes('package_type=npm')) return json(response, { message: 'Resource not accessible' }, 403);
+    return json(response, []);
+  });
+  try {
+    const output = await tempOutput();
+    const result = await run(['scan', '--repo', 'source/repo', '--api-base', fixture.base, '--output', output]);
+    expect(result.code).toBe(0);
+    const inventory = JSON.parse(await readFile(join(output, 'inventory.json'), 'utf8'));
+    const evidence = inventory.repositories[0].evidence as Array<{ area: string; status: string; source: string; note: string }>;
+    const areas = new Set(evidence.map(item => item.area));
+    for (const area of ['workflow content', 'actions', 'webhooks', 'releases', 'branch protection', 'rulesets', 'branch rules', 'issue autolinks', 'GitHub Apps and OAuth', 'packages']) {
+      expect(areas, `missing evidence for ${area}`).toContain(area);
+    }
+    expect(evidence.every(item => item.source.trim().length > 0)).toBe(true);
+    expect(evidence.find(item => item.area === 'webhooks')).toMatchObject({ status: 'verified', note: '0 webhooks found' });
+    expect(evidence.find(item => item.area === 'workflow content')).toMatchObject({ status: 'unknown' });
+    expect(evidence.find(item => item.area === 'releases')).toMatchObject({ status: 'unknown' });
+    expect(evidence.find(item => item.area === 'packages' && item.note.includes('npm'))).toMatchObject({ status: 'unknown' });
+  } finally { await fixture.close(); }
+});
+
+test('verified alternatives have documentation while unsupported candidates stay unknown @claim:documented-alternatives', async () => {
+  const fixture = await startFixture((request, response) => {
+    const path = request.url ?? '';
+    if (path === '/repos/alternatives/repo') return json(response, repository('alternatives/repo'));
+    if (path.includes('/actions/workflows')) return json(response, { workflows: [] });
+    if (path.includes('/branches/main/protection')) return json(response, { required_status_checks: {} });
+    return json(response, []);
+  });
+  try {
+    const output = await tempOutput();
+    const result = await run(['scan', '--repo', 'alternatives/repo', '--api-base', fixture.base, '--output', output]);
+    expect(result.code).toBe(0);
+    const inventory = JSON.parse(await readFile(join(output, 'inventory.json'), 'utf8'));
+    const checks = inventory.checklist as Array<{ area: string; alternative_status: string; alternative_evidence: string }>;
+    const verified = checks.filter(item => item.alternative_status === 'verified');
+    expect(verified.length).toBeGreaterThan(0);
+    expect(verified.every(item => /^https:\/\//.test(item.alternative_evidence))).toBe(true);
+    expect(checks.find(item => item.area === 'Actions')).toMatchObject({
+      alternative_status: 'verified',
+      alternative_evidence: 'https://forgejo.org/docs/latest/user/actions/',
+    });
+    expect(checks.find(item => item.area === 'Webhooks')).toMatchObject({
+      alternative_status: 'unknown',
+      alternative_evidence: 'Confirm payload and signature support with each receiver.',
+    });
+  } finally { await fixture.close(); }
+});
+
+test('repository metadata goes only to GitHub and Sociobot receives only the license @claim:sociobot-metadata-privacy', async () => {
+  const githubRequests: Array<{ method: string; url: string }> = [];
+  const billingRequests: Array<{ method: string; url: string; body: string }> = [];
+  const github = await startFixture((request, response) => {
+    const path = request.url ?? '';
+    githubRequests.push({ method: request.method ?? '', url: path });
+    if (path.startsWith('/orgs/privacy-owner/repos?')) return json(response, [repository('privacy-owner/secret-repo')]);
+    if (path.includes('/actions/workflows')) return json(response, { workflows: [] });
+    if (path.includes('/branches/main/protection')) return json(response, { required_status_checks: {} });
+    return json(response, []);
+  });
+  const billing = await startFixture((request, response) => {
+    let body = '';
+    request.on('data', chunk => body += chunk);
+    request.on('end', () => {
+      billingRequests.push({ method: request.method ?? '', url: request.url ?? '', body });
+      json(response, { valid: true, reason: 'ok' });
+    });
+  });
+  try {
+    const output = await tempOutput();
+    const result = await run(
+      ['scan', '--owner', 'privacy-owner', '--license', 'sb_test_capture', '--api-base', github.base, '--output', output],
+      { GITHUB_EXIT_CLAIM_BILLING_BASE: `${billing.base}/api/v1` },
+    );
+    expect(result.code).toBe(0);
+    expect(githubRequests.length).toBeGreaterThan(5);
+    expect(new Set(githubRequests.map(item => item.method))).toEqual(new Set(['GET']));
+    expect(githubRequests.some(item => item.url.includes('privacy-owner/secret-repo'))).toBe(true);
+    expect(billingRequests).toHaveLength(1);
+    const captured = billingRequests[0];
+    const billingUrl = new URL(captured.url, billing.base);
+    expect(captured.method).toBe('GET');
+    expect(captured.body).toBe('');
+    expect([...billingUrl.searchParams.keys()]).toEqual(['license']);
+    expect(billingUrl.searchParams.get('license')).toBe('sb_test_capture');
+    expect(captured.url).not.toContain('privacy-owner');
+    expect(captured.url).not.toContain('secret-repo');
+  } finally {
+    await Promise.all([github.close(), billing.close()]);
+  }
+});
+
+test('the CLI demo writes both reports without any network request @claim:cli-demo-no-network', async () => {
+  const attemptedRequests: string[] = [];
+  const denyProxy = await startFixture((request, response) => {
+    attemptedRequests.push(`${request.method ?? ''} ${request.url ?? ''}`);
+    json(response, { message: 'network denied by claim sandbox' }, 502);
+  });
+  try {
+    const output = await tempOutput();
+    const proxyEnvironment = {
+      HTTP_PROXY: denyProxy.base,
+      HTTPS_PROXY: denyProxy.base,
+      ALL_PROXY: denyProxy.base,
+      NO_PROXY: '',
+      http_proxy: denyProxy.base,
+      https_proxy: denyProxy.base,
+      all_proxy: denyProxy.base,
+      no_proxy: '',
+    };
+    const result = await run(['demo', '--output', output], proxyEnvironment);
+    expect(result.code).toBe(0);
+    expect(attemptedRequests).toEqual([]);
+    expect(JSON.parse(await readFile(join(output, 'inventory.json'), 'utf8')).summary.repositories).toBe(3);
+    expect(await readFile(join(output, 'migration-checklist.md'), 'utf8')).toContain('## Migration checklist');
+  } finally { await denyProxy.close(); }
+});
+
 function repository(fullName: string) {
   const [owner, name] = fullName.split('/');
   return { name, full_name: fullName, visibility: 'private', archived: false, default_branch: 'main', has_issues: true, html_url: `https://example.test/${owner}/${name}` };
@@ -133,9 +260,9 @@ async function startFixture(handler: (request: IncomingMessage, response: Server
 
 async function tempOutput(): Promise<string> { return mkdtemp(join(tmpdir(), 'github-exit-regression-')); }
 
-function run(args: string[]): Promise<Result> {
+function run(args: string[], environment: Record<string, string> = {}): Promise<Result> {
   return new Promise(resolve => {
-    const child = spawn('target/debug/github-exit', args, { cwd: process.cwd(), env: process.env });
+    const child = spawn('target/debug/github-exit', args, { cwd: process.cwd(), env: { ...process.env, ...environment } });
     let stdout = ''; let stderr = '';
     child.stdout.on('data', chunk => stdout += chunk);
     child.stderr.on('data', chunk => stderr += chunk);

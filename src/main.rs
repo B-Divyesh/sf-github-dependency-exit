@@ -179,8 +179,9 @@ fn write_report(directory: &Path, inventory: &Inventory) -> Result<(), String> {
 }
 
 fn verify_license(license: &str) -> Result<(), String> {
+    let billing_base = billing_base();
     let url = format!(
-        "{BILLING_BASE}/products/github-dependency-exit/verify?license={}",
+        "{billing_base}/products/github-dependency-exit/verify?license={}",
         url::form_urlencoded::byte_serialize(license.as_bytes()).collect::<String>()
     );
     let response = Client::builder()
@@ -205,6 +206,24 @@ fn verify_license(license: &str) -> Result<(), String> {
                 .unwrap_or("invalid")
         ))
     }
+}
+
+fn billing_base() -> String {
+    #[cfg(feature = "claim-test-hook")]
+    if let Ok(candidate) = env::var("GITHUB_EXIT_CLAIM_BILLING_BASE")
+        && let Ok(parsed) = url::Url::parse(&candidate)
+    {
+        let local = parsed.host_str().is_some_and(|host| {
+            host == "localhost"
+                || host
+                    .parse::<std::net::IpAddr>()
+                    .is_ok_and(|address| address.is_loopback())
+        });
+        if local && parsed.scheme() == "http" {
+            return candidate.trim_end_matches('/').to_string();
+        }
+    }
+    BILLING_BASE.to_string()
 }
 
 fn validate_repo(value: &str) -> Result<(), String> {
