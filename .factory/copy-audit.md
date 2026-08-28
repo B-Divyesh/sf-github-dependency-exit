@@ -16,13 +16,13 @@ Audited from the rendered `/` route on 2026-08-28. Counts treat hyphenated terms
 | Reports stay in your output folder | 6 |
 | $39 once; one-repository scans stay free | 6 |
 | A concrete repository model with moss tracing dependency paths through its joints. | 12 |
-| Repository structure, seen as accumulated load. | 6 |
+| A repository model showing connected migration dependencies. | 7 |
 
 ## Product preview and method
 
 | Copy | Words |
 | --- | ---: |
-| See the exit surface, not just the git history | 9 |
+| See migration dependencies beyond Git history | 6 |
 | Every checked area keeps its source. | 6 |
 | Missing access becomes an unknown task instead of a silent blank. | 11 |
 | Recorded from the real bundled demo command. | 7 |
@@ -71,6 +71,7 @@ Audited from the rendered `/` route on 2026-08-28. Counts treat hyphenated terms
 - Longest sentence: 18 words.
 - Sentences over 22 words: none.
 - Banned words: none.
+- Undefined design metaphors: none.
 - First screen aloud: the job, team, sample action, privacy, and price fit in one short pass.
 
 ## Terminology

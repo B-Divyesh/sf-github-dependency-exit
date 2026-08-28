@@ -1,0 +1,1 @@
+Map GitHub dependencies and write a checked migration list before changing forges.

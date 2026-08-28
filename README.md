@@ -3,7 +3,7 @@
 GitHub Exit Inventory is a read-only CLI for small teams planning a forge fallback. It maps Actions, webhooks, packages, releases, branch rules, issue links, and app or OAuth signals. It writes an evidence-backed inventory and migration checklist without cloning code.
 
 Live site: <https://github-dependency-exit.sociobot.in>  
-One-click sample: <https://github-dependency-exit.sociobot.in/demo>
+One-click sample: <https://github-dependency-exit.sociobot.in/?demo=1>
 
 ## Try the bundled demo
 

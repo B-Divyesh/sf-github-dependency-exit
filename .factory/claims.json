@@ -1,7 +1,7 @@
 [
   {
     "id": "sample-demo",
-    "claim": "Try it with sample data in one click",
+    "claim": "Try it with sample data at ?demo=1 in one click",
     "where": "landing primary action",
     "test": "npm test -- --grep @claim:sample-demo",
     "sandbox": "fresh browser context; click the landing action; assert the populated demo and banner"
@@ -10,15 +10,15 @@
     "id": "cli-demo",
     "claim": "The CLI demo writes JSON and Markdown without setup",
     "where": "landing terminal, README",
-    "test": "npm test -- --grep @claim:cli-demo",
+    "test": "npm test -- --grep \"@claim:cli-demo(?:\\s|$)\"",
     "sandbox": "fresh temporary directory; bundled sample data; no token"
   },
   {
     "id": "demo-privacy",
-    "claim": "The browser demo sends no data off site",
+    "claim": "The browser demo sends no data off site and saves no browser data",
     "where": "landing facts, demo banner, privacy page",
     "test": "npm test -- --grep @claim:demo-privacy",
-    "sandbox": "fresh browser context; capture every request while using demo filters"
+    "sandbox": "fresh browser context; capture every request while using demo filters; assert local and session storage stay empty"
   },
   {
     "id": "read-only-api",

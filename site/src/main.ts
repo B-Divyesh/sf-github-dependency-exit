@@ -10,19 +10,56 @@ const inventory = demoData as Inventory;
 const app = document.querySelector<HTMLDivElement>('#app')!;
 const routeStatus = document.querySelector<HTMLDivElement>('#route-status')!;
 
-const routes: Record<string, { title: string; render: () => string }> = {
-  '/': { title: 'GitHub Exit Inventory — map migration dependencies', render: home },
-  '/demo': { title: 'Demo — GitHub Exit Inventory', render: demo },
-  '/privacy': { title: 'Privacy — GitHub Exit Inventory', render: privacy },
-  '/terms': { title: 'Terms — GitHub Exit Inventory', render: terms },
-  '/404': { title: 'Page not found — GitHub Exit Inventory', render: notFound },
+type Route = {
+  title: string;
+  description: string;
+  canonical: string;
+  render: () => string;
 };
+
+const routes: Record<string, Route> = {
+  '/': {
+    title: 'GitHub Exit Inventory — map migration dependencies',
+    description: 'Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.',
+    canonical: '/',
+    render: home,
+  },
+  '/demo': {
+    title: 'Demo — GitHub Exit Inventory',
+    description: 'Explore a bundled three-repository dependency inventory and migration checklist without an account or token.',
+    canonical: '/?demo=1',
+    render: demo,
+  },
+  '/privacy': {
+    title: 'Privacy — GitHub Exit Inventory',
+    description: 'How GitHub Exit Inventory handles demo, license, and report data.',
+    canonical: '/privacy',
+    render: privacy,
+  },
+  '/terms': {
+    title: 'Terms — GitHub Exit Inventory',
+    description: 'Terms for free repository scans and the one-time GitHub Exit Inventory team license.',
+    canonical: '/terms',
+    render: terms,
+  },
+  '/404': {
+    title: 'Page not found — GitHub Exit Inventory',
+    description: 'The requested GitHub Exit Inventory page was not found. Return to the inventory start.',
+    canonical: '/404',
+    render: notFound,
+  },
+};
+
+function currentRoute(): Route {
+  if (location.pathname === '/' && new URLSearchParams(location.search).get('demo') === '1') return routes['/demo'];
+  return routes[location.pathname] ?? routes['/404'];
+}
 
 function shell(content: string, demoMode = false): string {
   return `${demoMode ? demoBanner() : ''}
   <header class="site-header">
     <a class="wordmark" href="/" data-link aria-label="GitHub Exit Inventory home"><span class="wordmark-mark" aria-hidden="true">G/E</span><span>${PRODUCT}</span></a>
-    <nav aria-label="Primary"><a href="/demo" data-link>Demo</a><a href="/#install">Install</a><a href="/#price">Price</a><a href="/privacy" data-link>Privacy</a></nav>
+    <nav aria-label="Primary"><a href="/?demo=1" data-link>Demo</a><a href="/#install">Install</a><a href="/#price">Price</a><a href="/privacy" data-link>Privacy</a></nav>
   </header>
   ${content}
   <footer>
@@ -37,17 +74,17 @@ function home(): string {
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow">EXIT SURVEY / READ-ONLY CLI</p>
-        <h1 id="hero-title">Map what breaks before leaving GitHub</h1>
+        <h1 id="hero-title" tabindex="-1">Map what breaks before leaving GitHub</h1>
         <p class="lede">For small software teams planning a fallback, this CLI finds repository dependencies and builds a checked migration list.</p>
-        <div class="hero-actions"><a class="button primary" href="/demo" data-link>Try it with sample data</a><span>Opens a browser report. No account or token.</span></div>
+        <div class="hero-actions"><a class="button primary" href="/?demo=1" data-link>Try it with sample data</a><span>Opens a browser report. No account or token.</span></div>
         <ul class="facts" aria-label="Product facts"><li>Read-only GitHub requests</li><li>Reports stay in your output folder</li><li>$39 once; one-repository scans stay free</li></ul>
       </div>
-      <figure class="hero-art"><picture><source media="(max-width: 700px)" srcset="/assets/exit-cutaway-mobile.webp"><img src="/assets/exit-cutaway.webp" width="1536" height="1024" fetchpriority="high" alt="A concrete repository model with moss tracing dependency paths through its joints."></picture><figcaption>Repository structure, seen as accumulated load.</figcaption></figure>
+      <figure class="hero-art"><picture><source media="(max-width: 700px)" srcset="/assets/exit-cutaway-mobile.webp"><img src="/assets/exit-cutaway.webp" width="1536" height="1024" fetchpriority="high" alt="A concrete repository model with moss tracing dependency paths through its joints."></picture><figcaption>A repository model showing connected migration dependencies.</figcaption></figure>
     </section>
 
     <section class="live-preview" aria-labelledby="preview-title">
       <div class="section-label"><span>01</span><p>THE PRODUCT</p></div>
-      <div class="preview-copy"><h2 id="preview-title">See the exit surface, not just the git history</h2><p>Every checked area keeps its source. Missing access becomes an unknown task instead of a silent blank.</p></div>
+      <div class="preview-copy"><h2 id="preview-title">See migration dependencies beyond Git history</h2><p>Every checked area keeps its source. Missing access becomes an unknown task instead of a silent blank.</p></div>
       ${summaryStrip()}
       <div class="terminal" role="region" tabindex="0" aria-label="Terminal recording of the bundled demo">
         <div class="terminal-bar"><span>github-exit / demo</span><span aria-hidden="true">● ● ●</span></div>
@@ -58,7 +95,7 @@ Scanned 3 repositories.
 Report written to /tmp/github-exit-demo-…</code></pre>
         <p>Recorded from the real bundled demo command.</p>
       </div>
-      <a class="text-link" href="/demo" data-link>Open the full sample report →</a>
+      <a class="text-link" href="/?demo=1" data-link>Open the full sample report →</a>
     </section>
 
     <section class="how" aria-labelledby="how-title">
@@ -77,12 +114,12 @@ Report written to /tmp/github-exit-demo-…</code></pre>
       <aside><h3>Minimum access</h3><p>Public repositories work without a token. Private scans need read access for the metadata you want checked.</p></aside>
     </section>
 
-    <section class="install" id="install" aria-labelledby="install-title">
+    <section class="install" id="install" aria-labelledby="install-title" tabindex="-1">
       <div class="section-label"><span>04</span><p>INSTALL</p></div>
       <div><h2 id="install-title">Run the demo before adding a token</h2><div class="command-row"><code>github-exit demo</code><button type="button" data-copy="github-exit demo">Copy command</button></div><p>Build from source with Rust 1.85 or later, or download the Linux binary from this build.</p><div class="install-actions"><a class="button secondary" href="/downloads/github-exit-linux-x86_64" download>Download Linux binary</a><a class="text-link" href="https://github.com/B-Divyesh/sf-github-dependency-exit" rel="external">Read the source <span class="sr-only">(external site)</span> →</a></div></div>
     </section>
 
-    <section class="price" id="price" aria-labelledby="price-title">
+    <section class="price" id="price" aria-labelledby="price-title" tabindex="-1">
       <div class="price-stamp"><span>$39</span><small>ONE TIME</small></div>
       <div><p class="eyebrow">TEAM SCAN LICENSE</p><h2 id="price-title">Scan every repository under one owner</h2><p>The free command scans one repository. The license adds owner-wide scans and one combined report.</p><a class="button primary" href="${BILLING}/checkout">Buy the team scan license</a><p class="fine">Sociobot/Dodo is the merchant of record. Refunds revoke the license.</p></div>
       <form id="license-form" class="license-form"><label for="license">Have a license? Paste it here</label><div><input id="license" name="license" autocomplete="off" spellcheck="false"><button type="submit">Verify license</button></div><p id="license-status" class="status" role="status">No license saved in this browser.</p></form>
@@ -120,7 +157,7 @@ function checklistRow(item: Checklist): string {
   return `<article class="check-row" data-area="${escapeHtml(item.area)}"><span class="badge ${item.status}">${item.status === 'verified' ? '✓ verified' : '? unknown'}</span><div><p class="row-meta">${escapeHtml(item.repository)} / ${escapeHtml(item.area)}</p><h3>${escapeHtml(item.finding)}</h3><p><strong>Next:</strong> ${escapeHtml(item.next_step)}</p><p class="candidate"><strong>Candidate:</strong> ${escapeHtml(item.alternative)} <span class="badge ${item.alternative_status}">${item.alternative_status}</span></p><small>${escapeHtml(item.alternative_evidence)}</small></div></article>`;
 }
 
-function demoBanner(): string { return `<div class="demo-banner"><strong>Demo — sample data, nothing is saved</strong><div><button type="button" id="reset-demo">Reset demo</button><a href="/#install">Start for real</a></div></div>`; }
+function demoBanner(): string { return `<div class="demo-banner"><strong>Demo — sample data, nothing is saved</strong><div><button type="button" id="reset-demo">Reset demo</button><a href="/#install" data-link>Start for real</a></div></div>`; }
 
 function privacy(): string { return legalPage('Your repository data stays with you', 'Privacy', [
   ['What the CLI reads', 'The CLI requests repository metadata from GitHub. It writes reports only to the folder you choose.'],
@@ -137,20 +174,25 @@ function terms(): string { return legalPage('Use the inventory as a planning aid
 function legalPage(h1: string, label: string, sections: string[][]): string { return shell(`<main id="main" class="legal"><p class="eyebrow">${label.toUpperCase()} / UPDATED 2026-08-28</p><h1 tabindex="-1">${h1}</h1><p class="lede">Plain terms for a local command-line inventory.</p>${sections.map(([title, text]) => `<section><h2>${title}</h2><p>${text}</p></section>`).join('')}</main>`); }
 function notFound(): string { return shell(`<main id="main" class="not-found"><p class="coordinates">404 / PATH ENDS HERE</p><h1 tabindex="-1">This route is not in the inventory</h1><p>The page may have moved, or the address may be wrong.</p><a class="button primary" href="/" data-link>Return to the start</a></main>`); }
 
-function render(fromPopState = false): void {
-  const route = routes[location.pathname] ?? routes['/404'];
+function render(focusRoute = false): void {
+  const route = currentRoute();
   document.title = route.title;
-  updateMeta(route.title);
+  updateMeta(route);
   app.innerHTML = route.render();
   bindNavigation(); bindCommon();
-  if (location.pathname === '/demo') bindDemo();
-  if (location.pathname === '/') { bindLicense(); handleLicenseReturn(); }
+  if (route === routes['/demo']) bindDemo();
+  if (route === routes['/']) { bindLicense(); handleLicenseReturn(); }
   const h1 = document.querySelector<HTMLHeadingElement>('h1');
   routeStatus.textContent = h1?.textContent ?? route.title;
-  if (fromPopState) h1?.focus();
+  if (focusRoute) requestAnimationFrame(() => {
+    const hashTarget = location.hash ? document.querySelector<HTMLElement>(location.hash) : null;
+    const focusTarget = hashTarget ?? h1;
+    focusTarget?.focus({ preventScroll: true });
+    if (hashTarget) hashTarget.scrollIntoView();
+  });
 }
 
-function bindNavigation(): void { document.querySelectorAll<HTMLAnchorElement>('a[data-link]').forEach(link => link.addEventListener('click', event => { const url = new URL(link.href); if (url.origin !== location.origin) return; event.preventDefault(); history.pushState({}, '', url.pathname + url.hash); render(true); window.scrollTo({top: 0, behavior: 'instant'}); })); }
+function bindNavigation(): void { document.querySelectorAll<HTMLAnchorElement>('a[data-link]').forEach(link => link.addEventListener('click', event => { const url = new URL(link.href); if (url.origin !== location.origin) return; event.preventDefault(); history.pushState({}, '', url.pathname + url.search + url.hash); render(true); if (!url.hash) window.scrollTo({top: 0, behavior: 'instant'}); })); }
 function bindCommon(): void { document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach(button => button.addEventListener('click', async () => { await navigator.clipboard.writeText(button.dataset.copy ?? ''); button.textContent = 'Copied'; setTimeout(() => button.textContent = 'Copy command', 1400); })); }
 function bindDemo(): void {
   document.querySelector('#reset-demo')?.addEventListener('click', () => { render(); document.querySelector<HTMLHeadingElement>('h1')?.focus(); routeStatus.textContent = 'Demo reset'; });
@@ -164,9 +206,20 @@ function handleLicenseReturn(): void { const url = new URL(location.href); const
 async function verifyLicense(token: string, force: boolean): Promise<void> { const cached = readVerdict(); if (!force && cached && Date.now() - cached.checkedAt < 86_400_000) { setLicenseStatus(cached.valid ? 'Team scans are active on this browser.' : 'The saved license is no longer active.', cached.valid); return; } setLicenseStatus('Checking the license…', false); try { const response = await fetch(`${BILLING}/verify?license=${encodeURIComponent(token)}`); const verdict = await response.json() as {valid: boolean; reason?: string}; localStorage.setItem(VERDICT_KEY, JSON.stringify({valid: verdict.valid, checkedAt: Date.now()})); setLicenseStatus(verdict.valid ? 'Team scans are active on this browser.' : `The license is not active (${verdict.reason ?? 'invalid'}).`, verdict.valid); } catch { if (cached?.valid) setLicenseStatus('Team scans remain active from the last check. Verification is offline.', true); else setLicenseStatus('The license could not be checked. Check your connection, then try again.', false); } }
 function readVerdict(): {valid: boolean; checkedAt: number} | null { try { return JSON.parse(localStorage.getItem(VERDICT_KEY) ?? 'null'); } catch { return null; } }
 function setLicenseStatus(message: string, valid: boolean): void { const status = document.querySelector('#license-status'); if (status) { status.textContent = message; status.classList.toggle('valid', valid); } }
-function updateMeta(title: string): void { document.querySelector('meta[property="og:title"]')?.setAttribute('content', title); const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]'); if (canonical) canonical.href = `https://github-dependency-exit.sociobot.in${location.pathname}`; }
+function updateMeta(route: Route): void {
+  const origin = 'https://github-dependency-exit.sociobot.in';
+  const canonicalUrl = `${origin}${route.canonical}`;
+  document.querySelector('meta[name="description"]')?.setAttribute('content', route.description);
+  document.querySelector('meta[property="og:title"]')?.setAttribute('content', route.title);
+  document.querySelector('meta[property="og:description"]')?.setAttribute('content', route.description);
+  document.querySelector('meta[property="og:url"]')?.setAttribute('content', canonicalUrl);
+  document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', route.title);
+  document.querySelector('meta[name="twitter:description"]')?.setAttribute('content', route.description);
+  const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]');
+  if (canonical) canonical.href = canonicalUrl;
+}
 function escapeHtml(value: string): string { return value.replace(/[&<>'"]/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]!)); }
 
 window.addEventListener('popstate', () => render(true));
 render();
-if ('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('/sw.js').catch(() => {});
+if ('serviceWorker' in navigator && (location.protocol === 'https:' || ['localhost', '127.0.0.1'].includes(location.hostname))) navigator.serviceWorker.register('/sw.js').catch(() => {});

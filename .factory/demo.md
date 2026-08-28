@@ -1,6 +1,6 @@
 # Demo sandbox
 
-- Browser URL: `https://github-dependency-exit.sociobot.in/demo` or local `http://127.0.0.1:4173/demo`.
+- Browser URL: `https://github-dependency-exit.sociobot.in/?demo=1` or local `http://127.0.0.1:4173/?demo=1`. The legacy `/demo` URL opens the same isolated sample.
 - CLI command: `github-exit demo`. Add `--output <folder>` for a fixed destination.
 - Sample: three repositories owned by fictional `mosswood-labs`, five workflows, three webhooks, two packages, fourteen releases, four rules, and explicit OAuth unknowns.
 - Reset: choose **Reset demo** in the browser. Run the CLI command again for a new temporary folder.
