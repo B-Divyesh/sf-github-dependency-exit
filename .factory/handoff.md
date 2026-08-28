@@ -1,22 +1,14 @@
-# Handoff — GitHub Exit Inventory polish round 1
+# Handoff — GitHub Exit Inventory review round 2
 
 ## Result
 
-**PASS.** All four findings in `.factory/review-1.md` are fixed, every historical regression remains covered, and the final static build is live at <https://github-dependency-exit.sociobot.in>.
+**PASS.** An independent adversarial first-read review found no remaining findings. No product code changed in this round; the full review is recorded in `.factory/review-2.md`.
 
 The product remains a Rust single-binary CLI with a Vite static landing and browser demo. The concrete-and-moss identity, generated original artwork, artifact class, and deployment class are unchanged.
 
 ## What changed
 
-- Made `/?demo=1` the visible and documented one-click sample path while preserving `/demo` as an alias.
-- Kept demo data isolated from saved license state; added reset, exit, storage, first-party network, and offline tests.
-- Fixed History API Back and Forward focus on the new route H1 and hash-target focus when leaving demo mode.
-- Added complete route-specific title, description, canonical, Open Graph, and Twitter metadata.
-- Rebuilt the static 404 as the standard product shell while preserving a real HTTP 404 response.
-- Replaced “exit surface” and “accumulated load” with direct migration-dependency wording.
-- Updated the service-worker cache version and preloaded the `?demo=1` shell.
-- Updated `.factory/claims.json`, `.factory/demo.md`, `.factory/copy-audit.md`, README, sitemap, and the 82-character verb-first catalog description.
-- During the cold live audit, corrected the last mobile 404 navigation target to 44 px and redeployed.
+- Added `.factory/review-2.md` only. It records the fresh live review, clean-clone claim results, copy counts, and historical-regression checks.
 
 The exact finding-to-change-to-evidence map is in [`.factory/polish-1.md`](polish-1.md).
 
@@ -59,4 +51,4 @@ cargo package
 
 ## Known gaps and next steps
 
-None within the brief, cumulative reviews, or this work order.
+None within the brief, cumulative reviews, or this work order. Re-run the same review checklist after future releases.
