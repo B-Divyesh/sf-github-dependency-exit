@@ -115,11 +115,21 @@ test('the 390 px layout does not scroll sideways and keyboard reaches the demo',
   await page.goto('/');
   const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
   expect(overflow).toBeLessThanOrEqual(1);
+  const homeAxe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa']).analyze();
+  expect(homeAxe.violations.filter(item => ['serious', 'critical'].includes(item.impact ?? ''))).toEqual([]);
   await page.keyboard.press('Tab');
   await expect(page.getByRole('link', { name: 'Skip to main content' })).toBeFocused();
   await page.getByRole('link', { name: 'Try it with sample data' }).focus();
   await page.keyboard.press('Enter');
   await expect(page).toHaveURL(/\/demo$/);
+  const demoOverflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+  expect(demoOverflow).toBeLessThanOrEqual(1);
+  const undersized = await page.locator('a, button, input, select').evaluateAll(nodes => nodes.filter(node => {
+    const style = getComputedStyle(node);
+    const rect = node.getBoundingClientRect();
+    return style.display !== 'none' && style.visibility !== 'hidden' && (rect.width < 44 || rect.height < 44);
+  }).map(node => (node.textContent || '').trim()));
+  expect(undersized).toEqual([]);
 });
 
 function run(command: string, args: string[]): Promise<{code: number|null; stdout: string; stderr: string}> {

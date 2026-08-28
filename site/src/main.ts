@@ -51,7 +51,7 @@ function home(): string {
       ${summaryStrip()}
       <div class="terminal" role="region" tabindex="0" aria-label="Terminal recording of the bundled demo">
         <div class="terminal-bar"><span>github-exit / demo</span><span aria-hidden="true">● ● ●</span></div>
-        <pre><code><span class="prompt">$</span> github-exit demo
+        <pre tabindex="0" aria-label="Bundled demo terminal output"><code><span class="prompt">$</span> github-exit demo
 Demo — sample data, nothing was uploaded.
 Scanned 3 repositories.
 3 checks need manual review.

@@ -41,6 +41,7 @@ footer a,
   display: inline-flex;
   align-items: center;
   min-height: 44px;
+  min-width: 44px;
 }
 button,
 input,
@@ -754,6 +755,13 @@ footer a {
 }
 .check-row p {
   margin-bottom: 8px;
+}
+.check-row,
+.check-row > div,
+.evidence-list li,
+.evidence-list li > div {
+  min-width: 0;
+  overflow-wrap: anywhere;
 }
 .candidate .badge {
   margin-left: 8px;
