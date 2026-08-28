@@ -40,7 +40,7 @@ function home(): string {
         <h1 id="hero-title">Map what breaks before leaving GitHub</h1>
         <p class="lede">For small software teams planning a fallback, this CLI finds repository dependencies and builds a checked migration list.</p>
         <div class="hero-actions"><a class="button primary" href="/demo" data-link>Try it with sample data</a><span>Opens a browser report. No account or token.</span></div>
-        <ul class="facts" aria-label="Product facts"><li>Read-only GitHub requests</li><li>No telemetry or metadata uploads</li><li>$39 once; one-repository scans stay free</li></ul>
+        <ul class="facts" aria-label="Product facts"><li>Read-only GitHub requests</li><li>Reports stay in your output folder</li><li>$39 once; one-repository scans stay free</li></ul>
       </div>
       <figure class="hero-art"><picture><source media="(max-width: 700px)" srcset="/assets/exit-cutaway-mobile.webp"><img src="/assets/exit-cutaway.webp" width="1536" height="1024" fetchpriority="high" alt="A concrete repository model with moss tracing dependency paths through its joints."></picture><figcaption>Repository structure, seen as accumulated load.</figcaption></figure>
     </section>
@@ -49,7 +49,7 @@ function home(): string {
       <div class="section-label"><span>01</span><p>THE PRODUCT</p></div>
       <div class="preview-copy"><h2 id="preview-title">See the exit surface, not just the git history</h2><p>Every checked area keeps its source. Missing access becomes an unknown task instead of a silent blank.</p></div>
       ${summaryStrip()}
-      <div class="terminal" aria-label="Terminal recording of the bundled demo">
+      <div class="terminal" role="region" tabindex="0" aria-label="Terminal recording of the bundled demo">
         <div class="terminal-bar"><span>github-exit / demo</span><span aria-hidden="true">● ● ●</span></div>
         <pre><code><span class="prompt">$</span> github-exit demo
 Demo — sample data, nothing was uploaded.
@@ -159,7 +159,7 @@ function bindDemo(): void {
   document.querySelector('#download-json')?.addEventListener('click', () => { const url = URL.createObjectURL(new Blob([JSON.stringify(inventory, null, 2)], {type: 'application/json'})); const anchor = document.createElement('a'); anchor.href = url; anchor.download = 'github-exit-sample-inventory.json'; anchor.click(); URL.revokeObjectURL(url); });
 }
 
-function bindLicense(): void { document.querySelector<HTMLFormElement>('#license-form')?.addEventListener('submit', event => { event.preventDefault(); const token = new FormData(event.currentTarget).get('license')?.toString().trim(); if (!token) return setLicenseStatus('Paste a license token first.', false); localStorage.setItem(LICENSE_KEY, token); verifyLicense(token, true); }); const token = localStorage.getItem(LICENSE_KEY); if (token) verifyLicense(token, false); }
+function bindLicense(): void { document.querySelector<HTMLFormElement>('#license-form')?.addEventListener('submit', event => { event.preventDefault(); const form = event.currentTarget as HTMLFormElement; const token = new FormData(form).get('license')?.toString().trim(); if (!token) return setLicenseStatus('Paste a license token first.', false); localStorage.setItem(LICENSE_KEY, token); verifyLicense(token, true); }); const token = localStorage.getItem(LICENSE_KEY); if (token) verifyLicense(token, false); }
 function handleLicenseReturn(): void { const url = new URL(location.href); const token = url.searchParams.get('license'); if (!token) return; localStorage.setItem(LICENSE_KEY, token); url.searchParams.delete('license'); history.replaceState({}, '', url.pathname + url.search + url.hash); verifyLicense(token, true); }
 async function verifyLicense(token: string, force: boolean): Promise<void> { const cached = readVerdict(); if (!force && cached && Date.now() - cached.checkedAt < 86_400_000) { setLicenseStatus(cached.valid ? 'Team scans are active on this browser.' : 'The saved license is no longer active.', cached.valid); return; } setLicenseStatus('Checking the license…', false); try { const response = await fetch(`${BILLING}/verify?license=${encodeURIComponent(token)}`); const verdict = await response.json() as {valid: boolean; reason?: string}; localStorage.setItem(VERDICT_KEY, JSON.stringify({valid: verdict.valid, checkedAt: Date.now()})); setLicenseStatus(verdict.valid ? 'Team scans are active on this browser.' : `The license is not active (${verdict.reason ?? 'invalid'}).`, verdict.valid); } catch { if (cached?.valid) setLicenseStatus('Team scans remain active from the last check. Verification is offline.', true); else setLicenseStatus('The license could not be checked. Check your connection, then try again.', false); } }
 function readVerdict(): {valid: boolean; checkedAt: number} | null { try { return JSON.parse(localStorage.getItem(VERDICT_KEY) ?? 'null'); } catch { return null; } }

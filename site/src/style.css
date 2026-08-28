@@ -34,6 +34,14 @@ a {
 a:hover {
   text-decoration-thickness: 3px;
 }
+.site-header nav a,
+footer a,
+.demo-banner a,
+.text-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+}
 button,
 input,
 select {
@@ -550,7 +558,7 @@ footer a {
   gap: 16px;
 }
 .demo-banner button {
-  min-height: 36px;
+  min-height: 44px;
   padding: 4px 12px;
 }
 .demo-banner a {
