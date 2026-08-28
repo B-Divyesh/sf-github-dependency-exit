@@ -1,0 +1,12 @@
+commit 83caf20d5a5c54a0dc478c2e6ff98fff155ab00b
+js assets/index-GDq8yZ2y.js
+483840aba391228ffe0c384d97d276adfc716d10c88d967d612468bd7a9d1898  dist/site/assets/index-GDq8yZ2y.js
+483840aba391228ffe0c384d97d276adfc716d10c88d967d612468bd7a9d1898  /tmp/gde-live.js
+css assets/index-nLGQcxz1.css
+c4924e76a8365064f670e94963176653ba60e8150d10c7d3c13564851e374168  dist/site/assets/index-nLGQcxz1.css
+c4924e76a8365064f670e94963176653ba60e8150d10c7d3c13564851e374168  /tmp/gde-live.css
+edfa6c0f4923a02221fc24cbc200067dcc5992c8a1ca9273bd57dcd21682e3ef  dist/site/downloads/github-exit-linux-x86_64
+edfa6c0f4923a02221fc24cbc200067dcc5992c8a1ca9273bd57dcd21682e3ef  /tmp/gde-live-bin
+js identity PASS
+css identity PASS
+binary identity PASS

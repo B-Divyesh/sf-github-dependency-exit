@@ -1,0 +1,6 @@
+Checkout: HTTP 303
+Location: https://checkout.dodopayments.com/session/<redacted>
+
+Invalid-license verification: HTTP 200
+Cache-Control: no-store
+Body: {"expires_at":null,"reason":"invalid","valid":false}

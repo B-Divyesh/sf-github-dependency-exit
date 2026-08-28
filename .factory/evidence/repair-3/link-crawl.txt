@@ -1,0 +1,8 @@
+200 https://github-dependency-exit.sociobot.in/
+200 https://github-dependency-exit.sociobot.in/demo
+200 https://github-dependency-exit.sociobot.in/privacy
+200 https://github-dependency-exit.sociobot.in/terms
+200 https://github-dependency-exit.sociobot.in/downloads/github-exit-linux-x86_64
+200 https://github.com/B-Divyesh/sf-github-dependency-exit
+200 https://hello-factory.sociobot.in
+303 https://api.sociobot.in/api/v1/products/github-dependency-exit/checkout

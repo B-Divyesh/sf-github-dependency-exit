@@ -1,0 +1,164 @@
+{
+  "routes": [
+    {
+      "viewport": "desktop",
+      "route": "/",
+      "status": 200,
+      "title": "GitHub Exit Inventory — map migration dependencies",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "overflow": 0,
+      "undersized": [],
+      "errors": [],
+      "seriousCriticalAxe": 0
+    },
+    {
+      "viewport": "desktop",
+      "route": "/demo",
+      "status": 200,
+      "title": "Demo — GitHub Exit Inventory",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "overflow": 0,
+      "undersized": [],
+      "errors": [],
+      "seriousCriticalAxe": 0
+    },
+    {
+      "viewport": "desktop",
+      "route": "/privacy",
+      "status": 200,
+      "title": "Privacy — GitHub Exit Inventory",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "overflow": 0,
+      "undersized": [],
+      "errors": [],
+      "seriousCriticalAxe": 0
+    },
+    {
+      "viewport": "desktop",
+      "route": "/terms",
+      "status": 200,
+      "title": "Terms — GitHub Exit Inventory",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "overflow": 0,
+      "undersized": [],
+      "errors": [],
+      "seriousCriticalAxe": 0
+    },
+    {
+      "viewport": "desktop",
+      "route": "/missing-route",
+      "status": 404,
+      "title": "Page not found — GitHub Exit Inventory",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "overflow": 0,
+      "undersized": [],
+      "errors": [],
+      "seriousCriticalAxe": 0
+    },
+    {
+      "viewport": "mobile",
+      "route": "/",
+      "status": 200,
+      "title": "GitHub Exit Inventory — map migration dependencies",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "overflow": 0,
+      "undersized": [],
+      "errors": [],
+      "seriousCriticalAxe": 0
+    },
+    {
+      "viewport": "mobile",
+      "route": "/demo",
+      "status": 200,
+      "title": "Demo — GitHub Exit Inventory",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "overflow": 0,
+      "undersized": [],
+      "errors": [],
+      "seriousCriticalAxe": 0
+    },
+    {
+      "viewport": "mobile",
+      "route": "/privacy",
+      "status": 200,
+      "title": "Privacy — GitHub Exit Inventory",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "overflow": 0,
+      "undersized": [],
+      "errors": [],
+      "seriousCriticalAxe": 0
+    },
+    {
+      "viewport": "mobile",
+      "route": "/terms",
+      "status": 200,
+      "title": "Terms — GitHub Exit Inventory",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "overflow": 0,
+      "undersized": [],
+      "errors": [],
+      "seriousCriticalAxe": 0
+    },
+    {
+      "viewport": "mobile",
+      "route": "/missing-route",
+      "status": 404,
+      "title": "Page not found — GitHub Exit Inventory",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "overflow": 0,
+      "undersized": [],
+      "errors": [],
+      "seriousCriticalAxe": 0
+    }
+  ],
+  "keyboard": {
+    "firstFocus": "Skip to main content",
+    "focusStyle": {
+      "outlineWidth": "3px",
+      "outlineColor": "rgb(217, 236, 105)"
+    },
+    "selectedRepo": "mosswood-labs/field-console",
+    "filterValue": "Actions",
+    "reducedMotionAnimationDuration": "1e-05s"
+  },
+  "privacy": {
+    "offsite": [],
+    "storage": {
+      "local": [],
+      "session": []
+    }
+  },
+  "offline": {
+    "status": 200,
+    "heading": "Review the sample exit inventory",
+    "cacheNames": [
+      "github-exit-shell-2026-08-28-repair-3"
+    ]
+  },
+  "update": {
+    "cacheVersion": "github-exit-shell-2026-08-28-repair-3",
+    "skipWaiting": true,
+    "clientsClaim": true,
+    "networkFirstNavigation": true
+  }
+}
