@@ -95,6 +95,17 @@ test('the paid tier has one price, keeps repository scans free, and starts check
   expect(response.headers().location).toMatch(/^https:\/\/checkout\.dodopayments\.com\/session\//);
 });
 
+test('the service worker activates the current shell and refreshes navigations', async ({ request }) => {
+  const response = await request.get('/sw.js');
+  expect(response.status()).toBe(200);
+  const worker = await response.text();
+  expect(worker).toContain("const CACHE = 'github-exit-shell-2026-08-28-repair-3'");
+  expect(worker).toContain('self.skipWaiting()');
+  expect(worker).toContain('self.clients.claim()');
+  expect(worker).toContain("event.request.mode === 'navigate'");
+  expect(worker).toContain('event.respondWith(fetch(event.request)');
+});
+
 for (const route of ['/', '/demo', '/privacy', '/terms', '/missing-route']) {
   test(`route ${route} has its structure and no serious accessibility errors`, async ({ page }) => {
     const consoleErrors: string[] = [];
