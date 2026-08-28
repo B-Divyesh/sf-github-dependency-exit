@@ -1,7 +1,7 @@
 # Adversarial first-read review 1 — FAIL
 
-**Reviewed:** 2026-08-28 UTC  
-**Production:** https://github-dependency-exit.sociobot.in  
+**Reviewed:** 2026-08-28 UTC
+**Production:** https://github-dependency-exit.sociobot.in
 **Method:** Fresh Chromium contexts at 390 × 844 and 1440 × 1000; separate clean clone at /tmp/gde-review-clean.7X2VX7. No product code changed.
 
 ## Verdict
@@ -231,4 +231,3 @@ Counts use whitespace-delimited words; hyphenated compounds count once. No landi
 ## What would make this perfect
 
 Fix the Back-focus timing, supply route-specific metadata, make the 404 a complete site shell, and replace the two metaphorical headings with direct migration-report language. Then repeat this entire cold-start, claims, offline, CLI, route, copy, link, and accessibility checklist.
-
