@@ -1,0 +1,156 @@
+{
+  "schema_version": "1.0",
+  "generated_at": "2026-08-28T09:30:00Z",
+  "source": "bundled sample; no network request",
+  "scope": "mosswood-labs",
+  "summary": {
+    "repositories": 3,
+    "workflows": 5,
+    "action_dependencies": 8,
+    "webhooks": 3,
+    "packages": 2,
+    "releases": 14,
+    "rules": 4,
+    "autolinks": 1,
+    "unknown_checks": 3,
+    "risk_points": 72
+  },
+  "repositories": [
+    {
+      "name": "trail-api",
+      "full_name": "mosswood-labs/trail-api",
+      "visibility": "private",
+      "archived": false,
+      "default_branch": "main",
+      "issues_enabled": true,
+      "url": "https://github.com/mosswood-labs/trail-api",
+      "workflows": [
+        {"name":"test and release","path":".github/workflows/release.yml","state":"active","url":"https://github.com/mosswood-labs/trail-api/actions"},
+        {"name":"dependency review","path":".github/workflows/dependencies.yml","state":"active","url":"https://github.com/mosswood-labs/trail-api/actions"}
+      ],
+      "action_dependencies": [
+        {"uses":"actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683","workflow":".github/workflows/release.yml","pinned_to_commit":true},
+        {"uses":"docker/login-action@v3","workflow":".github/workflows/release.yml","pinned_to_commit":false},
+        {"uses":"docker/build-push-action@v6","workflow":".github/workflows/release.yml","pinned_to_commit":false}
+      ],
+      "webhooks": [
+        {"id":18421,"active":true,"events":["push","pull_request"],"target_host":"ci.mosswood.test"},
+        {"id":18422,"active":true,"events":["issues"],"target_host":"tickets.mosswood.test"}
+      ],
+      "releases": [
+        {"tag":"v2.8.0","draft":false,"prerelease":false,"assets":3},
+        {"tag":"v2.7.1","draft":false,"prerelease":false,"assets":3},
+        {"tag":"v2.7.0","draft":false,"prerelease":false,"assets":3},
+        {"tag":"v2.6.0","draft":false,"prerelease":false,"assets":2},
+        {"tag":"v2.5.0","draft":false,"prerelease":false,"assets":2},
+        {"tag":"v2.4.0","draft":false,"prerelease":false,"assets":2},
+        {"tag":"v2.3.0","draft":false,"prerelease":false,"assets":2},
+        {"tag":"v2.2.0","draft":false,"prerelease":false,"assets":2}
+      ],
+      "branch_rules": [
+        {"name":"main","kind":"branch protection","enforcement":"active"},
+        {"name":"signed release tags","kind":"repository ruleset","enforcement":"active"}
+      ],
+      "autolinks": [{"prefix":"OPS-","target_template":"https://tickets.mosswood.test/OPS-<num>"}],
+      "app_oauth_references": [
+        {"kind":"GitHub Action","name":"docker/login-action@v3","evidence":"release.yml uses an external action"},
+        {"kind":"Webhook target","name":"ci.mosswood.test","evidence":"hook 18421 event delivery"}
+      ],
+      "evidence": [
+        {"area":"actions","status":"verified","source":"GET /repos/mosswood-labs/trail-api/actions/workflows","note":"2 workflows found"},
+        {"area":"webhooks","status":"verified","source":"GET /repos/mosswood-labs/trail-api/hooks","note":"2 webhooks found"},
+        {"area":"releases","status":"verified","source":"GET /repos/mosswood-labs/trail-api/releases","note":"8 releases found"},
+        {"area":"branch protection","status":"verified","source":"GET /repos/mosswood-labs/trail-api/branches/main/protection","note":"default branch protection found"},
+        {"area":"rulesets","status":"verified","source":"GET /repos/mosswood-labs/trail-api/rulesets","note":"2 total branch rules found"},
+        {"area":"issue autolinks","status":"verified","source":"GET /repos/mosswood-labs/trail-api/autolinks","note":"1 autolink found"},
+        {"area":"GitHub Apps and OAuth","status":"unknown","source":"repository installation settings","note":"workflow and webhook signals are recorded; the complete OAuth grant list needs manual review"}
+      ]
+    },
+    {
+      "name": "field-console",
+      "full_name": "mosswood-labs/field-console",
+      "visibility": "private",
+      "archived": false,
+      "default_branch": "main",
+      "issues_enabled": true,
+      "url": "https://github.com/mosswood-labs/field-console",
+      "workflows": [
+        {"name":"browser tests","path":".github/workflows/test.yml","state":"active","url":"https://github.com/mosswood-labs/field-console/actions"},
+        {"name":"preview","path":".github/workflows/preview.yml","state":"active","url":"https://github.com/mosswood-labs/field-console/actions"}
+      ],
+      "action_dependencies": [
+        {"uses":"actions/checkout@v4","workflow":".github/workflows/test.yml","pinned_to_commit":false},
+        {"uses":"actions/setup-node@v4","workflow":".github/workflows/test.yml","pinned_to_commit":false},
+        {"uses":"cloudflare/pages-action@v1","workflow":".github/workflows/preview.yml","pinned_to_commit":false}
+      ],
+      "webhooks": [{"id":20991,"active":true,"events":["deployment_status"],"target_host":"chat.mosswood.test"}],
+      "releases": [
+        {"tag":"v1.4.0","draft":false,"prerelease":false,"assets":1},
+        {"tag":"v1.3.0","draft":false,"prerelease":false,"assets":1},
+        {"tag":"v1.2.0","draft":false,"prerelease":false,"assets":1},
+        {"tag":"v1.1.0","draft":false,"prerelease":false,"assets":1}
+      ],
+      "branch_rules": [{"name":"main","kind":"branch protection","enforcement":"active"}],
+      "autolinks": [],
+      "app_oauth_references": [
+        {"kind":"GitHub Action","name":"cloudflare/pages-action@v1","evidence":"preview.yml uses an external action"},
+        {"kind":"Webhook target","name":"chat.mosswood.test","evidence":"hook 20991 event delivery"}
+      ],
+      "evidence": [
+        {"area":"actions","status":"verified","source":"GET /repos/mosswood-labs/field-console/actions/workflows","note":"2 workflows found"},
+        {"area":"webhooks","status":"verified","source":"GET /repos/mosswood-labs/field-console/hooks","note":"1 webhook found"},
+        {"area":"releases","status":"verified","source":"GET /repos/mosswood-labs/field-console/releases","note":"4 releases found"},
+        {"area":"branch protection","status":"verified","source":"GET /repos/mosswood-labs/field-console/branches/main/protection","note":"default branch protection found"},
+        {"area":"rulesets","status":"verified","source":"GET /repos/mosswood-labs/field-console/rulesets","note":"1 total branch rule found"},
+        {"area":"issue autolinks","status":"verified","source":"GET /repos/mosswood-labs/field-console/autolinks","note":"0 autolinks found"},
+        {"area":"GitHub Apps and OAuth","status":"unknown","source":"repository installation settings","note":"the complete OAuth grant list needs manual review"}
+      ]
+    },
+    {
+      "name": "ops-playbook",
+      "full_name": "mosswood-labs/ops-playbook",
+      "visibility": "internal",
+      "archived": false,
+      "default_branch": "main",
+      "issues_enabled": false,
+      "url": "https://github.com/mosswood-labs/ops-playbook",
+      "workflows": [{"name":"link check","path":".github/workflows/links.yml","state":"active","url":"https://github.com/mosswood-labs/ops-playbook/actions"}],
+      "action_dependencies": [
+        {"uses":"actions/checkout@v4","workflow":".github/workflows/links.yml","pinned_to_commit":false},
+        {"uses":"lycheeverse/lychee-action@v2","workflow":".github/workflows/links.yml","pinned_to_commit":false}
+      ],
+      "webhooks": [],
+      "releases": [
+        {"tag":"2026.08","draft":false,"prerelease":false,"assets":1},
+        {"tag":"2026.07","draft":false,"prerelease":false,"assets":1}
+      ],
+      "branch_rules": [{"name":"main","kind":"branch protection","enforcement":"active"}],
+      "autolinks": [],
+      "app_oauth_references": [{"kind":"GitHub Action","name":"lycheeverse/lychee-action@v2","evidence":"links.yml uses an external action"}],
+      "evidence": [
+        {"area":"actions","status":"verified","source":"GET /repos/mosswood-labs/ops-playbook/actions/workflows","note":"1 workflow found"},
+        {"area":"webhooks","status":"verified","source":"GET /repos/mosswood-labs/ops-playbook/hooks","note":"0 webhooks found"},
+        {"area":"releases","status":"verified","source":"GET /repos/mosswood-labs/ops-playbook/releases","note":"2 releases found"},
+        {"area":"branch protection","status":"verified","source":"GET /repos/mosswood-labs/ops-playbook/branches/main/protection","note":"default branch protection found"},
+        {"area":"rulesets","status":"verified","source":"GET /repos/mosswood-labs/ops-playbook/rulesets","note":"1 total branch rule found"},
+        {"area":"issue autolinks","status":"verified","source":"GET /repos/mosswood-labs/ops-playbook/autolinks","note":"issues are disabled and 0 autolinks were found"},
+        {"area":"GitHub Apps and OAuth","status":"unknown","source":"repository installation settings","note":"the complete OAuth grant list needs manual review"}
+      ]
+    }
+  ],
+  "packages": [
+    {"repository":"mosswood-labs/trail-api","name":"trail-api","package_type":"container","visibility":"private"},
+    {"repository":"mosswood-labs/field-console","name":"field-console","package_type":"npm","visibility":"private"}
+  ],
+  "checklist": [
+    {"repository":"mosswood-labs/trail-api","area":"Actions","status":"verified","finding":"2 workflows use 3 external action references","next_step":"Rebuild each workflow on the target runner and test its secrets.","alternative":"Forgejo Actions","alternative_status":"verified","alternative_evidence":"https://forgejo.org/docs/latest/user/actions/"},
+    {"repository":"mosswood-labs/trail-api","area":"Webhooks","status":"verified","finding":"2 webhook targets receive four event types","next_step":"Create each endpoint on the target forge and send a test event.","alternative":"Target-forge webhooks","alternative_status":"unknown","alternative_evidence":"Confirm payload and signature support with each receiver."},
+    {"repository":"mosswood-labs/trail-api","area":"GitHub Apps and OAuth","status":"unknown","finding":"2 integration signals found; the grant list still needs review","next_step":"Record each installed app, scope, callback URL, and owner.","alternative":"Target-forge app or OAuth integration","alternative_status":"unknown","alternative_evidence":"Compatibility depends on each vendor and callback contract."},
+    {"repository":"mosswood-labs/field-console","area":"Actions","status":"verified","finding":"2 workflows use 3 action references","next_step":"Replace the Pages deploy action and test preview cleanup.","alternative":"Forge-native Pages pipeline","alternative_status":"unknown","alternative_evidence":"Confirm preview deployment and status callback support."},
+    {"repository":"mosswood-labs/field-console","area":"Branch rules","status":"verified","finding":"1 protected branch found","next_step":"Translate the rule and test a rejected pull request.","alternative":"GitLab protected branches","alternative_status":"verified","alternative_evidence":"https://docs.gitlab.com/user/project/repository/branches/protected/"},
+    {"repository":"mosswood-labs/ops-playbook","area":"Issue links","status":"verified","finding":"Issues are disabled and no autolinks were found","next_step":"Keep issue tracking disabled after import.","alternative":"No replacement needed","alternative_status":"verified","alternative_evidence":"The repository settings and autolink endpoint were checked."},
+    {"repository":"mosswood-labs/trail-api","area":"Packages","status":"verified","finding":"container package `trail-api` found","next_step":"Copy versions and update publish and install URLs.","alternative":"OCI registry","alternative_status":"unknown","alternative_evidence":"Choose a registry that supports the retention policy."},
+    {"repository":"mosswood-labs/field-console","area":"Packages","status":"verified","finding":"npm package `field-console` found","next_step":"Copy versions and update the npm registry URL.","alternative":"Package-native registry","alternative_status":"unknown","alternative_evidence":"Confirm access tokens and package visibility."}
+  ],
+  "rate_limit": null
+}
