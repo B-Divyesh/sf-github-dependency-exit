@@ -1,0 +1,28 @@
+{
+  "errors": [],
+  "home": {
+    "overflow": 0,
+    "undersized": [],
+    "axe": []
+  },
+  "demo": {
+    "overflow": 0,
+    "undersized": [],
+    "axe": []
+  },
+  "offline": {
+    "controlled": true,
+    "caches": [
+      "github-exit-shell-2026-08-28-repair-2"
+    ],
+    "demoH1": "Review the sample exit inventory",
+    "privacyH1": "Your repository data stays with you"
+  },
+  "missing": {
+    "status": 404
+  },
+  "checkout": {
+    "status": 303,
+    "location": "https://checkout.dodopayments.com/session/cks_0NmNfCDtWzr95pY8cT7AG"
+  }
+}

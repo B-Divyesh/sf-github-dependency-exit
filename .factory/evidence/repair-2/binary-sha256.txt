@@ -1,0 +1,2 @@
+df335468a6453e51e99e7db2b13f3a403d0f79831a5af0099ed0626f1f2d1533  target/release/github-exit
+df335468a6453e51e99e7db2b13f3a403d0f79831a5af0099ed0626f1f2d1533  /tmp/github-exit-live-bin
