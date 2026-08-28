@@ -1,0 +1,156 @@
+{
+  "scope": "B-Divyesh/sf-github-dependency-exit",
+  "summary": {
+    "repositories": 1,
+    "workflows": 0,
+    "action_dependencies": 0,
+    "webhooks": 0,
+    "packages": 0,
+    "releases": 0,
+    "rules": 0,
+    "autolinks": 0,
+    "unknown_checks": 6,
+    "risk_points": 18
+  },
+  "rate_limit": {
+    "remaining": 4950,
+    "limit": 5000,
+    "reset_unix": 1787927041
+  },
+  "evidence": [
+    {
+      "area": "actions",
+      "status": "verified",
+      "source": "https://api.github.com/repos/B-Divyesh/sf-github-dependency-exit/actions/workflows?per_page=100",
+      "note": "0 workflows found"
+    },
+    {
+      "area": "webhooks",
+      "status": "verified",
+      "source": "https://api.github.com/repos/B-Divyesh/sf-github-dependency-exit/hooks?per_page=100",
+      "note": "0 webhooks found"
+    },
+    {
+      "area": "releases",
+      "status": "verified",
+      "source": "https://api.github.com/repos/B-Divyesh/sf-github-dependency-exit/releases?per_page=100",
+      "note": "0 releases found"
+    },
+    {
+      "area": "branch protection",
+      "status": "verified",
+      "source": "https://api.github.com/repos/B-Divyesh/sf-github-dependency-exit/branches/main/protection",
+      "note": "no default branch protection returned"
+    },
+    {
+      "area": "rulesets",
+      "status": "verified",
+      "source": "https://api.github.com/repos/B-Divyesh/sf-github-dependency-exit/rulesets?includes_parents=true&per_page=100",
+      "note": "0 total branch rules found"
+    },
+    {
+      "area": "issue autolinks",
+      "status": "verified",
+      "source": "https://api.github.com/repos/B-Divyesh/sf-github-dependency-exit/autolinks?per_page=100",
+      "note": "0 autolinks found; issues setting also recorded"
+    },
+    {
+      "area": "GitHub Apps and OAuth",
+      "status": "unknown",
+      "source": "https://github.com/B-Divyesh/sf-github-dependency-exit/settings/installations",
+      "note": "GitHub does not expose a complete repository-scoped OAuth grant list; workflow and webhook signals were recorded"
+    },
+    {
+      "area": "packages",
+      "status": "unknown",
+      "source": "https://api.github.com/users/B-Divyesh/packages?package_type=container&per_page=100",
+      "note": "HTTP 403: Resource not accessible by personal access token"
+    },
+    {
+      "area": "packages",
+      "status": "unknown",
+      "source": "https://api.github.com/users/B-Divyesh/packages?package_type=npm&per_page=100",
+      "note": "HTTP 403: Resource not accessible by personal access token"
+    },
+    {
+      "area": "packages",
+      "status": "unknown",
+      "source": "https://api.github.com/users/B-Divyesh/packages?package_type=maven&per_page=100",
+      "note": "HTTP 403: Resource not accessible by personal access token"
+    },
+    {
+      "area": "packages",
+      "status": "unknown",
+      "source": "https://api.github.com/users/B-Divyesh/packages?package_type=rubygems&per_page=100",
+      "note": "HTTP 403: Resource not accessible by personal access token"
+    },
+    {
+      "area": "packages",
+      "status": "unknown",
+      "source": "https://api.github.com/users/B-Divyesh/packages?package_type=nuget&per_page=100",
+      "note": "HTTP 403: Resource not accessible by personal access token"
+    }
+  ],
+  "checklist": [
+    {
+      "repository": "B-Divyesh/sf-github-dependency-exit",
+      "area": "Actions",
+      "status": "verified",
+      "finding": "0 actions found",
+      "next_step": "Rebuild each workflow on the target runner and test its secrets.",
+      "alternative": "Forgejo Actions",
+      "alternative_status": "verified",
+      "alternative_evidence": "https://forgejo.org/docs/latest/user/actions/"
+    },
+    {
+      "repository": "B-Divyesh/sf-github-dependency-exit",
+      "area": "Webhooks",
+      "status": "verified",
+      "finding": "0 webhooks found",
+      "next_step": "Create each endpoint on the target forge and send a test event.",
+      "alternative": "Target-forge webhooks",
+      "alternative_status": "unknown",
+      "alternative_evidence": "Confirm payload and signature support with each receiver."
+    },
+    {
+      "repository": "B-Divyesh/sf-github-dependency-exit",
+      "area": "Releases",
+      "status": "verified",
+      "finding": "0 releases found",
+      "next_step": "Export release notes and assets, then compare checksums after import.",
+      "alternative": "GitLab releases",
+      "alternative_status": "verified",
+      "alternative_evidence": "https://docs.gitlab.com/user/project/releases/"
+    },
+    {
+      "repository": "B-Divyesh/sf-github-dependency-exit",
+      "area": "Branch rules",
+      "status": "verified",
+      "finding": "0 branch rules found",
+      "next_step": "Translate every rule and test a rejected pull request.",
+      "alternative": "GitLab protected branches",
+      "alternative_status": "verified",
+      "alternative_evidence": "https://docs.gitlab.com/user/project/repository/branches/protected/"
+    },
+    {
+      "repository": "B-Divyesh/sf-github-dependency-exit",
+      "area": "Issue links",
+      "status": "verified",
+      "finding": "0 issue links found",
+      "next_step": "Recreate autolink prefixes and test old issue references.",
+      "alternative": "GitLab external issue trackers",
+      "alternative_status": "verified",
+      "alternative_evidence": "https://docs.gitlab.com/integration/external-issue-tracker/"
+    },
+    {
+      "repository": "B-Divyesh/sf-github-dependency-exit",
+      "area": "GitHub Apps and OAuth",
+      "status": "unknown",
+      "finding": "0 workflow or webhook signals found; the grant list still needs review",
+      "next_step": "Open repository and organization installation settings. Record each app owner, scopes, callback URL, and replacement.",
+      "alternative": "Target-forge app or OAuth integration",
+      "alternative_status": "unknown",
+      "alternative_evidence": "Compatibility depends on each app vendor and callback contract."
+    }
+  ]
+}

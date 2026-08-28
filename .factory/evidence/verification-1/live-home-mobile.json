@@ -1,0 +1,115 @@
+{
+  "name": "mobile",
+  "status": 200,
+  "url": "https://github-dependency-exit.sociobot.in/",
+  "title": "GitHub Exit Inventory — map migration dependencies",
+  "h1": [
+    "Map what breaks before leaving GitHub"
+  ],
+  "visible": [
+    {
+      "tag": "span",
+      "text": "G/E",
+      "role": null,
+      "href": null
+    },
+    {
+      "tag": "span",
+      "text": "GitHub Exit Inventory",
+      "role": null,
+      "href": null
+    },
+    {
+      "tag": "a",
+      "text": "Demo",
+      "role": null,
+      "href": "/demo"
+    },
+    {
+      "tag": "a",
+      "text": "Install",
+      "role": null,
+      "href": "/#install"
+    },
+    {
+      "tag": "a",
+      "text": "Privacy",
+      "role": null,
+      "href": "/privacy"
+    },
+    {
+      "tag": "p",
+      "text": "EXIT SURVEY / READ-ONLY CLI",
+      "role": null,
+      "href": null
+    },
+    {
+      "tag": "h1",
+      "text": "Map what breaks before leaving GitHub",
+      "role": null,
+      "href": null
+    },
+    {
+      "tag": "p",
+      "text": "For small software teams planning a fallback, this CLI finds repository dependencies and builds a checked migration list.",
+      "role": null,
+      "href": null
+    },
+    {
+      "tag": "a",
+      "text": "Try it with sample data",
+      "role": null,
+      "href": "/demo"
+    },
+    {
+      "tag": "span",
+      "text": "Opens a browser report. No account or token.",
+      "role": null,
+      "href": null
+    },
+    {
+      "tag": "li",
+      "text": "Read-only GitHub requests",
+      "role": null,
+      "href": null
+    },
+    {
+      "tag": "li",
+      "text": "No telemetry or metadata uploads",
+      "role": null,
+      "href": null
+    },
+    {
+      "tag": "li",
+      "text": "$39 once; one-repository scans stay free",
+      "role": null,
+      "href": null
+    }
+  ],
+  "buttons": [
+    "Copy command",
+    "Verify license"
+  ],
+  "links": [
+    "Skip to main content",
+    "G/EGitHub Exit Inventory",
+    "Demo",
+    "Install",
+    "Privacy",
+    "Try it with sample data",
+    "Open the full sample report →",
+    "Download Linux binary",
+    "Read the source (external site) →",
+    "Buy the team scan license",
+    "Privacy",
+    "Terms",
+    "Built by Param Factory (external site)"
+  ],
+  "errors": [],
+  "requests": [
+    "https://github-dependency-exit.sociobot.in/",
+    "https://github-dependency-exit.sociobot.in/assets/index-vs0fQwmo.js",
+    "https://github-dependency-exit.sociobot.in/assets/index-C3F2ElWN.css",
+    "https://github-dependency-exit.sociobot.in/assets/exit-cutaway-mobile.webp"
+  ]
+}

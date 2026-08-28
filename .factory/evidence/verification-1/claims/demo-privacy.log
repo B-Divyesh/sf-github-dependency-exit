@@ -1,0 +1,33 @@
+
+> github-dependency-exit@0.1.0 test
+> cargo test && playwright test --grep @claim:demo-privacy
+
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.23s
+     Running unittests src/main.rs (target/debug/deps/github_exit-94ad2f9a12861def)
+
+running 2 tests
+test tests::demo_fixture_is_valid_and_has_unknown_oauth_check ... ok
+test tests::validates_repo_names ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/cli.rs (target/debug/deps/cli-5d02af1b23f570af)
+
+running 2 tests
+test demo_writes_both_reports ... ok
+test missing_scan_target_has_a_useful_error ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+[2m[WebServer] [22m(node:3190) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 1 test using 1 worker
+
+(node:3209) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:3209) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › site-tests/product.spec.ts:30:1 › the browser demo sends no data off site @claim:demo-privacy (882ms)
+
+  1 passed (3.8s)

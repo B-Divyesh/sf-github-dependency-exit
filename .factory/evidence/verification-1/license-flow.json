@@ -1,0 +1,15 @@
+{
+  "url": "https://github-dependency-exit.sociobot.in/",
+  "status": "The license is not active (invalid).",
+  "storage": {
+    "sb_license:github-dependency-exit": "qa-invalid-license-flow-20260828",
+    "sb_license_verdict:github-dependency-exit": "{\"valid\":false,\"checkedAt\":1787925008250}"
+  },
+  "outbound": [
+    {
+      "url": "https://api.sociobot.in/api/v1/products/github-dependency-exit/verify?license=qa-invalid-license-flow-20260828",
+      "method": "GET",
+      "postData": null
+    }
+  ]
+}

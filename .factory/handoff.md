@@ -1,55 +1,41 @@
-# Handoff — GitHub Exit Inventory v0.1.0
+# Handoff — independent verification
 
-## What shipped
+## Result
 
-- A Rust single binary named `github-exit` with helpful `scan`, `demo`, `--help`, `--json`, and non-zero error paths.
-- Free one-repository scans and $39 licensed owner-wide scans.
-- Read-only GitHub API checks for repository settings, Actions and action references, webhooks, releases, default-branch protection, rulesets, issue autolinks, and packages.
-- Workflow and webhook signals for GitHub Apps or OAuth, with the incomplete grant list kept as an explicit unknown.
-- Evidence on every checked area. Reports label API results `verified` and blocked or incomplete checks `unknown`.
-- `inventory.json` and `migration-checklist.md`, including target-forge candidates and their verification state.
-- A bundled three-repository CLI demo that writes to a new temporary folder without network access.
-- A one-click `/demo` browser report with repository switching, area filters, JSON download, reset, and a persistent sandbox banner.
-- A complete static site with `/`, `/demo`, `/privacy`, `/terms`, and a styled 404 route.
-- A one-time Sociobot checkout link, return-token handling, daily cached verification, invalid-license handling, and purchase restore.
-- The original concrete-and-moss hero, responsive WebP variants, OG image, favicon, apple-touch icon, service worker, CSP, sitemap, and deployment routing config.
+**FAIL — do not release.**
 
-## Visual asset provenance
+Independent verification covered candidate `3f6a6216a5b5a04dca1120babd862cc82c8bdfe6` and `https://github-dependency-exit.sociobot.in` on 2026-08-28 UTC. The live deployment exactly matches the candidate, so the result is not only a deployment issue.
 
-The hero was generated with `/opt/fleet/lib/gen-image.sh` and the factory `factory-image` deployment on 2026-08-28. The final prompt is recorded in `.factory/design.md`. The reviewed files are:
+The primary blockers are false-complete inventories (normal `- uses:` Actions are omitted; unreadable workflow contents and ambiguous branch 404s can be marked verified), missing pagination after 100 items, continued GitHub requests after rate exhaustion, invalid `--json` stdout, a live checkout that returns 404, a serious mobile axe failure, mobile/reflow overflow, and failing TypeScript/rustfmt/clippy checks.
 
-- `site/public/assets/exit-cutaway.webp` — 294,430 bytes, 1536×1024;
-- `site/public/assets/exit-cutaway-mobile.webp` — 106,316 bytes, 900×600;
-- `site/public/assets/og-exit-inventory.webp` — 157,696 bytes, 1200×630.
+Full findings, evidence, exact commands, and required fixes are in [`.factory/verification.md`](verification.md). Evidence is under [`.factory/evidence/verification-1/`](evidence/verification-1/).
 
-## Run and verify
+## What passed
+
+- All nine exact `.factory/claims.json` commands passed mechanically.
+- `npm test`: 4 Rust and 12 Playwright tests passed.
+- `npm run build`: passed and produced `dist/site/`.
+- `cargo check --all-targets`, `npm audit`, crate packaging, clean package install, installed CLI demo, and a real public-repository scan passed.
+- First-read and one-click sample gates passed.
+- Candidate/deployment byte identity passed, including the downloadable binary.
+- Privacy behavior, security headers, console/page errors, offline reload, and bundle budgets passed.
+- Lighthouse mobile: 98 Performance, 100 Accessibility, 100 Best Practices, 100 SEO.
+- Sociobot verification endpoint burst: 31 HTTP 200 and 89 HTTP 429; every 429 had `Retry-After`.
+
+## Reproduce the decisive failures
 
 ```sh
-npm install
-npm test
-npm run build:site
-cargo run -- demo
+node .factory/evidence/verification-1/cli-independent-qa.mjs
+node .factory/evidence/verification-1/unknown-access-qa.mjs
+node .factory/evidence/verification-1/pagination-qa.mjs
+node .factory/evidence/verification-1/github-rate-limit-qa.mjs
+node .factory/evidence/verification-1/live-browser-qa.mjs
+npx tsc --noEmit --target ES2022 --module ESNext --moduleResolution Bundler --resolveJsonModule --allowSyntheticDefaultImports site/src/main.ts site/src/types.ts
+cargo fmt --check
+cargo clippy --all-targets --all-features -- -D warnings
+curl -i https://api.sociobot.in/api/v1/products/github-dependency-exit/checkout
 ```
 
-The exact deployment build is `npm run build:site`. It creates `dist/site/index.html` and stages `dist/site/downloads/github-exit-linux-x86_64`.
+## Tree state
 
-Final local results:
-
-- `npm test`: 4 Rust tests and 12 Playwright tests passed.
-- Claim tests: all nine entries in `.factory/claims.json` passed in their sample or local API sandbox.
-- Axe: no serious or critical issues on home, demo, privacy, terms, or 404.
-- `verify-url.sh`: home and demo returned 200, one H1, `lang=en`, a main landmark, no missing alt text, and no console errors.
-- `npm audit --audit-level=high`: zero vulnerabilities.
-- `cargo package --allow-dirty`: packaged and compiled successfully.
-- Production build: 8.29 KB gzip JS and 3.81 KB gzip CSS.
-- Lighthouse mobile: Performance 100, Accessibility 100, Best Practices 100, SEO 100.
-- Lighthouse lab metrics: LCP 1.8 s, CLS 0, total blocking time 0 ms.
-- Screenshots and verification JSON: `.factory/evidence/home/` and `.factory/evidence/demo/`.
-
-## Known gaps and next steps
-
-- GitHub does not provide a complete repository-scoped OAuth grant list. The report records integration signals and always adds a manual settings review.
-- Some webhook, ruleset, autolink, and package endpoints need extra read permissions. A denied endpoint stays visible as unknown.
-- The build stages Linux x86_64 only. The factory should add macOS, Windows, Linux ARM64, checksums, and signed release artifacts.
-- Owner-wide scans need the factory-registered production billing product before purchase and verification can complete.
-- The CLI inventories and plans a move. It does not clone, import, mirror, or modify repositories.
+Product code was not modified. Only the independent verification report, this handoff, and verification evidence were added or updated. The exact production build remains reproducible with `npm run build`.

@@ -1,0 +1,96 @@
+[
+  {
+    "route": "/",
+    "overflow": 0,
+    "hiddenInteractive": [],
+    "tinyText": [
+      {
+        "text": "EXIT SURVEY / READ-ONLY CLI",
+        "size": "12.48px"
+      },
+      {
+        "text": "Read-only GitHub requests",
+        "size": "13.92px"
+      },
+      {
+        "text": "No telemetry or metadata uploads",
+        "size": "13.92px"
+      },
+      {
+        "text": "$39 once; one-repository scans stay free",
+        "size": "13.92px"
+      },
+      {
+        "text": "THE PRODUCT",
+        "size": "12.48px"
+      },
+      {
+        "text": "Recorded from the real bundled demo command.",
+        "size": "12.48px"
+      },
+      {
+        "text": "HOW IT WORKS",
+        "size": "12.48px"
+      },
+      {
+        "text": "BOUNDARIES",
+        "size": "12.48px"
+      },
+      {
+        "text": "INSTALL",
+        "size": "12.48px"
+      },
+      {
+        "text": "TEAM SCAN LICENSE",
+        "size": "12.48px"
+      }
+    ]
+  },
+  {
+    "route": "/demo",
+    "overflow": 405,
+    "hiddenInteractive": [],
+    "tinyText": [
+      {
+        "text": "Reset demo",
+        "size": "14.4px"
+      },
+      {
+        "text": "Start for real",
+        "size": "14.4px"
+      },
+      {
+        "text": "SAMPLE / MOSSWOOD LABS",
+        "size": "12.48px"
+      },
+      {
+        "text": "private / ISSUES ON",
+        "size": "12.48px"
+      },
+      {
+        "text": "DRY-RUN LIST",
+        "size": "12.48px"
+      },
+      {
+        "text": "mosswood-labs/trail-api / Actions",
+        "size": "12.48px"
+      },
+      {
+        "text": "mosswood-labs/trail-api / Webhooks",
+        "size": "12.48px"
+      },
+      {
+        "text": "mosswood-labs/trail-api / GitHub Apps and OAuth",
+        "size": "12.48px"
+      },
+      {
+        "text": "mosswood-labs/field-console / Actions",
+        "size": "12.48px"
+      },
+      {
+        "text": "mosswood-labs/field-console / Branch rules",
+        "size": "12.48px"
+      }
+    ]
+  }
+]

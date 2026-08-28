@@ -1,0 +1,57 @@
+{
+  "scanExit": 0,
+  "requestMethods": [
+    "GET"
+  ],
+  "requestUrls": [
+    "/repos/sample/repo",
+    "/repos/sample/repo/actions/workflows?per_page=100",
+    "/repos/sample/repo/contents/.github/workflows/ci.yml",
+    "/repos/sample/repo/hooks?per_page=100",
+    "/repos/sample/repo/releases?per_page=100",
+    "/repos/sample/repo/branches/main/protection",
+    "/repos/sample/repo/rulesets?includes_parents=true&per_page=100",
+    "/repos/sample/repo/autolinks?per_page=100",
+    "/orgs/sample/packages?package_type=container&per_page=100",
+    "/users/sample/packages?package_type=container&per_page=100",
+    "/orgs/sample/packages?package_type=npm&per_page=100",
+    "/users/sample/packages?package_type=npm&per_page=100",
+    "/orgs/sample/packages?package_type=maven&per_page=100",
+    "/users/sample/packages?package_type=maven&per_page=100",
+    "/orgs/sample/packages?package_type=rubygems&per_page=100",
+    "/users/sample/packages?package_type=rubygems&per_page=100",
+    "/orgs/sample/packages?package_type=nuget&per_page=100",
+    "/users/sample/packages?package_type=nuget&per_page=100"
+  ],
+  "expectedTypicalActionReferences": 2,
+  "observedActionReferences": 0,
+  "observedActions": [],
+  "demoJsonExit": 0,
+  "demoStdoutIsJson": false,
+  "demoStdoutTail": [
+    "}",
+    "Report written to /tmp/github-exit-independent-0HtapB/demo"
+  ],
+  "invalidCases": {
+    "missingTarget": {
+      "code": 2,
+      "stdout": "",
+      "stderr": "github-exit: Choose --repo OWNER/REPO or --owner OWNER. Run `github-exit demo` to try sample data.\n"
+    },
+    "malformedRepo": {
+      "code": 2,
+      "stdout": "",
+      "stderr": "github-exit: --repo must use OWNER/REPO with letters, numbers, dots, dashes, or underscores.\n"
+    },
+    "missingLicense": {
+      "code": 2,
+      "stdout": "",
+      "stderr": "github-exit: Owner-wide scans require a license. Use --repo for a free scan or buy once at https://github-dependency-exit.sociobot.in/#price\n"
+    },
+    "unwritableOutput": {
+      "code": 2,
+      "stdout": "",
+      "stderr": "github-exit: Could not create /proc/github-exit-qa: No such file or directory (os error 2)\n"
+    }
+  }
+}

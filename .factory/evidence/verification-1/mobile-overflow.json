@@ -1,0 +1,63 @@
+{
+  doc: 406,
+  client: 390,
+  body: 406,
+  wide: [
+    {
+      tag: 'div',
+      cls: '',
+      text: 'mosswood-labs/field-console / Branch rules1 protected branch foundNext: Translat',
+      left: 16,
+      right: 405.6875,
+      width: 389.6875
+    },
+    {
+      tag: 'p',
+      cls: 'row-meta',
+      text: 'mosswood-labs/field-console / Branch rules',
+      left: 16,
+      right: 405.6875,
+      width: 389.6875
+    },
+    {
+      tag: 'h3',
+      cls: '',
+      text: '1 protected branch found',
+      left: 16,
+      right: 405.6875,
+      width: 389.6875
+    },
+    {
+      tag: 'p',
+      cls: '',
+      text: 'Next: Translate the rule and test a rejected pull request.',
+      left: 16,
+      right: 405.6875,
+      width: 389.6875
+    },
+    {
+      tag: 'p',
+      cls: 'candidate',
+      text: 'Candidate: GitLab protected branches verified',
+      left: 16,
+      right: 405.6875,
+      width: 389.6875
+    },
+    {
+      tag: 'small',
+      cls: '',
+      text: 'https://docs.gitlab.com/user/project/repository/branches/protected/',
+      left: 16,
+      right: 405.6875,
+      width: 389.6875
+    },
+    {
+      tag: 'div',
+      cls: 'sr-only',
+      text: 'Review the sample exit inventory',
+      left: -1,
+      right: 0,
+      width: 1
+    }
+  ]
+}

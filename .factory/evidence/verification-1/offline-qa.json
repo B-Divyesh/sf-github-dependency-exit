@@ -1,0 +1,16 @@
+{
+  "controlledOnline": true,
+  "demoOffline": {
+    "url": "https://github-dependency-exit.sociobot.in/demo",
+    "h1": "Review the sample exit inventory",
+    "banner": "Demo — sample data, nothing is savedReset demoStart for real"
+  },
+  "privacyOffline": {
+    "url": "https://github-dependency-exit.sociobot.in/privacy",
+    "h1": "Your repository data stays with you"
+  },
+  "caches": [
+    "github-exit-v1"
+  ],
+  "errors": []
+}

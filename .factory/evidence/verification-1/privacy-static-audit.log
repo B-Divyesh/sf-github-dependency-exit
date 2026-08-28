@@ -1,0 +1,334 @@
+./Cargo.lock:8:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:17:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:26:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:41:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:47:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:56:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:65:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:76:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:91:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:97:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:103:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:109:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:115:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:126:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:132:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:138:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:148:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:154:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:160:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:171:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:182:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:192:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:204:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:216:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:222:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:228:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:234:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:243:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:249:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:260:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:270:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:276:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:282:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:291:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:300:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:310:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:316:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:322:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:328:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:334:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:349:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:362:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:392:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:398:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:408:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:418:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:431:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:437:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:457:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:473:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:496:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:511:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:520:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:534:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:547:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:561:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:567:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:582:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:588:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:603:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:614:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:624:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:630:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:636:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:642:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:653:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:659:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:665:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:671:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:677:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:683:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:689:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:700:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:706:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:715:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:721:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:727:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:733:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:739:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:748:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:762:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:768:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:778:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:787:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:807:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:829:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:843:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:852:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:858:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:869:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:875:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:884:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:896:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:907:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:913:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:953:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:967:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:973:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:986:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1000:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1010:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1021:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1027:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1033:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1043:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1052:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1063:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1076:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1088:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1094:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1100:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1106:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1116:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1122:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1128:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1134:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1145:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1156:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1165:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1176:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1189:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1195:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1204:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1215:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1225:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1234:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1240:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1254:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1264:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1279:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1297:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1303:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1309:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1319:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1328:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1334:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1340:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1346:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1358:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1364:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1370:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1379:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1388:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1394:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1407:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1417:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1427:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1440:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1449:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1459:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1469:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1478:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1491:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1502:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1513:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1519:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1528:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1537:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1546:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1555:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1571:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1577:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1583:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1589:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1595:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1601:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1607:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1613:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1619:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1625:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1636:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1648:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1657:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1669:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1675:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1686:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1697:source = "registry+https://github.com/rust-lang/crates.io-index"
+./Cargo.lock:1708:source = "registry+https://github.com/rust-lang/crates.io-index"
+./src/github.rs:24:    pub fn new(base: &str, token: Option<&str>) -> Result<Self, String> {
+./src/github.rs:28:        if let Some(token) = token {
+./src/github.rs:29:            let value = HeaderValue::from_str(&format!("Bearer {token}"))
+./src/github.rs:30:                .map_err(|_| "The token contains invalid header characters.".to_string())?;
+./src/github.rs:227:        add_check(&mut checklist, repo, "Actions", repo.workflows.len(), "Rebuild each workflow on the target runner and test its secrets.", "Forgejo Actions", CheckStatus::Verified, "https://forgejo.org/docs/latest/user/actions/");
+./src/github.rs:229:        add_check(&mut checklist, repo, "Releases", repo.releases.len(), "Export release notes and assets, then compare checksums after import.", "GitLab releases", CheckStatus::Verified, "https://docs.gitlab.com/user/project/releases/");
+./src/github.rs:230:        add_check(&mut checklist, repo, "Branch rules", repo.branch_rules.len(), "Translate every rule and test a rejected pull request.", "GitLab protected branches", CheckStatus::Verified, "https://docs.gitlab.com/user/project/repository/branches/protected/");
+./src/github.rs:231:        add_check(&mut checklist, repo, "Issue links", repo.autolinks.len(), "Recreate autolink prefixes and test old issue references.", "GitLab external issue trackers", CheckStatus::Verified, "https://docs.gitlab.com/integration/external-issue-tracker/");
+./src/main.rs:19:const BILLING_BASE: &str = "https://api.sociobot.in/api/v1";
+./src/main.rs:38:        /// GitHub token. Prefer the GITHUB_TOKEN environment variable.
+./src/main.rs:40:        token: Option<String>,
+./src/main.rs:51:        #[arg(long, default_value = "https://api.github.com")]
+./src/main.rs:86:        Command::Scan { repo, owner, token, license, output, json, api_base } => {
+./src/main.rs:88:            let token = token.or_else(|| env::var("GITHUB_TOKEN").ok());
+./src/main.rs:89:            let mut client = GithubClient::new(&api_base, token.as_deref())?;
+./src/main.rs:96:                let license = license.or_else(|| env::var("GDE_LICENSE").ok()).ok_or_else(|| "Owner-wide scans require a license. Use --repo for a free scan or buy once at https://github-dependency-exit.sociobot.in/#price".to_string())?;
+./src/main.rs:99:                if repos.is_empty() { return Err(format!("GitHub returned no repositories for {owner}. Check the owner name and token access.")); }
+./src/main.rs:155:        assert!(validate_repo("https://github.com/acme/api").is_err());
+./README.md:5:Live site: <https://github-dependency-exit.sociobot.in>
+./README.md:6:One-click sample: <https://github-dependency-exit.sociobot.in/demo>
+./README.md:10:The demo needs no account, token, or network request.
+./README.md:37:Public metadata needs no token:
+./README.md:43:For a private repository, pass a fine-grained token through the environment:
+./README.md:49:Start with repository **Metadata: read**. Add read access for Actions, administration, webhooks, and packages only when those checks matter. GitHub returns an unknown check when the token cannot read an endpoint. The token is never written to a report.
+./README.md:91:The CLI has no telemetry. Live scans call the chosen GitHub API. Owner-wide scans also verify the supplied license with Sociobot. Browser demo data is bundled into the site and sends no data off site. Read [Privacy](https://github-dependency-exit.sociobot.in/privacy) and [Terms](https://github-dependency-exit.sociobot.in/terms).
+./site-tests/product.spec.ts:34:    if (url.origin !== 'http://127.0.0.1:4173') offsite.push(url.origin);
+./site-tests/product.spec.ts:43:test('live inventory requests are read-only @claim:read-only-api @claim:public-no-token @claim:no-migration', async () => {
+./site-tests/product.spec.ts:53:      response.end(JSON.stringify({name:'repo',full_name:'sample/repo',visibility:'private',archived:false,default_branch:'main',has_issues:true,html_url:'https://example.test/sample/repo'}));
+./site-tests/product.spec.ts:66:  const result = await run('target/debug/github-exit', ['scan', '--repo', 'sample/repo', '--api-base', `http://127.0.0.1:${address.port}`, '--output', output]);
+./site-tests/product.spec.ts:91:  await expect(page.getByRole('link', { name: 'Buy the team scan license' })).toHaveAttribute('href', 'https://api.sociobot.in/api/v1/products/github-dependency-exit/checkout');
+./AGENTS.md:4:`https://github-dependency-exit.sociobot.in`. Artifact class: `cli`.
+./AGENTS.md:13:4. **Privacy by default**: no analytics/tracking beyond a privacy-respecting page view; local-first storage where the brief allows; no third-party fonts/scripts loaded from CDNs (self-host).
+./AGENTS.md:20:- Commit small, often, with clear messages. Never commit secrets. Never touch infra, DNS, or billing from this repo — the factory does deployment.
+./AGENTS.md:21:- Paid features integrate only through the Sociobot billing API (`https://api.sociobot.in/api/v1/...`, Dodo-backed); never embed a payment provider directly.
+./site/public/robots.txt:4:Sitemap: https://github-dependency-exit.sociobot.in/sitemap.xml
+./site/public/sw.js:1:const CACHE='github-exit-v1';const CORE=['/','/demo','/privacy','/terms','/assets/exit-cutaway-mobile.webp','/assets/exit-cutaway.webp','/favicon.svg'];self.addEventListener('install',event=>event.waitUntil(caches.open(CACHE).then(cache=>cache.addAll(CORE))));self.addEventListener('activate',event=>event.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(key=>key!==CACHE).map(key=>caches.delete(key))))));self.addEventListener('fetch',event=>{if(event.request.method!=='GET'||new URL(event.request.url).origin!==location.origin)return;event.respondWith(caches.match(event.request).then(cached=>cached||fetch(event.request).then(response=>{const copy=response.clone();caches.open(CACHE).then(cache=>cache.put(event.request,copy));return response}).catch(()=>caches.match('/404'))))});
+./site/public/staticwebapp.config.json:5:    "Content-Security-Policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.sociobot.in; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.sociobot.in; frame-ancestors 'none'; upgrade-insecure-requests",
+./site/public/sitemap.xml:2:<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+./site/public/sitemap.xml:3:  <url><loc>https://github-dependency-exit.sociobot.in/</loc></url>
+./site/public/sitemap.xml:4:  <url><loc>https://github-dependency-exit.sociobot.in/demo</loc></url>
+./site/public/sitemap.xml:5:  <url><loc>https://github-dependency-exit.sociobot.in/privacy</loc></url>
+./site/public/sitemap.xml:6:  <url><loc>https://github-dependency-exit.sociobot.in/terms</loc></url>
+./site/public/favicon.svg:1:<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" fill="#171a16"/><path d="M9 11h20v13H21v17h8v12H9zM35 11h20v12H43v7h10v11H43v12h-8z" fill="#d9ec69"/><path d="M29 28h6v8h-6z" fill="#91391f"/></svg>
+./site/index.html:8:    <link rel="canonical" href="https://github-dependency-exit.sociobot.in/">
+./site/index.html:13:    <meta property="og:url" content="https://github-dependency-exit.sociobot.in/">
+./site/index.html:14:    <meta property="og:image" content="https://github-dependency-exit.sociobot.in/assets/og-exit-inventory.webp">
+./site/index.html:20:    <meta name="twitter:image" content="https://github-dependency-exit.sociobot.in/assets/og-exit-inventory.webp">
+./site/src/main.ts:8:const BILLING = 'https://api.sociobot.in/api/v1/products/github-dependency-exit';
+./site/src/main.ts:30:    <nav aria-label="Footer"><a href="/privacy" data-link>Privacy</a><a href="/terms" data-link>Terms</a><a href="https://hello-factory.sociobot.in" rel="external">Built by Param Factory <span class="sr-only">(external site)</span></a></nav>
+./site/src/main.ts:42:        <div class="hero-actions"><a class="button primary" href="/demo" data-link>Try it with sample data</a><span>Opens a browser report. No account or token.</span></div>
+./site/src/main.ts:43:        <ul class="facts" aria-label="Product facts"><li>Read-only GitHub requests</li><li>No telemetry or metadata uploads</li><li>$39 once; one-repository scans stay free</li></ul>
+./site/src/main.ts:68:        <li><span>1</span><div><h3>Scan read-only metadata</h3><p>Use one repository for free. Add a fine-grained token when private metadata needs it.</p></div></li>
+./site/src/main.ts:77:      <aside><h3>Minimum access</h3><p>Public repositories work without a token. Private scans need read access for the metadata you want checked.</p></aside>
+./site/src/main.ts:82:      <div><h2 id="install-title">Run the demo before adding a token</h2><div class="command-row"><code>github-exit demo</code><button type="button" data-copy="github-exit demo">Copy command</button></div><p>Build from source with Rust 1.85 or later, or download the Linux binary from this build.</p><div class="install-actions"><a class="button secondary" href="/downloads/github-exit-linux-x86_64" download>Download Linux binary</a><a class="text-link" href="https://github.com/B-Divyesh/sf-github-dependency-exit" rel="external">Read the source <span class="sr-only">(external site)</span> →</a></div></div>
+./site/src/main.ts:127:  ['What this site stores', 'The demo stores nothing. If you paste a license, this browser stores the token and its last verification result.'],
+./site/src/main.ts:128:  ['Who receives data', 'GitHub receives API requests from the CLI. Sociobot receives a license token when you verify a purchase. Repository metadata is not sent to Sociobot.'],
+./site/src/main.ts:135:  ['Your responsibility', 'Use a token you are allowed to use. Review report files before sharing them.']
+./site/src/main.ts:162:function bindLicense(): void { document.querySelector<HTMLFormElement>('#license-form')?.addEventListener('submit', event => { event.preventDefault(); const token = new FormData(event.currentTarget).get('license')?.toString().trim(); if (!token) return setLicenseStatus('Paste a license token first.', false); localStorage.setItem(LICENSE_KEY, token); verifyLicense(token, true); }); const token = localStorage.getItem(LICENSE_KEY); if (token) verifyLicense(token, false); }
+./site/src/main.ts:163:function handleLicenseReturn(): void { const url = new URL(location.href); const token = url.searchParams.get('license'); if (!token) return; localStorage.setItem(LICENSE_KEY, token); url.searchParams.delete('license'); history.replaceState({}, '', url.pathname + url.search + url.hash); verifyLicense(token, true); }
+./site/src/main.ts:164:async function verifyLicense(token: string, force: boolean): Promise<void> { const cached = readVerdict(); if (!force && cached && Date.now() - cached.checkedAt < 86_400_000) { setLicenseStatus(cached.valid ? 'Team scans are active on this browser.' : 'The saved license is no longer active.', cached.valid); return; } setLicenseStatus('Checking the license…', false); try { const response = await fetch(`${BILLING}/verify?license=${encodeURIComponent(token)}`); const verdict = await response.json() as {valid: boolean; reason?: string}; localStorage.setItem(VERDICT_KEY, JSON.stringify({valid: verdict.valid, checkedAt: Date.now()})); setLicenseStatus(verdict.valid ? 'Team scans are active on this browser.' : `The license is not active (${verdict.reason ?? 'invalid'}).`, verdict.valid); } catch { if (cached?.valid) setLicenseStatus('Team scans remain active from the last check. Verification is offline.', true); else setLicenseStatus('The license could not be checked. Check your connection, then try again.', false); } }
+./site/src/main.ts:165:function readVerdict(): {valid: boolean; checkedAt: number} | null { try { return JSON.parse(localStorage.getItem(VERDICT_KEY) ?? 'null'); } catch { return null; } }
+./site/src/main.ts:167:function updateMeta(title: string): void { document.querySelector('meta[property="og:title"]')?.setAttribute('content', title); const canonical = document.querySelector<HTMLLinkElement>('link[rel="canonical"]'); if (canonical) canonical.href = `https://github-dependency-exit.sociobot.in${location.pathname}`; }
+./Cargo.toml:7:repository = "https://github.com/B-Divyesh/sf-github-dependency-exit"
+./playwright.config.ts:8:    baseURL: 'http://127.0.0.1:4173',
+./playwright.config.ts:17:    url: 'http://127.0.0.1:4173',
+./examples/demo/inventory.json:26:      "url": "https://github.com/mosswood-labs/trail-api",
+./examples/demo/inventory.json:28:        {"name":"test and release","path":".github/workflows/release.yml","state":"active","url":"https://github.com/mosswood-labs/trail-api/actions"},
+./examples/demo/inventory.json:29:        {"name":"dependency review","path":".github/workflows/dependencies.yml","state":"active","url":"https://github.com/mosswood-labs/trail-api/actions"}
+./examples/demo/inventory.json:54:      "autolinks": [{"prefix":"OPS-","target_template":"https://tickets.mosswood.test/OPS-<num>"}],
+./examples/demo/inventory.json:76:      "url": "https://github.com/mosswood-labs/field-console",
+./examples/demo/inventory.json:78:        {"name":"browser tests","path":".github/workflows/test.yml","state":"active","url":"https://github.com/mosswood-labs/field-console/actions"},
+./examples/demo/inventory.json:79:        {"name":"preview","path":".github/workflows/preview.yml","state":"active","url":"https://github.com/mosswood-labs/field-console/actions"}
+./examples/demo/inventory.json:116:      "url": "https://github.com/mosswood-labs/ops-playbook",
+./examples/demo/inventory.json:117:      "workflows": [{"name":"link check","path":".github/workflows/links.yml","state":"active","url":"https://github.com/mosswood-labs/ops-playbook/actions"}],
+./examples/demo/inventory.json:146:    {"repository":"mosswood-labs/trail-api","area":"Actions","status":"verified","finding":"2 workflows use 3 external action references","next_step":"Rebuild each workflow on the target runner and test its secrets.","alternative":"Forgejo Actions","alternative_status":"verified","alternative_evidence":"https://forgejo.org/docs/latest/user/actions/"},
+./examples/demo/inventory.json:150:    {"repository":"mosswood-labs/field-console","area":"Branch rules","status":"verified","finding":"1 protected branch found","next_step":"Translate the rule and test a rejected pull request.","alternative":"GitLab protected branches","alternative_status":"verified","alternative_evidence":"https://docs.gitlab.com/user/project/repository/branches/protected/"},
+./examples/demo/inventory.json:153:    {"repository":"mosswood-labs/field-console","area":"Packages","status":"verified","finding":"npm package `field-console` found","next_step":"Copy versions and update the npm registry URL.","alternative":"Package-native registry","alternative_status":"unknown","alternative_evidence":"Confirm access tokens and package visibility."}
+./package-lock.json:19:      "resolved": "https://registry.npmjs.org/@axe-core/playwright/-/playwright-4.10.2.tgz",
+./package-lock.json:32:      "resolved": "https://registry.npmjs.org/@esbuild/aix-ppc64/-/aix-ppc64-0.28.2.tgz",
+./package-lock.json:49:      "resolved": "https://registry.npmjs.org/@esbuild/android-arm/-/android-arm-0.28.2.tgz",
+./package-lock.json:66:      "resolved": "https://registry.npmjs.org/@esbuild/android-arm64/-/android-arm64-0.28.2.tgz",
+./package-lock.json:83:      "resolved": "https://registry.npmjs.org/@esbuild/android-x64/-/android-x64-0.28.2.tgz",
+./package-lock.json:100:      "resolved": "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.28.2.tgz",
+./package-lock.json:117:      "resolved": "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.28.2.tgz",
+./package-lock.json:134:      "resolved": "https://registry.npmjs.org/@esbuild/freebsd-arm64/-/freebsd-arm64-0.28.2.tgz",
+./package-lock.json:151:      "resolved": "https://registry.npmjs.org/@esbuild/freebsd-x64/-/freebsd-x64-0.28.2.tgz",
+./package-lock.json:168:      "resolved": "https://registry.npmjs.org/@esbuild/linux-arm/-/linux-arm-0.28.2.tgz",
+./package-lock.json:185:      "resolved": "https://registry.npmjs.org/@esbuild/linux-arm64/-/linux-arm64-0.28.2.tgz",
+./package-lock.json:202:      "resolved": "https://registry.npmjs.org/@esbuild/linux-ia32/-/linux-ia32-0.28.2.tgz",
+./package-lock.json:219:      "resolved": "https://registry.npmjs.org/@esbuild/linux-loong64/-/linux-loong64-0.28.2.tgz",
+./package-lock.json:236:      "resolved": "https://registry.npmjs.org/@esbuild/linux-mips64el/-/linux-mips64el-0.28.2.tgz",
+./package-lock.json:253:      "resolved": "https://registry.npmjs.org/@esbuild/linux-ppc64/-/linux-ppc64-0.28.2.tgz",
+./package-lock.json:270:      "resolved": "https://registry.npmjs.org/@esbuild/linux-riscv64/-/linux-riscv64-0.28.2.tgz",
+./package-lock.json:287:      "resolved": "https://registry.npmjs.org/@esbuild/linux-s390x/-/linux-s390x-0.28.2.tgz",
+./package-lock.json:304:      "resolved": "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.28.2.tgz",
+./package-lock.json:321:      "resolved": "https://registry.npmjs.org/@esbuild/netbsd-arm64/-/netbsd-arm64-0.28.2.tgz",
+./package-lock.json:338:      "resolved": "https://registry.npmjs.org/@esbuild/netbsd-x64/-/netbsd-x64-0.28.2.tgz",
+./package-lock.json:355:      "resolved": "https://registry.npmjs.org/@esbuild/openbsd-arm64/-/openbsd-arm64-0.28.2.tgz",
+./package-lock.json:372:      "resolved": "https://registry.npmjs.org/@esbuild/openbsd-x64/-/openbsd-x64-0.28.2.tgz",
+./package-lock.json:389:      "resolved": "https://registry.npmjs.org/@esbuild/openharmony-arm64/-/openharmony-arm64-0.28.2.tgz",
+./package-lock.json:406:      "resolved": "https://registry.npmjs.org/@esbuild/sunos-x64/-/sunos-x64-0.28.2.tgz",
+./package-lock.json:423:      "resolved": "https://registry.npmjs.org/@esbuild/win32-arm64/-/win32-arm64-0.28.2.tgz",
+./package-lock.json:440:      "resolved": "https://registry.npmjs.org/@esbuild/win32-ia32/-/win32-ia32-0.28.2.tgz",
+./package-lock.json:457:      "resolved": "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.28.2.tgz",
+./package-lock.json:474:      "resolved": "https://registry.npmjs.org/@napi-rs/lzma-linux-x64-gnu/-/lzma-linux-x64-gnu-1.5.1.tgz",
+./package-lock.json:491:      "resolved": "https://registry.npmjs.org/@playwright/test/-/test-1.58.2.tgz",
+./package-lock.json:507:      "resolved": "https://registry.npmjs.org/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.63.1.tgz",
+./package-lock.json:521:      "resolved": "https://registry.npmjs.org/@rollup/rollup-android-arm64/-/rollup-android-arm64-4.63.1.tgz",
+./package-lock.json:535:      "resolved": "https://registry.npmjs.org/@rollup/rollup-darwin-arm64/-/rollup-darwin-arm64-4.63.1.tgz",
+./package-lock.json:549:      "resolved": "https://registry.npmjs.org/@rollup/rollup-darwin-x64/-/rollup-darwin-x64-4.63.1.tgz",
+./package-lock.json:563:      "resolved": "https://registry.npmjs.org/@rollup/rollup-freebsd-arm64/-/rollup-freebsd-arm64-4.63.1.tgz",
+./package-lock.json:577:      "resolved": "https://registry.npmjs.org/@rollup/rollup-freebsd-x64/-/rollup-freebsd-x64-4.63.1.tgz",
+./package-lock.json:591:      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm-gnueabihf/-/rollup-linux-arm-gnueabihf-4.63.1.tgz",
+./package-lock.json:605:      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm-musleabihf/-/rollup-linux-arm-musleabihf-4.63.1.tgz",
+./package-lock.json:619:      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm64-gnu/-/rollup-linux-arm64-gnu-4.63.1.tgz",
+./package-lock.json:633:      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-arm64-musl/-/rollup-linux-arm64-musl-4.63.1.tgz",
+./package-lock.json:647:      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-loong64-gnu/-/rollup-linux-loong64-gnu-4.63.1.tgz",
+./package-lock.json:661:      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-loong64-musl/-/rollup-linux-loong64-musl-4.63.1.tgz",
+./package-lock.json:675:      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-ppc64-gnu/-/rollup-linux-ppc64-gnu-4.63.1.tgz",
+./package-lock.json:689:      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-ppc64-musl/-/rollup-linux-ppc64-musl-4.63.1.tgz",
+./package-lock.json:703:      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-riscv64-gnu/-/rollup-linux-riscv64-gnu-4.63.1.tgz",
+./package-lock.json:717:      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-riscv64-musl/-/rollup-linux-riscv64-musl-4.63.1.tgz",
+./package-lock.json:731:      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-s390x-gnu/-/rollup-linux-s390x-gnu-4.63.1.tgz",
+./package-lock.json:745:      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-x64-gnu/-/rollup-linux-x64-gnu-4.63.1.tgz",
+./package-lock.json:759:      "resolved": "https://registry.npmjs.org/@rollup/rollup-linux-x64-musl/-/rollup-linux-x64-musl-4.63.1.tgz",
+./package-lock.json:773:      "resolved": "https://registry.npmjs.org/@rollup/rollup-openbsd-x64/-/rollup-openbsd-x64-4.63.1.tgz",
+./package-lock.json:787:      "resolved": "https://registry.npmjs.org/@rollup/rollup-openharmony-arm64/-/rollup-openharmony-arm64-4.63.1.tgz",
+./package-lock.json:801:      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-arm64-msvc/-/rollup-win32-arm64-msvc-4.63.1.tgz",
+./package-lock.json:815:      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-ia32-msvc/-/rollup-win32-ia32-msvc-4.63.1.tgz",
+./package-lock.json:829:      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-x64-gnu/-/rollup-win32-x64-gnu-4.63.1.tgz",
+./package-lock.json:843:      "resolved": "https://registry.npmjs.org/@rollup/rollup-win32-x64-msvc/-/rollup-win32-x64-msvc-4.63.1.tgz",
+./package-lock.json:857:      "resolved": "https://registry.npmjs.org/@types/estree/-/estree-1.0.9.tgz",
+./package-lock.json:864:      "resolved": "https://registry.npmjs.org/axe-core/-/axe-core-4.10.3.tgz",
+./package-lock.json:874:      "resolved": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
+./package-lock.json:916:      "resolved": "https://registry.npmjs.org/fdir/-/fdir-6.5.0.tgz",
+./package-lock.json:934:      "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.2.tgz",
+./package-lock.json:949:      "resolved": "https://registry.npmjs.org/nanoid/-/nanoid-3.3.18.tgz",
+./package-lock.json:955:          "url": "https://github.com/sponsors/ai"
+./package-lock.json:968:      "resolved": "https://registry.npmjs.org/picocolors/-/picocolors-1.1.1.tgz",
+./package-lock.json:975:      "resolved": "https://registry.npmjs.org/picomatch/-/picomatch-4.0.7.tgz",
+./package-lock.json:983:        "url": "https://github.com/sponsors/jonschlinkert"
+./package-lock.json:988:      "resolved": "https://registry.npmjs.org/playwright/-/playwright-1.58.2.tgz",
+./package-lock.json:1007:      "resolved": "https://registry.npmjs.org/playwright-core/-/playwright-core-1.62.1.tgz",
+./package-lock.json:1021:      "resolved": "https://registry.npmjs.org/playwright-core/-/playwright-core-1.58.2.tgz",
+./package-lock.json:1034:      "resolved": "https://registry.npmjs.org/postcss/-/postcss-8.5.26.tgz",
+./package-lock.json:1040:          "url": "https://opencollective.com/postcss/"
+./package-lock.json:1044:          "url": "https://tidelift.com/funding/github/npm/postcss"
+./package-lock.json:1048:          "url": "https://github.com/sponsors/ai"
+./package-lock.json:1063:      "resolved": "https://registry.npmjs.org/rollup/-/rollup-4.63.1.tgz",
+./package-lock.json:1109:      "resolved": "https://registry.npmjs.org/source-map-js/-/source-map-js-1.2.1.tgz",
+./package-lock.json:1119:      "resolved": "https://registry.npmjs.org/tinyglobby/-/tinyglobby-0.2.17.tgz",
+./package-lock.json:1131:        "url": "https://github.com/sponsors/SuperchupuDev"
+./package-lock.json:1136:      "resolved": "https://registry.npmjs.org/typescript/-/typescript-5.9.3.tgz",
+./package-lock.json:1150:      "resolved": "https://registry.npmjs.org/vite/-/vite-7.3.6.tgz",
+./package-lock.json:1169:        "url": "https://github.com/vitejs/vite?sponsor=1"
+./package-lock.json:1225:      "resolved": "https://registry.npmjs.org/fsevents/-/fsevents-2.3.3.tgz",

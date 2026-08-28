@@ -1,0 +1,57 @@
+{
+  "categories": {
+    "performance": 98,
+    "accessibility": 100,
+    "best-practices": 100,
+    "seo": 100
+  },
+  "metrics": {
+    "FCP": "0.8 s",
+    "LCP": "1.4 s",
+    "TBT": "180 ms",
+    "CLS": "0",
+    "SI": "0.8 s"
+  },
+  "bytes": "Total size was 117 KiB",
+  "issues": [
+    {
+      "id": "total-blocking-time",
+      "title": "Total Blocking Time",
+      "score": 0.92,
+      "display": "180 ms"
+    },
+    {
+      "id": "max-potential-fid",
+      "title": "Max Potential First Input Delay",
+      "score": 0.69,
+      "display": "190 ms"
+    },
+    {
+      "id": "label-content-name-mismatch",
+      "title": "Elements with visible text labels do not have matching accessible names.",
+      "score": 0
+    },
+    {
+      "id": "uses-responsive-images",
+      "title": "Properly size images",
+      "score": 0,
+      "display": "Est savings of 49 KiB"
+    },
+    {
+      "id": "image-delivery-insight",
+      "title": "Improve image delivery",
+      "score": 0,
+      "display": "Est savings of 89 KiB"
+    },
+    {
+      "id": "network-dependency-tree-insight",
+      "title": "Network dependency tree",
+      "score": 0
+    },
+    {
+      "id": "render-blocking-insight",
+      "title": "Render blocking requests",
+      "score": 0.5
+    }
+  ]
+}

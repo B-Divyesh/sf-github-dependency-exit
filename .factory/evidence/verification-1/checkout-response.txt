@@ -1,0 +1,4 @@
+HTTP/2 404
+content-type: application/json
+
+{"error":"enabled factory product","status":404}

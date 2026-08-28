@@ -1,0 +1,9 @@
+{
+  "exit": 0,
+  "apiReportedWorkflowCount": 101,
+  "observedWorkflowCount": 100,
+  "requestedWorkflowPage2": false,
+  "workflowRequests": [
+    "/repos/boundary/repo/actions/workflows?per_page=100"
+  ]
+}

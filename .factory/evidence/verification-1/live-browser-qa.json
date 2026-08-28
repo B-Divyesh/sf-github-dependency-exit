@@ -1,0 +1,992 @@
+{
+  "results": [
+    {
+      "viewport": "desktop",
+      "route": "/",
+      "status": 200,
+      "structure": {
+        "lang": "en",
+        "title": "GitHub Exit Inventory — map migration dependencies",
+        "mains": 1,
+        "h1s": [
+          "Map what breaks before leaving GitHub"
+        ],
+        "headings": [
+          {
+            "level": 1,
+            "text": "Map what breaks before leaving GitHub"
+          },
+          {
+            "level": 2,
+            "text": "See the exit surface, not just the git history"
+          },
+          {
+            "level": 2,
+            "text": "Go from API evidence to a dry-run list"
+          },
+          {
+            "level": 3,
+            "text": "Scan read-only metadata"
+          },
+          {
+            "level": 3,
+            "text": "Check every unknown"
+          },
+          {
+            "level": 3,
+            "text": "Test the target forge"
+          },
+          {
+            "level": 2,
+            "text": "It maps the move; it does not perform it"
+          },
+          {
+            "level": 3,
+            "text": "Minimum access"
+          },
+          {
+            "level": 2,
+            "text": "Run the demo before adding a token"
+          },
+          {
+            "level": 2,
+            "text": "Scan every repository under one owner"
+          }
+        ],
+        "canonical": "https://github-dependency-exit.sociobot.in/",
+        "description": "Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.",
+        "overflow": 0,
+        "reducedAnimation": "1e-05s",
+        "targetsBelow44": [
+          {
+            "tag": "a",
+            "text": "Demo",
+            "width": 47,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Install",
+            "width": 49,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Price",
+            "width": 42,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 61,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Open the full sample report →",
+            "width": 243,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Read the source (external site) →",
+            "width": 146,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 56,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Terms",
+            "width": 46,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Built by Param Factory (external site)",
+            "width": 172,
+            "height": 26
+          }
+        ]
+      },
+      "axeSeriousCritical": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "offsiteRequests": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/demo",
+      "status": 200,
+      "structure": {
+        "lang": "en",
+        "title": "Demo — GitHub Exit Inventory",
+        "mains": 1,
+        "h1s": [
+          "Review the sample exit inventory"
+        ],
+        "headings": [
+          {
+            "level": 1,
+            "text": "Review the sample exit inventory"
+          },
+          {
+            "level": 2,
+            "text": "Repositories"
+          },
+          {
+            "level": 2,
+            "text": "mosswood-labs/trail-api"
+          },
+          {
+            "level": 3,
+            "text": "Evidence"
+          },
+          {
+            "level": 2,
+            "text": "Migration checks"
+          },
+          {
+            "level": 3,
+            "text": "2 workflows use 3 external action references"
+          },
+          {
+            "level": 3,
+            "text": "2 webhook targets receive four event types"
+          },
+          {
+            "level": 3,
+            "text": "2 integration signals found; the grant list still needs review"
+          },
+          {
+            "level": 3,
+            "text": "2 workflows use 3 action references"
+          },
+          {
+            "level": 3,
+            "text": "1 protected branch found"
+          },
+          {
+            "level": 3,
+            "text": "Issues are disabled and no autolinks were found"
+          },
+          {
+            "level": 3,
+            "text": "container package `trail-api` found"
+          },
+          {
+            "level": 3,
+            "text": "npm package `field-console` found"
+          }
+        ],
+        "canonical": "https://github-dependency-exit.sociobot.in/demo",
+        "description": "Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.",
+        "overflow": 0,
+        "reducedAnimation": "1e-05s",
+        "targetsBelow44": [
+          {
+            "tag": "button",
+            "text": "Reset demo",
+            "width": 110,
+            "height": 36
+          },
+          {
+            "tag": "a",
+            "text": "Start for real",
+            "width": 86,
+            "height": 22
+          },
+          {
+            "tag": "a",
+            "text": "Demo",
+            "width": 47,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Install",
+            "width": 49,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Price",
+            "width": 42,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 61,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 56,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Terms",
+            "width": 46,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Built by Param Factory (external site)",
+            "width": 172,
+            "height": 26
+          }
+        ]
+      },
+      "axeSeriousCritical": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "offsiteRequests": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/privacy",
+      "status": 200,
+      "structure": {
+        "lang": "en",
+        "title": "Privacy — GitHub Exit Inventory",
+        "mains": 1,
+        "h1s": [
+          "Your repository data stays with you"
+        ],
+        "headings": [
+          {
+            "level": 1,
+            "text": "Your repository data stays with you"
+          },
+          {
+            "level": 2,
+            "text": "What the CLI reads"
+          },
+          {
+            "level": 2,
+            "text": "What this site stores"
+          },
+          {
+            "level": 2,
+            "text": "Who receives data"
+          },
+          {
+            "level": 2,
+            "text": "How to remove data"
+          }
+        ],
+        "canonical": "https://github-dependency-exit.sociobot.in/privacy",
+        "description": "Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.",
+        "overflow": 0,
+        "reducedAnimation": "1e-05s",
+        "targetsBelow44": [
+          {
+            "tag": "a",
+            "text": "Demo",
+            "width": 47,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Install",
+            "width": 49,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Price",
+            "width": 42,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 61,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 56,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Terms",
+            "width": 46,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Built by Param Factory (external site)",
+            "width": 172,
+            "height": 26
+          }
+        ]
+      },
+      "axeSeriousCritical": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "offsiteRequests": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/terms",
+      "status": 200,
+      "structure": {
+        "lang": "en",
+        "title": "Terms — GitHub Exit Inventory",
+        "mains": 1,
+        "h1s": [
+          "Use the inventory as a planning aid"
+        ],
+        "headings": [
+          {
+            "level": 1,
+            "text": "Use the inventory as a planning aid"
+          },
+          {
+            "level": 2,
+            "text": "License"
+          },
+          {
+            "level": 2,
+            "text": "No compatibility promise"
+          },
+          {
+            "level": 2,
+            "text": "Payments and refunds"
+          },
+          {
+            "level": 2,
+            "text": "Your responsibility"
+          }
+        ],
+        "canonical": "https://github-dependency-exit.sociobot.in/terms",
+        "description": "Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.",
+        "overflow": 0,
+        "reducedAnimation": "1e-05s",
+        "targetsBelow44": [
+          {
+            "tag": "a",
+            "text": "Demo",
+            "width": 47,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Install",
+            "width": 49,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Price",
+            "width": 42,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 61,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 56,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Terms",
+            "width": 46,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Built by Param Factory (external site)",
+            "width": 172,
+            "height": 26
+          }
+        ]
+      },
+      "axeSeriousCritical": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "offsiteRequests": []
+    },
+    {
+      "viewport": "desktop",
+      "route": "/missing-route",
+      "status": 200,
+      "structure": {
+        "lang": "en",
+        "title": "Page not found — GitHub Exit Inventory",
+        "mains": 1,
+        "h1s": [
+          "This route is not in the inventory"
+        ],
+        "headings": [
+          {
+            "level": 1,
+            "text": "This route is not in the inventory"
+          }
+        ],
+        "canonical": "https://github-dependency-exit.sociobot.in/missing-route",
+        "description": "Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.",
+        "overflow": 0,
+        "reducedAnimation": "1e-05s",
+        "targetsBelow44": [
+          {
+            "tag": "a",
+            "text": "Demo",
+            "width": 47,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Install",
+            "width": 49,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Price",
+            "width": 42,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 61,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 56,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Terms",
+            "width": 46,
+            "height": 26
+          },
+          {
+            "tag": "a",
+            "text": "Built by Param Factory (external site)",
+            "width": 172,
+            "height": 26
+          }
+        ]
+      },
+      "axeSeriousCritical": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "offsiteRequests": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/",
+      "status": 200,
+      "structure": {
+        "lang": "en",
+        "title": "GitHub Exit Inventory — map migration dependencies",
+        "mains": 1,
+        "h1s": [
+          "Map what breaks before leaving GitHub"
+        ],
+        "headings": [
+          {
+            "level": 1,
+            "text": "Map what breaks before leaving GitHub"
+          },
+          {
+            "level": 2,
+            "text": "See the exit surface, not just the git history"
+          },
+          {
+            "level": 2,
+            "text": "Go from API evidence to a dry-run list"
+          },
+          {
+            "level": 3,
+            "text": "Scan read-only metadata"
+          },
+          {
+            "level": 3,
+            "text": "Check every unknown"
+          },
+          {
+            "level": 3,
+            "text": "Test the target forge"
+          },
+          {
+            "level": 2,
+            "text": "It maps the move; it does not perform it"
+          },
+          {
+            "level": 3,
+            "text": "Minimum access"
+          },
+          {
+            "level": 2,
+            "text": "Run the demo before adding a token"
+          },
+          {
+            "level": 2,
+            "text": "Scan every repository under one owner"
+          }
+        ],
+        "canonical": "https://github-dependency-exit.sociobot.in/",
+        "description": "Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.",
+        "overflow": 0,
+        "reducedAnimation": "1e-05s",
+        "targetsBelow44": [
+          {
+            "tag": "a",
+            "text": "Demo",
+            "width": 44,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Install",
+            "width": 46,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 57,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Open the full sample report →",
+            "width": 228,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Read the source (external site) →",
+            "width": 358,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 52,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Terms",
+            "width": 44,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Built by Param Factory (external site)",
+            "width": 162,
+            "height": 24
+          }
+        ]
+      },
+      "axeSeriousCritical": [
+        {
+          "id": "scrollable-region-focusable",
+          "impact": "serious",
+          "nodes": 1
+        }
+      ],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "offsiteRequests": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/demo",
+      "status": 200,
+      "structure": {
+        "lang": "en",
+        "title": "Demo — GitHub Exit Inventory",
+        "mains": 1,
+        "h1s": [
+          "Review the sample exit inventory"
+        ],
+        "headings": [
+          {
+            "level": 1,
+            "text": "Review the sample exit inventory"
+          },
+          {
+            "level": 2,
+            "text": "Repositories"
+          },
+          {
+            "level": 2,
+            "text": "mosswood-labs/trail-api"
+          },
+          {
+            "level": 3,
+            "text": "Evidence"
+          },
+          {
+            "level": 2,
+            "text": "Migration checks"
+          },
+          {
+            "level": 3,
+            "text": "2 workflows use 3 external action references"
+          },
+          {
+            "level": 3,
+            "text": "2 webhook targets receive four event types"
+          },
+          {
+            "level": 3,
+            "text": "2 integration signals found; the grant list still needs review"
+          },
+          {
+            "level": 3,
+            "text": "2 workflows use 3 action references"
+          },
+          {
+            "level": 3,
+            "text": "1 protected branch found"
+          },
+          {
+            "level": 3,
+            "text": "Issues are disabled and no autolinks were found"
+          },
+          {
+            "level": 3,
+            "text": "container package `trail-api` found"
+          },
+          {
+            "level": 3,
+            "text": "npm package `field-console` found"
+          }
+        ],
+        "canonical": "https://github-dependency-exit.sociobot.in/demo",
+        "description": "Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.",
+        "overflow": 16,
+        "reducedAnimation": "1e-05s",
+        "targetsBelow44": [
+          {
+            "tag": "button",
+            "text": "Reset demo",
+            "width": 110,
+            "height": 36
+          },
+          {
+            "tag": "a",
+            "text": "Start for real",
+            "width": 86,
+            "height": 22
+          },
+          {
+            "tag": "a",
+            "text": "Demo",
+            "width": 44,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Install",
+            "width": 46,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 57,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 52,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Terms",
+            "width": 44,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Built by Param Factory (external site)",
+            "width": 162,
+            "height": 24
+          }
+        ]
+      },
+      "axeSeriousCritical": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "offsiteRequests": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/privacy",
+      "status": 200,
+      "structure": {
+        "lang": "en",
+        "title": "Privacy — GitHub Exit Inventory",
+        "mains": 1,
+        "h1s": [
+          "Your repository data stays with you"
+        ],
+        "headings": [
+          {
+            "level": 1,
+            "text": "Your repository data stays with you"
+          },
+          {
+            "level": 2,
+            "text": "What the CLI reads"
+          },
+          {
+            "level": 2,
+            "text": "What this site stores"
+          },
+          {
+            "level": 2,
+            "text": "Who receives data"
+          },
+          {
+            "level": 2,
+            "text": "How to remove data"
+          }
+        ],
+        "canonical": "https://github-dependency-exit.sociobot.in/privacy",
+        "description": "Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.",
+        "overflow": 0,
+        "reducedAnimation": "1e-05s",
+        "targetsBelow44": [
+          {
+            "tag": "a",
+            "text": "Demo",
+            "width": 44,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Install",
+            "width": 46,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 57,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 52,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Terms",
+            "width": 44,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Built by Param Factory (external site)",
+            "width": 162,
+            "height": 24
+          }
+        ]
+      },
+      "axeSeriousCritical": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "offsiteRequests": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/terms",
+      "status": 200,
+      "structure": {
+        "lang": "en",
+        "title": "Terms — GitHub Exit Inventory",
+        "mains": 1,
+        "h1s": [
+          "Use the inventory as a planning aid"
+        ],
+        "headings": [
+          {
+            "level": 1,
+            "text": "Use the inventory as a planning aid"
+          },
+          {
+            "level": 2,
+            "text": "License"
+          },
+          {
+            "level": 2,
+            "text": "No compatibility promise"
+          },
+          {
+            "level": 2,
+            "text": "Payments and refunds"
+          },
+          {
+            "level": 2,
+            "text": "Your responsibility"
+          }
+        ],
+        "canonical": "https://github-dependency-exit.sociobot.in/terms",
+        "description": "Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.",
+        "overflow": 0,
+        "reducedAnimation": "1e-05s",
+        "targetsBelow44": [
+          {
+            "tag": "a",
+            "text": "Demo",
+            "width": 44,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Install",
+            "width": 46,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 57,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 52,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Terms",
+            "width": 44,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Built by Param Factory (external site)",
+            "width": 162,
+            "height": 24
+          }
+        ]
+      },
+      "axeSeriousCritical": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "offsiteRequests": []
+    },
+    {
+      "viewport": "mobile",
+      "route": "/missing-route",
+      "status": 200,
+      "structure": {
+        "lang": "en",
+        "title": "Page not found — GitHub Exit Inventory",
+        "mains": 1,
+        "h1s": [
+          "This route is not in the inventory"
+        ],
+        "headings": [
+          {
+            "level": 1,
+            "text": "This route is not in the inventory"
+          }
+        ],
+        "canonical": "https://github-dependency-exit.sociobot.in/missing-route",
+        "description": "Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.",
+        "overflow": 0,
+        "reducedAnimation": "1e-05s",
+        "targetsBelow44": [
+          {
+            "tag": "a",
+            "text": "Demo",
+            "width": 44,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Install",
+            "width": 46,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 57,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Privacy",
+            "width": 52,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Terms",
+            "width": 44,
+            "height": 24
+          },
+          {
+            "tag": "a",
+            "text": "Built by Param Factory (external site)",
+            "width": 162,
+            "height": 24
+          }
+        ]
+      },
+      "axeSeriousCritical": [],
+      "consoleErrors": [],
+      "pageErrors": [],
+      "failedRequests": [],
+      "offsiteRequests": []
+    }
+  ],
+  "keyboard": {
+    "firstFocus": {
+      "text": "Skip to main content",
+      "outline": "3px solid rgb(217, 236, 105)",
+      "boxShadow": "rgb(23, 26, 22) 0px 0px 0px 6px"
+    },
+    "repoAfterSpace": "mosswood-labs/field-console",
+    "filterAfterArrow": "Actions",
+    "filterAfterReset": "all",
+    "bannerPosition": "static",
+    "emptyLicenseMessage": "Paste a license token first."
+  }
+}

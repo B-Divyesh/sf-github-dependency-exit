@@ -1,0 +1,6 @@
+   Packaging github-exit v0.1.0 (/work/repo)
+    Updating crates.io index
+    Packaged 55 files, 3.4MiB (3.1MiB compressed)
+   Verifying github-exit v0.1.0 (/work/repo)
+   Compiling github-exit v0.1.0 (/work/repo/target/package/github-exit-0.1.0)
+    Finished `dev` profile [unoptimized + debuginfo] target(s) in 3.06s

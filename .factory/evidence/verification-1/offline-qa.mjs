@@ -1,0 +1,23 @@
+import { chromium } from '@playwright/test';
+import { writeFile } from 'node:fs/promises';
+
+const browser = await chromium.launch({ headless: true });
+const context = await browser.newContext({ viewport: { width: 390, height: 844 } });
+const page = await context.newPage();
+const errors = [];
+page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
+page.on('pageerror', (error) => errors.push(String(error)));
+await page.goto('https://github-dependency-exit.sociobot.in/demo', { waitUntil: 'networkidle' });
+await page.evaluate(async () => { await navigator.serviceWorker.ready; });
+await page.reload({ waitUntil: 'networkidle' });
+const controlledOnline = await page.evaluate(() => Boolean(navigator.serviceWorker.controller));
+await context.setOffline(true);
+await page.reload({ waitUntil: 'domcontentloaded' });
+const demoOffline = { url: page.url(), h1: await page.locator('h1').textContent(), banner: await page.locator('.demo-banner').textContent() };
+await page.goto('https://github-dependency-exit.sociobot.in/privacy', { waitUntil: 'domcontentloaded' });
+const privacyOffline = { url: page.url(), h1: await page.locator('h1').textContent() };
+const caches = await page.evaluate(async () => await caches.keys());
+const result = { controlledOnline, demoOffline, privacyOffline, caches, errors };
+await writeFile('.factory/evidence/verification-1/offline-qa.json', JSON.stringify(result, null, 2));
+console.log(JSON.stringify(result, null, 2));
+await browser.close();

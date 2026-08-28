@@ -1,0 +1,21 @@
+{
+  "exit": 0,
+  "rateLimitWasReached": true,
+  "requestsAfterRepositoryLookup": 11,
+  "requests": [
+    "/repos/limited/repo",
+    "/repos/limited/repo/actions/workflows?per_page=100",
+    "/repos/limited/repo/hooks?per_page=100",
+    "/repos/limited/repo/releases?per_page=100",
+    "/repos/limited/repo/branches/main/protection",
+    "/repos/limited/repo/rulesets?includes_parents=true&per_page=100",
+    "/repos/limited/repo/autolinks?per_page=100",
+    "/orgs/limited/packages?package_type=container&per_page=100",
+    "/orgs/limited/packages?package_type=npm&per_page=100",
+    "/orgs/limited/packages?package_type=maven&per_page=100",
+    "/orgs/limited/packages?package_type=rubygems&per_page=100",
+    "/orgs/limited/packages?package_type=nuget&per_page=100"
+  ],
+  "stdout": "Report written to /tmp/github-exit-rate-limit-LAv94j\n",
+  "stderr": "Scanned 1 repositories. 12 checks need manual review.\n"
+}

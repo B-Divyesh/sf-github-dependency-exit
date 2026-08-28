@@ -1,0 +1,44 @@
+
+> github-dependency-exit@0.1.0 test
+> cargo test && playwright test
+
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 0.10s
+     Running unittests src/main.rs (target/debug/deps/github_exit-94ad2f9a12861def)
+
+running 2 tests
+test tests::demo_fixture_is_valid_and_has_unknown_oauth_check ... ok
+test tests::validates_repo_names ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running tests/cli.rs (target/debug/deps/cli-5d02af1b23f570af)
+
+running 2 tests
+test demo_writes_both_reports ... ok
+test missing_scan_target_has_a_useful_error ... ok
+
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+
+[2m[WebServer] [22m(node:4156) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[2m[WebServer] [22m(Use `node --trace-warnings ...` to show where the warning was created)
+
+Running 12 tests using 1 worker
+
+(node:4175) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:4175) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › site-tests/product.spec.ts:9:1 › the primary action opens a populated sandbox @claim:sample-demo (881ms)
+  ✓   2 [chromium] › site-tests/product.spec.ts:18:1 › the CLI demo writes JSON and Markdown without setup @claim:cli-demo @claim:local-reports (163ms)
+  ✓   3 [chromium] › site-tests/product.spec.ts:30:1 › the browser demo sends no data off site @claim:demo-privacy (594ms)
+  ✓   4 [chromium] › site-tests/product.spec.ts:43:1 › live inventory requests are read-only @claim:read-only-api @claim:public-no-token @claim:no-migration (65ms)
+  ✓   5 [chromium] › site-tests/product.spec.ts:75:1 › sample JSON downloads with the report counts @claim:json-export (469ms)
+  ✓   6 [chromium] › site-tests/product.spec.ts:87:1 › the paid tier has one price and keeps repository scans free @claim:paid-scope (671ms)
+  ✓   7 [chromium] › site-tests/product.spec.ts:95:3 › route / has its structure and no serious accessibility errors (1.7s)
+  ✓   8 [chromium] › site-tests/product.spec.ts:95:3 › route /demo has its structure and no serious accessibility errors (1.7s)
+  ✓   9 [chromium] › site-tests/product.spec.ts:95:3 › route /privacy has its structure and no serious accessibility errors (1.1s)
+  ✓  10 [chromium] › site-tests/product.spec.ts:95:3 › route /terms has its structure and no serious accessibility errors (1.1s)
+  ✓  11 [chromium] › site-tests/product.spec.ts:95:3 › route /missing-route has its structure and no serious accessibility errors (1.1s)
+  ✓  12 [chromium] › site-tests/product.spec.ts:109:1 › the 390 px layout does not scroll sideways and keyboard reaches the demo (515ms)
+
+  12 passed (13.0s)

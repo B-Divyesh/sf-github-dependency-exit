@@ -1,0 +1,99 @@
+{
+  "exit": 0,
+  "evidence": [
+    {
+      "area": "actions",
+      "status": "verified",
+      "source": "http://127.0.0.1:37423/repos/private/repo/actions/workflows?per_page=100",
+      "note": "1 workflows found"
+    },
+    {
+      "area": "webhooks",
+      "status": "verified",
+      "source": "http://127.0.0.1:37423/repos/private/repo/hooks?per_page=100",
+      "note": "0 webhooks found"
+    },
+    {
+      "area": "releases",
+      "status": "verified",
+      "source": "http://127.0.0.1:37423/repos/private/repo/releases?per_page=100",
+      "note": "0 releases found"
+    },
+    {
+      "area": "branch protection",
+      "status": "verified",
+      "source": "http://127.0.0.1:37423/repos/private/repo/branches/main/protection",
+      "note": "no default branch protection returned"
+    },
+    {
+      "area": "rulesets",
+      "status": "verified",
+      "source": "http://127.0.0.1:37423/repos/private/repo/rulesets?includes_parents=true&per_page=100",
+      "note": "0 total branch rules found"
+    },
+    {
+      "area": "issue autolinks",
+      "status": "verified",
+      "source": "http://127.0.0.1:37423/repos/private/repo/autolinks?per_page=100",
+      "note": "0 autolinks found; issues setting also recorded"
+    },
+    {
+      "area": "GitHub Apps and OAuth",
+      "status": "unknown",
+      "source": "https://example.test/private/repo/settings/installations",
+      "note": "GitHub does not expose a complete repository-scoped OAuth grant list; workflow and webhook signals were recorded"
+    },
+    {
+      "area": "packages",
+      "status": "unknown",
+      "source": "http://127.0.0.1:37423/orgs/private/packages?package_type=container&per_page=100",
+      "note": "HTTP 403: Resource not accessible by personal access token"
+    },
+    {
+      "area": "packages",
+      "status": "unknown",
+      "source": "http://127.0.0.1:37423/orgs/private/packages?package_type=npm&per_page=100",
+      "note": "HTTP 403: Resource not accessible by personal access token"
+    },
+    {
+      "area": "packages",
+      "status": "unknown",
+      "source": "http://127.0.0.1:37423/orgs/private/packages?package_type=maven&per_page=100",
+      "note": "HTTP 403: Resource not accessible by personal access token"
+    },
+    {
+      "area": "packages",
+      "status": "unknown",
+      "source": "http://127.0.0.1:37423/orgs/private/packages?package_type=rubygems&per_page=100",
+      "note": "HTTP 403: Resource not accessible by personal access token"
+    },
+    {
+      "area": "packages",
+      "status": "unknown",
+      "source": "http://127.0.0.1:37423/orgs/private/packages?package_type=nuget&per_page=100",
+      "note": "HTTP 403: Resource not accessible by personal access token"
+    }
+  ],
+  "actionsChecklist": {
+    "repository": "private/repo",
+    "area": "Actions",
+    "status": "verified",
+    "finding": "1 actions found",
+    "next_step": "Rebuild each workflow on the target runner and test its secrets.",
+    "alternative": "Forgejo Actions",
+    "alternative_status": "verified",
+    "alternative_evidence": "https://forgejo.org/docs/latest/user/actions/"
+  },
+  "branchChecklist": {
+    "repository": "private/repo",
+    "area": "Branch rules",
+    "status": "verified",
+    "finding": "0 branch rules found",
+    "next_step": "Translate every rule and test a rejected pull request.",
+    "alternative": "GitLab protected branches",
+    "alternative_status": "verified",
+    "alternative_evidence": "https://docs.gitlab.com/user/project/repository/branches/protected/"
+  },
+  "packageChecklistItems": [],
+  "unknownChecks": 6
+}
