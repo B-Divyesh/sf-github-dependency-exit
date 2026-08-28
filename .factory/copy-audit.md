@@ -73,6 +73,7 @@ Audited from the rendered `/` route on 2026-08-28. Counts treat hyphenated terms
 - Banned words: none.
 - Undefined design metaphors: none.
 - First screen aloud: the job, team, sample action, privacy, and price fit in one short pass.
+- Catalog description: 82 characters, starts with “Map”, and contains no banned words.
 
 ## Terminology
 

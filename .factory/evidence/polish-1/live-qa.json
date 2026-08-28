@@ -1,0 +1,178 @@
+{
+  "checkedAt": "2026-08-28T18:20:14.624Z",
+  "routes": {
+    "/": {
+      "status": 200,
+      "title": "GitHub Exit Inventory — map migration dependencies",
+      "description": "Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.",
+      "canonical": "https://github-dependency-exit.sociobot.in/",
+      "ogTitle": "GitHub Exit Inventory — map migration dependencies",
+      "ogDescription": "Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.",
+      "twitterDescription": "Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.",
+      "h1": 1,
+      "main": true,
+      "overflow": 0,
+      "missingAlt": 0,
+      "undersizedTargets": [],
+      "consoleErrors": [],
+      "expected404ResourceMessage": false,
+      "axeViolations": 0
+    },
+    "/?demo=1": {
+      "status": 200,
+      "title": "Demo — GitHub Exit Inventory",
+      "description": "Explore a bundled three-repository dependency inventory and migration checklist without an account or token.",
+      "canonical": "https://github-dependency-exit.sociobot.in/?demo=1",
+      "ogTitle": "Demo — GitHub Exit Inventory",
+      "ogDescription": "Explore a bundled three-repository dependency inventory and migration checklist without an account or token.",
+      "twitterDescription": "Explore a bundled three-repository dependency inventory and migration checklist without an account or token.",
+      "h1": 1,
+      "main": true,
+      "overflow": 0,
+      "missingAlt": 0,
+      "undersizedTargets": [],
+      "consoleErrors": [],
+      "expected404ResourceMessage": false,
+      "axeViolations": 0
+    },
+    "/demo": {
+      "status": 200,
+      "title": "Demo — GitHub Exit Inventory",
+      "description": "Explore a bundled three-repository dependency inventory and migration checklist without an account or token.",
+      "canonical": "https://github-dependency-exit.sociobot.in/?demo=1",
+      "ogTitle": "Demo — GitHub Exit Inventory",
+      "ogDescription": "Explore a bundled three-repository dependency inventory and migration checklist without an account or token.",
+      "twitterDescription": "Explore a bundled three-repository dependency inventory and migration checklist without an account or token.",
+      "h1": 1,
+      "main": true,
+      "overflow": 0,
+      "missingAlt": 0,
+      "undersizedTargets": [],
+      "consoleErrors": [],
+      "expected404ResourceMessage": false,
+      "axeViolations": 0
+    },
+    "/privacy": {
+      "status": 200,
+      "title": "Privacy — GitHub Exit Inventory",
+      "description": "How GitHub Exit Inventory handles demo, license, and report data.",
+      "canonical": "https://github-dependency-exit.sociobot.in/privacy",
+      "ogTitle": "Privacy — GitHub Exit Inventory",
+      "ogDescription": "How GitHub Exit Inventory handles demo, license, and report data.",
+      "twitterDescription": "How GitHub Exit Inventory handles demo, license, and report data.",
+      "h1": 1,
+      "main": true,
+      "overflow": 0,
+      "missingAlt": 0,
+      "undersizedTargets": [],
+      "consoleErrors": [],
+      "expected404ResourceMessage": false,
+      "axeViolations": 0
+    },
+    "/terms": {
+      "status": 200,
+      "title": "Terms — GitHub Exit Inventory",
+      "description": "Terms for free repository scans and the one-time GitHub Exit Inventory team license.",
+      "canonical": "https://github-dependency-exit.sociobot.in/terms",
+      "ogTitle": "Terms — GitHub Exit Inventory",
+      "ogDescription": "Terms for free repository scans and the one-time GitHub Exit Inventory team license.",
+      "twitterDescription": "Terms for free repository scans and the one-time GitHub Exit Inventory team license.",
+      "h1": 1,
+      "main": true,
+      "overflow": 0,
+      "missingAlt": 0,
+      "undersizedTargets": [],
+      "consoleErrors": [],
+      "expected404ResourceMessage": false,
+      "axeViolations": 0
+    },
+    "/missing-polish-route": {
+      "status": 404,
+      "title": "Page not found — GitHub Exit Inventory",
+      "description": "The requested GitHub Exit Inventory page was not found. Return to the inventory start.",
+      "canonical": "https://github-dependency-exit.sociobot.in/404",
+      "ogTitle": "Page not found — GitHub Exit Inventory",
+      "ogDescription": "The requested GitHub Exit Inventory page was not found. Return to the inventory start.",
+      "twitterDescription": "The requested GitHub Exit Inventory page was not found. Return to the inventory start.",
+      "h1": 1,
+      "main": true,
+      "overflow": 0,
+      "missingAlt": 0,
+      "undersizedTargets": [],
+      "consoleErrors": [],
+      "expected404ResourceMessage": true,
+      "axeViolations": 0
+    }
+  },
+  "flow": {
+    "actionBox": {
+      "x": 16,
+      "y": 601.90625,
+      "width": 211.609375,
+      "height": 50.3125
+    },
+    "resetFocus": "Review the sample exit inventory",
+    "backFocus": "Map what breaks before leaving GitHub",
+    "forwardFocus": "Review the sample exit inventory",
+    "storage": {
+      "local": [],
+      "session": []
+    },
+    "requestOrigins": [
+      "https://github-dependency-exit.sociobot.in"
+    ],
+    "forbiddenWordingFound": false
+  },
+  "offline": {
+    "status": 200,
+    "heading": true,
+    "banner": true,
+    "serviceWorkerControlled": true
+  },
+  "links": [
+    {
+      "status": 200,
+      "url": "https://github-dependency-exit.sociobot.in/#main"
+    },
+    {
+      "status": 200,
+      "url": "https://github-dependency-exit.sociobot.in/"
+    },
+    {
+      "status": 200,
+      "url": "https://github-dependency-exit.sociobot.in/?demo=1"
+    },
+    {
+      "status": 200,
+      "url": "https://github-dependency-exit.sociobot.in/#install"
+    },
+    {
+      "status": 200,
+      "url": "https://github-dependency-exit.sociobot.in/#price"
+    },
+    {
+      "status": 200,
+      "url": "https://github-dependency-exit.sociobot.in/privacy"
+    },
+    {
+      "status": 200,
+      "url": "https://github-dependency-exit.sociobot.in/downloads/github-exit-linux-x86_64"
+    },
+    {
+      "status": 200,
+      "url": "https://github.com/B-Divyesh/sf-github-dependency-exit"
+    },
+    {
+      "status": 303,
+      "url": "https://api.sociobot.in/api/v1/products/github-dependency-exit/checkout"
+    },
+    {
+      "status": 200,
+      "url": "https://github-dependency-exit.sociobot.in/terms"
+    },
+    {
+      "status": 200,
+      "url": "https://hello-factory.sociobot.in/"
+    }
+  ]
+}
