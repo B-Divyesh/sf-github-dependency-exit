@@ -251,7 +251,11 @@ pub fn finalize(mut inventory: Inventory) -> Inventory {
 }
 
 fn add_check(out: &mut Vec<ChecklistItem>, repo: &RepositoryInventory, area: &str, count: usize, next: &str, alternative: &str, alternative_status: CheckStatus, alternative_evidence: &str) {
-    let evidence = repo.evidence.iter().find(|e| e.area.eq_ignore_ascii_case(area) || (area == "Branch rules" && e.area == "rulesets")).map(|e| e.status.clone()).unwrap_or(CheckStatus::Unknown);
+    let evidence = repo.evidence.iter().find(|e| {
+        e.area.eq_ignore_ascii_case(area)
+            || (area == "Branch rules" && e.area == "rulesets")
+            || (area == "Issue links" && e.area == "issue autolinks")
+    }).map(|e| e.status.clone()).unwrap_or(CheckStatus::Unknown);
     out.push(ChecklistItem { repository: repo.full_name.clone(), area: area.into(), status: evidence, finding: format!("{count} {} found", area.to_ascii_lowercase()), next_step: next.into(), alternative: alternative.into(), alternative_status, alternative_evidence: alternative_evidence.into() });
 }
 

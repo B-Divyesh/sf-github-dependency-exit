@@ -1,6 +1,7 @@
 {
   "slug": "github-dependency-exit",
   "title": "GitHub Exit Inventory",
+  "summary": "Map GitHub dependencies and write a checked migration list before changing forges.",
   "territory": "devtools-data",
   "user": "Small software teams considering a GitHub fallback who need to know which repository, CI, OAuth, release, and integration dependencies make a move costly.",
   "smallest_useful_product": "A read-only CLI that inventories repositories, Actions, webhooks, GitHub Apps/OAuth references, packages, branch rules, and issue links, then writes a migration checklist with alternatives marked as verified or unknown.",

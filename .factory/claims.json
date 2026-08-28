@@ -1,0 +1,65 @@
+[
+  {
+    "id": "sample-demo",
+    "claim": "Try it with sample data in one click",
+    "where": "landing primary action",
+    "test": "npm test -- --grep @claim:sample-demo",
+    "sandbox": "fresh browser context; click the landing action; assert the populated demo and banner"
+  },
+  {
+    "id": "cli-demo",
+    "claim": "The CLI demo writes JSON and Markdown without setup",
+    "where": "landing terminal, README",
+    "test": "npm test -- --grep @claim:cli-demo",
+    "sandbox": "fresh temporary directory; bundled sample data; no token"
+  },
+  {
+    "id": "demo-privacy",
+    "claim": "The browser demo sends no data off site",
+    "where": "landing facts, demo banner, privacy page",
+    "test": "npm test -- --grep @claim:demo-privacy",
+    "sandbox": "fresh browser context; capture every request while using demo filters"
+  },
+  {
+    "id": "read-only-api",
+    "claim": "Inventory uses read-only GitHub requests",
+    "where": "landing facts, README",
+    "test": "npm test -- --grep @claim:read-only-api",
+    "sandbox": "local fake GitHub API; run a repository scan and assert every request method is GET"
+  },
+  {
+    "id": "json-export",
+    "claim": "Downloads the sample inventory as JSON",
+    "where": "demo report",
+    "test": "npm test -- --grep @claim:json-export",
+    "sandbox": "fresh browser context; download JSON and assert report counts"
+  },
+  {
+    "id": "paid-scope",
+    "claim": "$39 once for owner-wide scans; one-repository scans stay free",
+    "where": "landing facts and price section, README",
+    "test": "npm test -- --grep @claim:paid-scope",
+    "sandbox": "fresh browser context; assert the price, free scope, and Sociobot checkout URL"
+  },
+  {
+    "id": "public-no-token",
+    "claim": "Public repository scans work without a token",
+    "where": "landing boundaries, README",
+    "test": "npm test -- --grep @claim:public-no-token",
+    "sandbox": "local public repository API fixture; run with no token and assert a report is written"
+  },
+  {
+    "id": "local-reports",
+    "claim": "Reports stay in the output folder",
+    "where": "landing boundaries, README",
+    "test": "npm test -- --grep @claim:local-reports",
+    "sandbox": "fresh temporary directory; assert JSON and Markdown are written there"
+  },
+  {
+    "id": "no-migration",
+    "claim": "The CLI does not change repository data",
+    "where": "landing boundaries, README",
+    "test": "npm test -- --grep @claim:no-migration",
+    "sandbox": "local fake GitHub API; assert every request is GET and the repository fixture stays unchanged"
+  }
+]
