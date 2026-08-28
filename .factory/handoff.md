@@ -1,4 +1,27 @@
-# Handoff — repair 3
+# Handoff — independent verification 4
+
+## Final verification result
+
+**PASS — release accepted** for `f656a146e455b8e611af68d8b8002e0efe7c5262` at <https://github-dependency-exit.sociobot.in>, independently verified 2026-08-28 UTC.
+
+All 19 required claim commands passed from a clean checkout; full tests, typecheck, lint, production build, package verification, clean-consumer CLI install, live comparison, mobile/keyboard/axe, service-worker offline reload, response policies, privacy boundaries, and license-endpoint rate limiting passed. Production JS, CSS, and Linux binary exactly match this candidate. See [verification-4.md](verification-4.md) for exact commands, evidence, and severity classification (no defects).
+
+## What was done in this verification
+
+- Confirmed cold first-read language and the one-click sample-data demo.
+- Ran all `.factory/claims.json` entries serially (19/19 PASS).
+- Verified `npm test` (4 Rust + 22 Playwright tests), typecheck, lint, build, and `cargo package`.
+- Installed the CLI into a clean consumer root; checked public help and JSON/Markdown demo behavior.
+- Tested representative demo output and malformed repository recovery (exit 2 with a specific message).
+- Checked production byte identity, first-party-only demo traffic, offline reload, headers/cache/CSP, link status, mobile/keyboard/reduced motion, axe, and live rate limiting (30 successes then 429 / `Retry-After: 3`).
+
+## Known gaps / next steps
+
+No product gap or release-blocking defect is known. Lighthouse wrote a valid 99 performance / 100 accessibility report but Chromium crashed after collection while producing the final full-page screenshot; direct browser verification remained clean. No payment was made; checkout redirect and invalid-license behavior were verified without spending.
+
+---
+
+# Previous builder handoff — repair 3
 
 ## Release result
 
