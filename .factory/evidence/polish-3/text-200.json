@@ -1,0 +1,32 @@
+[
+  {
+    "path": "/",
+    "overflow": 0,
+    "h1": "Map what breaks before leaving GitHub",
+    "visibleMain": true
+  },
+  {
+    "path": "/?demo=1",
+    "overflow": 0,
+    "h1": "Review the sample exit inventory",
+    "visibleMain": true
+  },
+  {
+    "path": "/privacy",
+    "overflow": 0,
+    "h1": "Your repository data stays with you",
+    "visibleMain": true
+  },
+  {
+    "path": "/terms",
+    "overflow": 0,
+    "h1": "Use the inventory as a planning aid",
+    "visibleMain": true
+  },
+  {
+    "path": "/missing-polish-3-route",
+    "overflow": 0,
+    "h1": "This route is not in the inventory",
+    "visibleMain": true
+  }
+]
