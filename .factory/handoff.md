@@ -1,46 +1,69 @@
-# Handoff — adversarial first-read review 4
+# Handoff — polish round 4
 
 ## Result
 
-**FAIL.** Review 4 was completed against <https://github-dependency-exit.sociobot.in> and commit `87a1535f2a490b4bf861f25a5788b588efc6a9bb`. No product code was changed. The full report is [review-4.md](review-4.md).
+**PASS.** GitHub Exit Inventory is repaired, tested from a clean clone, and deployed at <https://github-dependency-exit.sociobot.in>.
 
-## What was done
+The deployed product code is `6f4898e66507665d5a76f6125f5b797cbae9fb75` (`fix: version offline shell for polish four`). The deployment completed as static deployment `2cc616bf-ec48-4560-a300-d100058fd811`.
 
-- Tested cold landing views in fresh 390 × 844 and 1440 × 1000 Chromium contexts.
-- Audited every landing and README copy item with word counts.
-- Exercised the one-click browser demo, reset, exit, storage isolation, request isolation, and offline reload.
-- Ran the real CLI demo from a fresh temporary directory and inspected both report formats.
-- Ran all 22 exact `.factory/claims.json` commands independently from clean clone `/tmp/gde-review4-clean.fAg7Eo`.
-- Rechecked every earlier review finding against production and source.
-- Checked route metadata, 404 behavior, focus restoration, links, console output, mobile overflow, touch targets, and WCAG 2 A/AA axe results.
-- Ran the factory URL verifier on Home, Demo, Privacy, and Terms.
-- Ran the complete test, typecheck, lint, build, and crate-package gates from the clean clone.
+## What changed
 
-## Verification result
+- Rewrote the generated Markdown report vocabulary to `Inventory totals` and added a regression guard against the retired terms.
+- Added six missing published claims plus independent observable tests: default CLI temp output, browser/CLI fixture parity, browser license lifecycle, Rust 1.85 build, staged/downloaded binary identity, and GHES `--api-base` behavior.
+- Made the declared Rust 1.85 minimum real in source and lockfile.
+- Added a visible “Remove saved license” control that clears stored license state.
+- Advanced the service-worker cache version so cold production visits receive the repaired shell.
+- Kept the prior round’s route metadata, routed 404, demo isolation, focus, legal, mobile, billing, and plain-language fixes intact.
+- Updated the catalog description to: “Map GitHub dependencies and write a checked migration list before leaving GitHub.”
 
-- 22/22 listed claim commands: PASS.
-- `npm test`: PASS — 4 Rust tests and 38 Playwright tests.
-- `npm run typecheck`: PASS.
-- `npm run lint`: PASS.
-- `npm run build`: PASS; `dist/site/` produced.
-- `cargo package --allow-dirty`: PASS.
-- Live route/accessibility audit: 12 route/viewport combinations passed with zero axe violations or unexpected console errors.
-- Live link crawl: 11 landing links resolved; checkout returned the expected hosted-session redirect.
-- Browser demo privacy/offline checks: PASS.
-- CLI demo: PASS; wrote 3-repository JSON and Markdown reports.
+The complete finding-to-evidence map is [polish-4.md](polish-4.md).
 
-## Findings left for repair
+## Verification
 
-1. **F-4-1 / F-1-4 reopened — blocking:** `src/report.rs` still emits the undefined heading `## Exit surface`. Rename it to `## Inventory totals` and add generated-report regression coverage.
-2. **F-4-2 — blocking:** specific published claims lack matching claims-manifest entries and tagged observable tests: default temporary CLI output, browser/CLI sample parity, browser license storage, Rust 1.85 minimum support, downloaded-binary build identity, and GitHub Enterprise Server behavior.
+From a fresh clone at the deployed SHA, all 28 `.factory/claims.json` commands were run independently and passed. The command-level record is `evidence/polish-4/clean-clone-claims.json`.
 
-## Evidence
+These full gates also passed from that clone:
 
-- Review: `.factory/review-4.md`
-- Independent claim log: `/tmp/gde-review4-claims.log`
-- Clean clone: `/tmp/gde-review4-clean.fAg7Eo`
-- Cold screenshots: `/tmp/gde-review4-mobile.png`, `/tmp/gde-review4-desktop.png`
-- URL verifier outputs: `/tmp/gde-review4-verify-{home,demo,privacy,terms}`
-- CLI output: `/tmp/github-exit-demo-9680-1787995633`
+```sh
+npm test
+npm run typecheck
+npm run lint
+npm run build
+cargo package --allow-dirty
+```
 
-Temporary evidence paths are outside the repository and are not deployment artifacts.
+`npm test` ran 4 Rust tests and 44 Playwright tests. `rustup run 1.85.0 cargo build --locked` also passed.
+
+Production was opened cold and audited again after deployment:
+
+- `verify-url.sh` passed for Home, Demo, Privacy, and Terms; outputs are in `evidence/polish-4/verify-*`.
+- The mobile route/demo/a11y audit passed for `/`, `/?demo=1`, `/privacy`, `/terms`, and a missing route. It found zero serious/critical axe issues, unexpected console errors, horizontal overflow, or undersized controls. Results: `evidence/polish-4/live-qa.json`; screenshots: `evidence/polish-4/*-390.png`.
+- `/missing-polish-4-route` returned an actual 404 with the product shell (`evidence/polish-4/404-headers.txt`).
+- The live hosted checkout returned its expected redirect (`evidence/polish-4/checkout-headers.txt`).
+- The live binary SHA-256 matched the staged release artifact: `2a492f39ddaaa99e97726432859949adbcdbd9f09effbbdb3b54ce1c2bd68e7d`; its `demo` command generated the revised report.
+- Lighthouse mobile production audit: Performance 100, Accessibility 100, Best Practices 100, SEO 100; FCP/LCP 1.4 s, TBT 0 ms, CLS 0. Full report: `evidence/polish-4/lighthouse-mobile.json`.
+
+## Run, test, package, and deploy
+
+```sh
+cargo run -- --help
+cargo run -- demo
+npm ci
+npm run dev:site
+npm test
+npm run build
+cargo package
+```
+
+The static site output is `dist/site`. The factory deployment command used for this handoff was:
+
+```sh
+npm run build:site
+/opt/fleet/lib/deploy-static.sh github-dependency-exit dist/site
+```
+
+The publish-ready CLI crate can be recreated with `cargo package`; publishing itself remains a factory action.
+
+## Known gaps / next steps
+
+None. All current and earlier review findings are closed, and no runtime change is pending after the deployed code SHA above.

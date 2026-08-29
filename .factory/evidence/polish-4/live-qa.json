@@ -1,0 +1,165 @@
+{
+  "origin": "https://github-dependency-exit.sociobot.in",
+  "checks": [
+    {
+      "kind": "route",
+      "path": "/",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "GitHub Exit Inventory — map migration dependencies",
+      "description": "Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.",
+      "canonical": "https://github-dependency-exit.sociobot.in/",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "heading": "Map what breaks before leaving GitHub",
+      "overflow": 0,
+      "missingAlt": 0,
+      "undersized": 0,
+      "consoleErrors": [],
+      "axeViolations": [],
+      "screenshot": "home-390.png"
+    },
+    {
+      "kind": "route",
+      "path": "/?demo=1",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "Demo — GitHub Exit Inventory",
+      "description": "Explore a bundled three-repository dependency inventory and migration checklist without an account or token.",
+      "canonical": "https://github-dependency-exit.sociobot.in/?demo=1",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "heading": "Review the sample exit inventory",
+      "overflow": 0,
+      "missingAlt": 0,
+      "undersized": 0,
+      "consoleErrors": [],
+      "axeViolations": [],
+      "screenshot": "demo-390.png"
+    },
+    {
+      "kind": "route",
+      "path": "/privacy",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "Privacy — GitHub Exit Inventory",
+      "description": "How GitHub Exit Inventory handles demo, license, and report data.",
+      "canonical": "https://github-dependency-exit.sociobot.in/privacy",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "heading": "Your repository data stays with you",
+      "overflow": 0,
+      "missingAlt": 0,
+      "undersized": 0,
+      "consoleErrors": [],
+      "axeViolations": [],
+      "screenshot": "privacy-390.png"
+    },
+    {
+      "kind": "route",
+      "path": "/terms",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "Terms — GitHub Exit Inventory",
+      "description": "Terms for free repository scans and the one-time GitHub Exit Inventory team license.",
+      "canonical": "https://github-dependency-exit.sociobot.in/terms",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "heading": "Use the inventory as a planning aid",
+      "overflow": 0,
+      "missingAlt": 0,
+      "undersized": 0,
+      "consoleErrors": [],
+      "axeViolations": [],
+      "screenshot": "terms-390.png"
+    },
+    {
+      "kind": "route",
+      "path": "/missing-polish-4-route",
+      "viewport": {
+        "width": 390,
+        "height": 844
+      },
+      "title": "Page not found — GitHub Exit Inventory",
+      "description": "The requested GitHub Exit Inventory page was not found. Return to the inventory start.",
+      "canonical": "https://github-dependency-exit.sociobot.in/404",
+      "lang": "en",
+      "h1": 1,
+      "main": 1,
+      "heading": "This route is not in the inventory",
+      "overflow": 0,
+      "missingAlt": 0,
+      "undersized": 0,
+      "consoleErrors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "axeViolations": [],
+      "screenshot": "not-found-390.png"
+    },
+    {
+      "kind": "demo-entry",
+      "entry": {
+        "url": "https://github-dependency-exit.sociobot.in/?demo=1",
+        "banner": true,
+        "heading": "Review the sample exit inventory"
+      },
+      "requestOrigins": [
+        "https://github-dependency-exit.sociobot.in"
+      ]
+    },
+    {
+      "kind": "demo-flow",
+      "reset": {
+        "url": "https://github-dependency-exit.sociobot.in/?demo=1",
+        "banner": true,
+        "h1Focused": true,
+        "license": "real-license-sentinel",
+        "verdict": "{\"valid\":true,\"checkedAt\":1}"
+      },
+      "requestOrigins": [
+        "https://github-dependency-exit.sociobot.in"
+      ],
+      "screenshot": "demo-flow-mobile.png"
+    },
+    {
+      "kind": "leave-demo",
+      "url": "https://github-dependency-exit.sociobot.in/#install",
+      "focused": "install",
+      "banner": false
+    },
+    {
+      "kind": "offline-demo",
+      "heading": "Review the sample exit inventory",
+      "banner": true
+    },
+    {
+      "kind": "license-storage",
+      "requests": [
+        "https://api.sociobot.in/api/v1/products/github-dependency-exit/verify?license=live-fixture-license"
+      ],
+      "storage": {
+        "license": null,
+        "verdict": null,
+        "status": "No license saved in this browser."
+      }
+    },
+    {
+      "kind": "history-focus",
+      "homeFocus": "Map what breaks before leaving GitHub",
+      "demoFocus": "Review the sample exit inventory"
+    }
+  ],
+  "failures": []
+}
