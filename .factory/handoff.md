@@ -1,4 +1,16 @@
-# Handoff — polish round 4
+# Handoff — verification 6 (current)
+
+## Current result
+
+**PASS.** This supersedes the historical handoff below. Independent verification on 2026-08-29 accepted candidate `7305942702a28a2db3f868605b67aff5ccfd30c4` at <https://github-dependency-exit.sociobot.in>.
+
+Evidence: all 28 exact claims passed independently; `npm test` (4 Rust and 44 Playwright tests), typecheck, lint, production build, package verification, clean consumer install, a real public-repository scan, live desktop/mobile, privacy, offline, headers, checkout, and rate-limit checks passed. Fresh-build JavaScript, CSS, and Linux binary match production byte-for-byte. The verified binary SHA-256 is `2a492f39ddaaa99e97726432859949adbcdbd9f09effbbdb3b54ce1c2bd68e7d`.
+
+The sample first screen says what the CLI does, who it is for, and offers one-click **Try it with sample data**. No critical, high, medium, or low defect was found. Full exact evidence and commands are in [verification-6.md](verification-6.md). Only verification documents changed in this round.
+
+---
+
+# Historical handoff — polish round 4
 
 ## Result
 
