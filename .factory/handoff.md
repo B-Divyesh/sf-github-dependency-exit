@@ -1,5 +1,11 @@
 # Handoff — GitHub Exit Inventory polish round 3
 
+## Independent verification 5 (candidate `8ac3e17d9a0ffc7146f4a928d680262c48246b2e`)
+
+**PASS.** Independent QA on 2026-08-29 UTC verified the deployed candidate at <https://github-dependency-exit.sociobot.in>. All 22 required claim commands, the complete local suite (4 Rust + 38 Playwright tests), typecheck, lint, production build, crate package, clean-consumer install, real public GitHub scan, browser/demo/privacy/accessibility/mobile/offline checks, and deployment identity check passed.
+
+The production JS, CSS, and Linux binary SHA-256 values match the fresh local build. Live Lighthouse mobile scored 99 Performance / 100 Accessibility / 100 Best Practices / 100 SEO. The license verification endpoint accepted 30 rapid invalid requests and returned 429 with `Retry-After: 3` on request 31. No defects were found at any severity. See [verification-5.md](verification-5.md) for exact commands, evidence, and scope.
+
 ## Result
 
 **PASS.** Every finding from review rounds 1–3 and every earlier verification report is fixed and rechecked. The repaired static site and CLI are live at <https://github-dependency-exit.sociobot.in>.
