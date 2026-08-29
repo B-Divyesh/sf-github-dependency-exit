@@ -1,0 +1,21 @@
+Clean-clone minimum-Rust provisioning evidence
+================================================
+
+Clean clone: /tmp/gde-polish-5-clean.jhPnGj
+Date: 2026-08-29 UTC
+
+Procedure:
+1. Removed the exact Rust 1.85.0 toolchain with:
+   rustup toolchain uninstall 1.85.0
+2. From the clean clone, ran the exact manifest command:
+   npm run test:msrv -- --grep @claim:rust-1-85-build
+
+Observed result:
+- scripts/ensure-rust-toolchain.mjs printed:
+  "Installing Rust 1.85.0 for the minimum-version claim…"
+- rustup downloaded and installed the missing 1.85.0 toolchain automatically.
+- Cargo completed the feature build and Playwright completed the tagged claim.
+- Final Playwright result: 1 passed (34.9s).
+
+This verifies the documented claim command is self-contained when the exact
+minimum toolchain is initially absent; no manual Rust installation was used.

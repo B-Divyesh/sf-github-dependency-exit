@@ -1,0 +1,27 @@
+[
+  {
+    "href": "https://github-dependency-exit.sociobot.in/",
+    "status": 200
+  },
+  {
+    "href": "https://github-dependency-exit.sociobot.in/?demo=1",
+    "status": 200
+  },
+  {
+    "href": "https://github-dependency-exit.sociobot.in/privacy",
+    "status": 200
+  },
+  {
+    "href": "https://github-dependency-exit.sociobot.in/downloads/github-exit-linux-x86_64",
+    "status": 200
+  },
+  {
+    "href": "https://github-dependency-exit.sociobot.in/terms",
+    "status": 200
+  },
+  {
+    "href": "https://api.sociobot.in/api/v1/products/github-dependency-exit/checkout",
+    "status": 303,
+    "location": "https://checkout.dodopayments.com/session/[redacted-transient-session]"
+  }
+]

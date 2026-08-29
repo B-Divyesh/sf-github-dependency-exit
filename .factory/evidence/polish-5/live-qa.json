@@ -1,0 +1,98 @@
+{
+  "origin": "https://github-dependency-exit.sociobot.in",
+  "routes": {
+    "home": {
+      "status": 200,
+      "title": "GitHub Exit Inventory — map GitHub dependencies",
+      "h1": [
+        "Map GitHub dependencies before you move"
+      ],
+      "main": 1,
+      "overflow": 0,
+      "errors": [],
+      "unexpectedErrors": [],
+      "description": "Map GitHub dependencies and create a migration checklist before changing forges.",
+      "canonical": "https://github-dependency-exit.sociobot.in/"
+    },
+    "demo": {
+      "status": 200,
+      "title": "Demo — GitHub Exit Inventory",
+      "h1": [
+        "Review the sample exit inventory"
+      ],
+      "main": 1,
+      "overflow": 0,
+      "errors": [],
+      "unexpectedErrors": [],
+      "description": "Explore a bundled three-repository dependency inventory and migration checklist without an account or token.",
+      "canonical": "https://github-dependency-exit.sociobot.in/?demo=1"
+    },
+    "privacy": {
+      "status": 200,
+      "title": "Privacy — GitHub Exit Inventory",
+      "h1": [
+        "Your repository data stays with you"
+      ],
+      "main": 1,
+      "overflow": 0,
+      "errors": [],
+      "unexpectedErrors": [],
+      "description": "How GitHub Exit Inventory handles demo, license, and report data.",
+      "canonical": "https://github-dependency-exit.sociobot.in/privacy"
+    },
+    "terms": {
+      "status": 200,
+      "title": "Terms — GitHub Exit Inventory",
+      "h1": [
+        "Use the inventory as a planning aid"
+      ],
+      "main": 1,
+      "overflow": 0,
+      "errors": [],
+      "unexpectedErrors": [],
+      "description": "Terms for free repository scans and the one-time GitHub Exit Inventory team license.",
+      "canonical": "https://github-dependency-exit.sociobot.in/terms"
+    },
+    "notFound": {
+      "status": 404,
+      "title": "Page not found — GitHub Exit Inventory",
+      "h1": [
+        "This route is not in the inventory"
+      ],
+      "main": 1,
+      "overflow": 0,
+      "errors": [
+        "Failed to load resource: the server responded with a status of 404 ()"
+      ],
+      "unexpectedErrors": [],
+      "description": "The requested GitHub Exit Inventory page was not found. Return to the inventory start.",
+      "canonical": "https://github-dependency-exit.sociobot.in/404"
+    }
+  },
+  "history": {
+    "backFocus": true,
+    "forwardFocus": true
+  },
+  "demo": {
+    "banner": true,
+    "trailActive": "repo-button active",
+    "resetFocus": true,
+    "offsite": [],
+    "freshStorage": {
+      "local": [],
+      "session": []
+    }
+  },
+  "offline": {
+    "heading": true,
+    "banner": true
+  },
+  "axe": {
+    "home": [],
+    "demo": [],
+    "privacy": [],
+    "terms": [],
+    "notFound": []
+  },
+  "ok": true
+}
