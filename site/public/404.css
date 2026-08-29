@@ -10,7 +10,7 @@ header a, footer a { display: inline-flex; align-items: center; min-width: 44px;
 nav { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 24px; }
 main { min-height: 65vh; padding: clamp(80px, 12vw, 160px) clamp(16px, 8vw, 120px); border-left: 8px solid #31552f; }
 main > p:first-child { color: #91391f; font: 800 .78rem/1.2 ui-monospace, monospace; letter-spacing: .1em; }
-h1 { max-width: 10ch; font: 900 clamp(3rem, 7vw, 7rem)/.98 "Arial Black", Arial, sans-serif; letter-spacing: -.045em; }
+h1 { max-width: 10ch; overflow-wrap: anywhere; font: 900 clamp(3rem, 7vw, 7rem)/.98 "Arial Black", Arial, sans-serif; letter-spacing: -.045em; }
 main p:not(:first-child) { max-width: 40ch; }
 .button { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 11px 18px; border: 2px solid #171a16; background: #d9ec69; color: #171a16; box-shadow: 4px 4px 0 #171a16; font-weight: 800; text-decoration: none; }
 footer { display: grid; grid-template-columns: minmax(220px, 1fr) auto auto; align-items: center; gap: 24px; background: #171a16; color: #fffdf5; }

@@ -282,6 +282,17 @@ test('the 390 px layout does not scroll sideways and keyboard reaches the demo',
   expect(undersized).toEqual([]);
 });
 
+test('text enlarged to 200 percent keeps every route within the mobile viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  for (const route of ['/', '/?demo=1', '/privacy', '/terms', '/404.html']) {
+    await page.goto(route);
+    await page.evaluate(() => { document.documentElement.style.fontSize = '32px'; });
+    const overflow = await page.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    expect(overflow, `${route} horizontal overflow at 200% text`).toBeLessThanOrEqual(1);
+    await expect(page.locator('main')).toBeVisible();
+  }
+});
+
 function run(command: string, args: string[]): Promise<{code: number|null; stdout: string; stderr: string}> {
   return new Promise(resolve => {
     const child = spawn(command, args, { cwd: process.cwd(), env: process.env });
