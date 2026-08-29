@@ -59,6 +59,36 @@ test('unreadable metadata creates unknown actions, branch, and package checklist
   } finally { await fixture.close(); }
 });
 
+test('a private scan uses GITHUB_TOKEN as a Bearer header and writes a report @claim:private-token-auth', async () => {
+  const authorizations: Array<string | undefined> = [];
+  const fixture = await startFixture((request, response) => {
+    authorizations.push(request.headers.authorization);
+    if (request.headers.authorization !== 'Bearer fixture-private-token') {
+      return json(response, { message: 'Requires authentication' }, 401);
+    }
+    const path = request.url ?? '';
+    if (path === '/repos/private/authenticated') return json(response, repository('private/authenticated'));
+    if (path.includes('/actions/workflows')) return json(response, { workflows: [] });
+    if (path.includes('/branches/main/protection')) return json(response, { message: 'Not Found' }, 404);
+    return json(response, []);
+  });
+  try {
+    const rejected = await run(['scan', '--repo', 'private/authenticated', '--api-base', fixture.base, '--output', await tempOutput()], {}, ['GITHUB_TOKEN']);
+    expect(rejected.code).toBe(2);
+    expect(authorizations).toEqual([undefined]);
+    authorizations.length = 0;
+    const output = await tempOutput();
+    const accepted = await run(
+      ['scan', '--repo', 'private/authenticated', '--api-base', fixture.base, '--output', output],
+      { GITHUB_TOKEN: 'fixture-private-token' },
+    );
+    expect(accepted.code, accepted.stderr).toBe(0);
+    expect(authorizations.length).toBeGreaterThan(5);
+    expect(authorizations).toEqual(expect.arrayContaining(['Bearer fixture-private-token']));
+    expect(JSON.parse(await readFile(join(output, 'inventory.json'), 'utf8')).repositories[0].full_name).toBe('private/authenticated');
+  } finally { await fixture.close(); }
+});
+
 test('every list endpoint follows the page boundary @claim:paginated-inventory', async () => {
   const workflows = Array.from({ length: 100 }, (_, index) => ({ ...workflowRecord(), name: `workflow-${index + 1}`, path: `.github/workflows/${index + 1}.yml` }));
   const requested: string[] = [];
@@ -185,6 +215,34 @@ test('verified alternatives have documentation while unsupported candidates stay
       alternative_status: 'unknown',
       alternative_evidence: 'Confirm payload and signature support with each receiver.',
     });
+  } finally { await fixture.close(); }
+});
+
+test('app and OAuth limits add an installation-settings check in both report formats @claim:oauth-manual-review', async ({ page }) => {
+  const fixture = await startFixture((request, response) => {
+    const path = request.url ?? '';
+    if (path === '/repos/oauth/repo') return json(response, repository('oauth/repo'));
+    if (path.includes('/actions/workflows')) return json(response, { workflows: [] });
+    if (path.includes('/branches/main/protection')) return json(response, { message: 'Not Found' }, 404);
+    return json(response, []);
+  });
+  try {
+    const output = await tempOutput();
+    const result = await run(['scan', '--repo', 'oauth/repo', '--api-base', fixture.base, '--output', output]);
+    expect(result.code, result.stderr).toBe(0);
+    const inventory = JSON.parse(await readFile(join(output, 'inventory.json'), 'utf8'));
+    const check = inventory.checklist.find((item: { area: string }) => item.area === 'GitHub Apps and OAuth');
+    expect(check).toMatchObject({
+      status: 'unknown',
+      finding: 'The CLI cannot enumerate every app and OAuth grant.',
+      next_step: 'Open repository and organization installation settings. Record each app owner, scopes, callback URL, and replacement.',
+    });
+    const markdown = await readFile(join(output, 'migration-checklist.md'), 'utf8');
+    expect(markdown).toContain('**oauth/repo · GitHub Apps and OAuth** — The CLI cannot enumerate every app and OAuth grant.');
+    expect(markdown).toContain('Next: Open repository and organization installation settings. Record each app owner, scopes, callback URL, and replacement.');
+    await page.goto('/');
+    await expect(page.getByText('The report adds a manual installation-settings check for app and OAuth grants.')).toBeVisible();
+    expect(await readFile('README.md', 'utf8')).toContain('The CLI cannot enumerate every app and OAuth grant, so both reports add a manual installation-settings check.');
   } finally { await fixture.close(); }
 });
 
@@ -353,9 +411,11 @@ async function startFixture(handler: (request: IncomingMessage, response: Server
 
 async function tempOutput(): Promise<string> { return mkdtemp(join(tmpdir(), 'github-exit-regression-')); }
 
-function run(args: string[], environment: Record<string, string> = {}): Promise<Result> {
+function run(args: string[], environment: Record<string, string> = {}, absent: string[] = []): Promise<Result> {
   return new Promise(resolve => {
-    const child = spawn('target/debug/github-exit', args, { cwd: process.cwd(), env: { ...process.env, ...environment } });
+    const env = { ...process.env, ...environment };
+    for (const key of absent) delete env[key];
+    const child = spawn('target/debug/github-exit', args, { cwd: process.cwd(), env });
     let stdout = ''; let stderr = '';
     child.stdout.on('data', chunk => stdout += chunk);
     child.stderr.on('data', chunk => stderr += chunk);

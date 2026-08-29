@@ -12,8 +12,7 @@
     "releases": 14,
     "rules": 4,
     "autolinks": 1,
-    "unknown_checks": 3,
-    "risk_points": 72
+    "unknown_checks": 3
   },
   "repositories": [
     {
@@ -63,7 +62,7 @@
         {"area":"branch protection","status":"verified","source":"GET /repos/mosswood-labs/trail-api/branches/main/protection","note":"default branch protection found"},
         {"area":"rulesets","status":"verified","source":"GET /repos/mosswood-labs/trail-api/rulesets","note":"2 total branch rules found"},
         {"area":"issue autolinks","status":"verified","source":"GET /repos/mosswood-labs/trail-api/autolinks","note":"1 autolink found"},
-        {"area":"GitHub Apps and OAuth","status":"unknown","source":"repository installation settings","note":"workflow and webhook signals are recorded; the complete OAuth grant list needs manual review"}
+        {"area":"GitHub Apps and OAuth","status":"unknown","source":"repository installation settings","note":"The CLI cannot enumerate every app and OAuth grant; workflow and webhook signals were recorded"}
       ]
     },
     {
@@ -103,7 +102,7 @@
         {"area":"branch protection","status":"verified","source":"GET /repos/mosswood-labs/field-console/branches/main/protection","note":"default branch protection found"},
         {"area":"rulesets","status":"verified","source":"GET /repos/mosswood-labs/field-console/rulesets","note":"1 total branch rule found"},
         {"area":"issue autolinks","status":"verified","source":"GET /repos/mosswood-labs/field-console/autolinks","note":"0 autolinks found"},
-        {"area":"GitHub Apps and OAuth","status":"unknown","source":"repository installation settings","note":"the complete OAuth grant list needs manual review"}
+        {"area":"GitHub Apps and OAuth","status":"unknown","source":"repository installation settings","note":"The CLI cannot enumerate every app and OAuth grant; workflow and webhook signals were recorded"}
       ]
     },
     {
@@ -134,7 +133,7 @@
         {"area":"branch protection","status":"verified","source":"GET /repos/mosswood-labs/ops-playbook/branches/main/protection","note":"default branch protection found"},
         {"area":"rulesets","status":"verified","source":"GET /repos/mosswood-labs/ops-playbook/rulesets","note":"1 total branch rule found"},
         {"area":"issue autolinks","status":"verified","source":"GET /repos/mosswood-labs/ops-playbook/autolinks","note":"issues are disabled and 0 autolinks were found"},
-        {"area":"GitHub Apps and OAuth","status":"unknown","source":"repository installation settings","note":"the complete OAuth grant list needs manual review"}
+        {"area":"GitHub Apps and OAuth","status":"unknown","source":"repository installation settings","note":"The CLI cannot enumerate every app and OAuth grant; workflow and webhook signals were recorded"}
       ]
     }
   ],
@@ -145,7 +144,7 @@
   "checklist": [
     {"repository":"mosswood-labs/trail-api","area":"Actions","status":"verified","finding":"2 workflows use 3 external action references","next_step":"Rebuild each workflow on the target runner and test its secrets.","alternative":"Forgejo Actions","alternative_status":"verified","alternative_evidence":"https://forgejo.org/docs/latest/user/actions/"},
     {"repository":"mosswood-labs/trail-api","area":"Webhooks","status":"verified","finding":"2 webhook targets receive four event types","next_step":"Create each endpoint on the target forge and send a test event.","alternative":"Target-forge webhooks","alternative_status":"unknown","alternative_evidence":"Confirm payload and signature support with each receiver."},
-    {"repository":"mosswood-labs/trail-api","area":"GitHub Apps and OAuth","status":"unknown","finding":"2 integration signals found; the grant list still needs review","next_step":"Record each installed app, scope, callback URL, and owner.","alternative":"Target-forge app or OAuth integration","alternative_status":"unknown","alternative_evidence":"Compatibility depends on each vendor and callback contract."},
+    {"repository":"mosswood-labs/trail-api","area":"GitHub Apps and OAuth","status":"unknown","finding":"The CLI cannot enumerate every app and OAuth grant.","next_step":"Open repository and organization installation settings. Record each app owner, scopes, callback URL, and replacement.","alternative":"Target-forge app or OAuth integration","alternative_status":"unknown","alternative_evidence":"Compatibility depends on each app vendor and callback contract."},
     {"repository":"mosswood-labs/field-console","area":"Actions","status":"verified","finding":"2 workflows use 3 action references","next_step":"Replace the Pages deploy action and test preview cleanup.","alternative":"Forge-native Pages pipeline","alternative_status":"unknown","alternative_evidence":"Confirm preview deployment and status callback support."},
     {"repository":"mosswood-labs/field-console","area":"Branch rules","status":"verified","finding":"1 protected branch found","next_step":"Translate the rule and test a rejected pull request.","alternative":"GitLab protected branches","alternative_status":"verified","alternative_evidence":"https://docs.gitlab.com/user/project/repository/branches/protected/"},
     {"repository":"mosswood-labs/ops-playbook","area":"Issue links","status":"verified","finding":"Issues are disabled and no autolinks were found","next_step":"Keep issue tracking disabled after import.","alternative":"No replacement needed","alternative_status":"verified","alternative_evidence":"The repository settings and autolink endpoint were checked."},

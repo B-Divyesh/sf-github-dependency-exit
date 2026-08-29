@@ -24,7 +24,6 @@ pub struct Summary {
     pub rules: usize,
     pub autolinks: usize,
     pub unknown_checks: usize,
-    pub risk_points: usize,
 }
 
 #[derive(Debug, Clone, Serialize, Deserialize)]

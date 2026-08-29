@@ -397,7 +397,7 @@ impl GithubClient {
         evidence.push(unknown(
             "GitHub Apps and OAuth",
             format!("{}/settings/installations", text_at(&repo, "/html_url")),
-            "GitHub does not expose a complete repository-scoped OAuth grant list; workflow and webhook signals were recorded".into(),
+            "The CLI cannot enumerate every app and OAuth grant; workflow and webhook signals were recorded".into(),
         ));
         app_oauth_references
             .sort_by(|left, right| left.kind.cmp(&right.kind).then(left.name.cmp(&right.name)));
@@ -615,7 +615,7 @@ pub fn finalize(mut inventory: Inventory) -> Inventory {
             .iter()
             .find(|evidence| evidence.area == "GitHub Apps and OAuth")
             .expect("OAuth evidence is always included");
-        checklist.push(ChecklistItem { repository: repo.full_name.clone(), area: "GitHub Apps and OAuth".into(), status: oauth_evidence.status.clone(), finding: format!("{} workflow or webhook signals found; the grant list still needs review", repo.app_oauth_references.len()), next_step: "Open repository and organization installation settings. Record each app owner, scopes, callback URL, and replacement.".into(), alternative: "Target-forge app or OAuth integration".into(), alternative_status: CheckStatus::Unknown, alternative_evidence: "Compatibility depends on each app vendor and callback contract.".into() });
+        checklist.push(ChecklistItem { repository: repo.full_name.clone(), area: "GitHub Apps and OAuth".into(), status: oauth_evidence.status.clone(), finding: "The CLI cannot enumerate every app and OAuth grant.".into(), next_step: "Open repository and organization installation settings. Record each app owner, scopes, callback URL, and replacement.".into(), alternative: "Target-forge app or OAuth integration".into(), alternative_status: CheckStatus::Unknown, alternative_evidence: "Compatibility depends on each app vendor and callback contract.".into() });
     }
     for package in &inventory.packages {
         checklist.push(ChecklistItem {
@@ -695,14 +695,6 @@ pub fn finalize(mut inventory: Inventory) -> Inventory {
         .flat_map(|repo| &repo.evidence)
         .filter(|evidence| evidence.status == CheckStatus::Unknown)
         .count();
-    summary.risk_points = summary.workflows * 3
-        + summary.action_dependencies * 2
-        + summary.webhooks * 3
-        + summary.packages * 2
-        + summary.releases
-        + summary.rules * 2
-        + summary.autolinks
-        + summary.unknown_checks * 3;
     inventory
 }
 

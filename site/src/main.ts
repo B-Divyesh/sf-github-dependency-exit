@@ -19,8 +19,8 @@ type Route = {
 
 const routes: Record<string, Route> = {
   '/': {
-    title: 'GitHub Exit Inventory — map migration dependencies',
-    description: 'Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.',
+    title: 'GitHub Exit Inventory — map GitHub dependencies',
+    description: 'Map GitHub dependencies and create a migration checklist before changing forges.',
     canonical: '/',
     render: home,
   },
@@ -74,7 +74,7 @@ function home(): string {
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
         <p class="eyebrow">GITHUB DEPENDENCY INVENTORY / READ-ONLY CLI</p>
-        <h1 id="hero-title" tabindex="-1">Map what breaks before leaving GitHub</h1>
+        <h1 id="hero-title" tabindex="-1">Map GitHub dependencies before you move</h1>
         <p class="lede">For small software teams planning a fallback, this CLI finds repository dependencies and builds a checked migration list.</p>
         <div class="hero-actions"><a class="button primary" href="/?demo=1" data-link>Try it with sample data</a><span>Opens a browser report. No account or token.</span></div>
         <ul class="facts" aria-label="Product facts"><li>Read-only GitHub requests</li><li>Reports stay in your output folder</li><li>$39 once; one-repository scans stay free</li></ul>
@@ -83,7 +83,7 @@ function home(): string {
     </section>
 
     <section class="live-preview" aria-labelledby="preview-title">
-      <div class="section-label"><span>01</span><p>THE PRODUCT</p></div>
+      <div class="section-label"><span>01</span><p>SAMPLE MIGRATION REPORT</p></div>
       <div class="preview-copy"><h2 id="preview-title">See migration dependencies beyond Git history</h2><p>Every checked area keeps its source. Missing access becomes an unknown task instead of a silent blank.</p></div>
       ${summaryStrip()}
       <div class="terminal" role="region" tabindex="0" aria-label="Terminal recording of the bundled demo">
@@ -102,8 +102,8 @@ Report written to /tmp/github-exit-demo-…</code></pre>
       <div class="section-label"><span>02</span><p>HOW IT WORKS</p></div>
       <h2 id="how-title">Go from API evidence to a dry-run list</h2>
       <ol class="survey-steps">
-        <li><span>1</span><div><h3>Scan read-only metadata</h3><p>Use one repository for free. Add a fine-grained token when private metadata needs it.</p></div></li>
-        <li><span>2</span><div><h3>Check every unknown</h3><p>The report labels blocked endpoints and OAuth grant review as manual work.</p></div></li>
+        <li><span>1</span><div><h3>Scan read-only metadata</h3><p>Use one repository for free. Set a fine-grained token with <code>GITHUB_TOKEN</code> for private metadata.</p></div></li>
+        <li><span>2</span><div><h3>Check every unknown</h3><p>The report adds a manual installation-settings check for app and OAuth grants.</p></div></li>
         <li><span>3</span><div><h3>Test the target forge</h3><p>Use the Markdown checklist during a dry run. Keep JSON for scripts and review tools.</p></div></li>
       </ol>
     </section>
@@ -111,7 +111,7 @@ Report written to /tmp/github-exit-demo-…</code></pre>
     <section class="boundaries" aria-labelledby="boundaries-title">
       <div class="section-label"><span>03</span><p>BOUNDARIES</p></div>
       <div><h2 id="boundaries-title">It maps the move; it does not perform it</h2><p>The CLI does not clone code, move issues, rewrite workflows, or promise forge compatibility.</p><p>It sends GitHub API requests from your machine. Reports stay in the output folder you choose.</p></div>
-      <aside><h3>Minimum access</h3><p>Public repositories work without a token. Private scans need read access for the metadata you want checked.</p></aside>
+      <aside><h3>Minimum access</h3><p>Public repositories work without a token. Grant only the GitHub read permissions needed for your selected checks. Unreadable checks appear as unknown.</p></aside>
     </section>
 
     <section class="install" id="install" aria-labelledby="install-title" tabindex="-1">
@@ -130,7 +130,7 @@ Report written to /tmp/github-exit-demo-…</code></pre>
 function demo(): string {
   const rows = inventory.checklist.map(checklistRow).join('');
   return shell(`<main id="main" class="demo-main">
-    <section class="demo-head"><div><p class="eyebrow">SAMPLE / MOSSWOOD LABS</p><h1 tabindex="-1">Review the sample exit inventory</h1><p>This browser report uses the same data as <code>github-exit demo</code>.</p></div><div class="risk-block"><strong>${inventory.summary.risk_points}</strong><span>review points</span><small>Ranking only, not a time estimate</small></div></section>
+    <section class="demo-head"><div><p class="eyebrow">SAMPLE / MOSSWOOD LABS</p><h1 tabindex="-1">Review the sample exit inventory</h1><p>This browser report uses the same data as <code>github-exit demo</code>.</p></div></section>
     ${summaryStrip()}
     <section class="demo-controls" aria-label="Report controls"><label for="area-filter">Show checklist area</label><select id="area-filter"><option value="all">All areas</option>${[...new Set(inventory.checklist.map(i => i.area))].map(area => `<option>${escapeHtml(area)}</option>`).join('')}</select><button id="download-json" type="button">Download sample JSON</button></section>
     <section class="inventory-layout">

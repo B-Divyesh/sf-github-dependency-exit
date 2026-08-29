@@ -40,13 +40,13 @@ Public metadata needs no token:
 github-exit scan --repo octo-org/api --output exit-report
 ```
 
-For a private repository, pass a fine-grained token through the environment:
+For a private repository, set a fine-grained token with `GITHUB_TOKEN`:
 
 ```sh
 GITHUB_TOKEN=github_pat_… github-exit scan --repo octo-org/private-api --output exit-report
 ```
 
-Start with repository **Metadata: read**. Add read access for Actions, administration, webhooks, and packages only when those checks matter. The report creates unknown checklist work when GitHub access is incomplete. The token is never written to a report.
+Grant only the GitHub read permissions needed for your selected checks. Unreadable checks appear as unknown. The token is never written to a report.
 
 Use `--json` to write one parseable inventory to stdout for a script. The CLI sends progress to stderr. It follows every page of GitHub list results and stops when GitHub reports a rate limit. Use `--api-base` with a GitHub Enterprise Server 3.14 REST API endpoint.
 
@@ -65,9 +65,8 @@ The CLI checks the license through the Sociobot billing API. It does not send re
 - `verified` means the named API endpoint returned data or a confirmed empty result.
 - `unknown` means access failed or GitHub has no complete repository-scoped endpoint.
 - Alternatives are marked `verified` only when linked target-forge documentation supports that feature.
-- Risk points rank review work. They do not estimate migration time.
 
-GitHub does not expose a complete repository-scoped OAuth grant list. The CLI records workflow and webhook signals, then adds a manual installation-settings check. This limitation stays visible in both report formats.
+The CLI cannot enumerate every app and OAuth grant, so both reports add a manual installation-settings check.
 
 ## Develop and verify
 
@@ -78,7 +77,7 @@ npm test
 npm run build:site
 ```
 
-`npm test` runs Rust unit and command tests plus Playwright claim and accessibility tests. `npm run build:site` creates the static deployment at `dist/site/` and stages the Linux binary at `dist/site/downloads/`.
+`npm test` provisions Rust 1.85.0 when needed, then runs Rust unit and command tests plus Playwright claim and accessibility tests. `npm run test:msrv -- --grep @claim:rust-1-85-build` runs the minimum-version claim alone. `npm run build:site` creates the static deployment at `dist/site/` and stages the Linux binary at `dist/site/downloads/`.
 
 To prepare the Rust crate without publishing it:
 

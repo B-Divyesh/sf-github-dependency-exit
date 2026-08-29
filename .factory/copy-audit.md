@@ -10,7 +10,7 @@ Audited from the rendered `/` route on 2026-08-29. Counts treat hyphenated terms
 | GitHub Exit Inventory | 3 |
 | Demo / Install / Price / Privacy | 4 |
 | GitHub dependency inventory / read-only CLI | 6 |
-| Map what breaks before leaving GitHub | 6 |
+| Map GitHub dependencies before you move | 6 |
 | For small software teams planning a fallback, this CLI finds repository dependencies and builds a checked migration list. | 18 |
 | Try it with sample data | 5 |
 | Opens a browser report. | 4 |
@@ -25,7 +25,7 @@ Audited from the rendered `/` route on 2026-08-29. Counts treat hyphenated terms
 
 | Copy | Words |
 | --- | ---: |
-| The product | 2 |
+| Sample migration report | 3 |
 | See migration dependencies beyond Git history | 6 |
 | Every checked area keeps its source. | 6 |
 | Missing access becomes an unknown task instead of a silent blank. | 11 |
@@ -47,9 +47,9 @@ Audited from the rendered `/` route on 2026-08-29. Counts treat hyphenated terms
 | Go from API evidence to a dry-run list | 8 |
 | Scan read-only metadata | 3 |
 | Use one repository for free. | 5 |
-| Add a fine-grained token when private metadata needs it. | 9 |
+| Set a fine-grained token with GITHUB_TOKEN for private metadata. | 10 |
 | Check every unknown | 3 |
-| The report labels blocked endpoints and OAuth grant review as manual work. | 12 |
+| The report adds a manual installation-settings check for app and OAuth grants. | 12 |
 | Test the target forge | 4 |
 | Use the Markdown checklist during a dry run. | 8 |
 | Keep JSON for scripts and review tools. | 7 |
@@ -60,7 +60,8 @@ Audited from the rendered `/` route on 2026-08-29. Counts treat hyphenated terms
 | Reports stay in the output folder you choose. | 8 |
 | Minimum access | 2 |
 | Public repositories work without a token. | 6 |
-| Private scans need read access for the metadata you want checked. | 11 |
+| Grant only the GitHub read permissions needed for your selected checks. | 11 |
+| Unreadable checks appear as unknown. | 5 |
 
 ## Install, price, and footer
 
@@ -98,7 +99,7 @@ Audited from the rendered `/` route on 2026-08-29. Counts treat hyphenated terms
 - Undefined design metaphors: none.
 - Generated report wording: `Inventory totals` names the report summary table; `exit surface` and `accumulated load` are absent.
 - First screen aloud: the job, team, sample action, local report boundary, and price fit in one short pass.
-- Catalog description: 81 characters, starts with “Map”, and contains no banned words.
+- Catalog description: 47 characters, starts with “Map”, and contains no banned words.
 
 ## Terminology
 

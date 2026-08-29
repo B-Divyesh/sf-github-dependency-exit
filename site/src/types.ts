@@ -4,7 +4,7 @@ export interface Inventory {
   generated_at: string;
   source: string;
   scope: string;
-  summary: Record<'repositories'|'workflows'|'action_dependencies'|'webhooks'|'packages'|'releases'|'rules'|'autolinks'|'unknown_checks'|'risk_points', number>;
+  summary: Record<'repositories'|'workflows'|'action_dependencies'|'webhooks'|'packages'|'releases'|'rules'|'autolinks'|'unknown_checks', number>;
   repositories: Repository[];
   packages: Array<{ repository: string; name: string; package_type: string; visibility: string }>;
   checklist: Checklist[];

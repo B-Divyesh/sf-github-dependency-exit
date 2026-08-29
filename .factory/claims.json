@@ -147,6 +147,13 @@
     "sandbox": "local API fixture; scan with a known token and assert inventory.json excludes it"
   },
   {
+    "id": "private-token-auth",
+    "claim": "Private repository scans authenticate with GITHUB_TOKEN",
+    "where": "landing how-it-works step and README private scan instructions",
+    "test": "npm test -- --grep @claim:private-token-auth",
+    "sandbox": "private API fixture rejects an unauthenticated request, accepts GITHUB_TOKEN as a Bearer header, and asserts a report is written"
+  },
+  {
     "id": "sourced-evidence",
     "claim": "Every checked area keeps its source",
     "where": "landing product preview",
@@ -159,6 +166,13 @@
     "where": "README evidence guide",
     "test": "npm test -- --grep @claim:documented-alternatives",
     "sandbox": "local scan fixture; assert a verified documented alternative and an unsupported unknown alternative"
+  },
+  {
+    "id": "oauth-manual-review",
+    "claim": "The CLI cannot enumerate every app and OAuth grant, so both reports add a manual installation-settings check",
+    "where": "landing how-it-works step and README evidence guide",
+    "test": "npm test -- --grep @claim:oauth-manual-review",
+    "sandbox": "local repository fixture; assert the exact app and OAuth unknown plus next step in inventory.json and migration-checklist.md"
   },
   {
     "id": "sociobot-metadata-privacy",
@@ -178,8 +192,8 @@
     "id": "rust-1-85-build",
     "claim": "The CLI builds with Rust 1.85",
     "where": "landing Install section and README",
-    "test": "npm test -- --grep @claim:rust-1-85-build",
-    "sandbox": "locked cargo build with the Rust 1.85.0 toolchain in a fresh target directory"
+    "test": "npm run test:msrv -- --grep @claim:rust-1-85-build",
+    "sandbox": "the documented test command provisions Rust 1.85.0 when absent, then runs a locked build in a fresh target directory"
   },
   {
     "id": "binary-download-build-match",

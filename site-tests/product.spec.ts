@@ -228,7 +228,7 @@ test('the service worker activates the current shell and refreshes navigations',
   const response = await request.get('/sw.js');
   expect(response.status()).toBe(200);
   const worker = await response.text();
-  expect(worker).toContain("const CACHE = 'github-exit-shell-2026-08-29-polish-4'");
+  expect(worker).toContain("const CACHE = 'github-exit-shell-2026-08-29-polish-5'");
   expect(worker).toContain('self.skipWaiting()');
   expect(worker).toContain('self.clients.claim()');
   expect(worker).toContain("event.request.mode === 'navigate'");
@@ -251,7 +251,7 @@ test('the sample report reloads offline after the first visit', async ({ page, c
 });
 
 const routeMetadata = [
-  ['/', 'GitHub Exit Inventory — map migration dependencies', 'Map Actions, webhooks, packages, rules, releases, and app signals before moving GitHub repositories.', 'https://github-dependency-exit.sociobot.in/'],
+  ['/', 'GitHub Exit Inventory — map GitHub dependencies', 'Map GitHub dependencies and create a migration checklist before changing forges.', 'https://github-dependency-exit.sociobot.in/'],
   ['/?demo=1', 'Demo — GitHub Exit Inventory', 'Explore a bundled three-repository dependency inventory and migration checklist without an account or token.', 'https://github-dependency-exit.sociobot.in/?demo=1'],
   ['/demo', 'Demo — GitHub Exit Inventory', 'Explore a bundled three-repository dependency inventory and migration checklist without an account or token.', 'https://github-dependency-exit.sociobot.in/?demo=1'],
   ['/privacy', 'Privacy — GitHub Exit Inventory', 'How GitHub Exit Inventory handles demo, license, and report data.', 'https://github-dependency-exit.sociobot.in/privacy'],
@@ -282,7 +282,11 @@ test('landing preview names migration dependencies without design metaphors', as
 test('the first-screen label uses the product inventory term', async ({ page }) => {
   await page.goto('/');
   await expect(page.getByText('GITHUB DEPENDENCY INVENTORY / READ-ONLY CLI')).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Map GitHub dependencies before you move' })).toBeVisible();
+  await expect(page.getByText('SAMPLE MIGRATION REPORT')).toBeVisible();
   await expect(page.getByText(/exit survey/i)).toHaveCount(0);
+  await expect(page.getByText(/what breaks/i)).toHaveCount(0);
+  await expect(page.getByText(/the product/i)).toHaveCount(0);
 });
 
 test('Back and Forward focus the heading for the restored route', async ({ page }) => {
@@ -290,9 +294,20 @@ test('Back and Forward focus the heading for the restored route', async ({ page 
   await page.getByRole('link', { name: 'Try it with sample data' }).click();
   await expect(page.getByRole('heading', { name: 'Review the sample exit inventory' })).toBeFocused();
   await page.goBack();
-  await expect(page.getByRole('heading', { name: 'Map what breaks before leaving GitHub' })).toBeFocused();
+  await expect(page.getByRole('heading', { name: 'Map GitHub dependencies before you move' })).toBeFocused();
   await page.goForward();
   await expect(page.getByRole('heading', { name: 'Review the sample exit inventory' })).toBeFocused();
+});
+
+test('current product copy and reports omit the unsupported review score', async ({ page }) => {
+  await page.goto('/?demo=1');
+  await expect(page.getByText(/review points|ranking only|risk points/i)).toHaveCount(0);
+  const [readme, report, fixture] = await Promise.all([
+    readFile('README.md', 'utf8'),
+    readFile('src/report.rs', 'utf8'),
+    readFile('examples/demo/inventory.json', 'utf8'),
+  ]);
+  expect(`${readme}\n${report}\n${fixture}`).not.toMatch(/risk points|review points|ranking only/i);
 });
 
 test('the static 404 has complete metadata and the standard site shell', async ({ page }) => {
@@ -355,6 +370,15 @@ test('the 390 px layout does not scroll sideways and keyboard reaches the demo',
     return style.display !== 'none' && style.visibility !== 'hidden' && (rect.width < 44 || rect.height < 44);
   }).map(node => (node.textContent || '').trim()));
   expect(undersized).toEqual([]);
+});
+
+test('the desktop first screen keeps the sample action fully in view', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  const action = await page.getByRole('link', { name: 'Try it with sample data' }).boundingBox();
+  expect(action).not.toBeNull();
+  expect(action!.y + action!.height).toBeLessThanOrEqual(900);
+  await expect(page.getByText('Opens a browser report. No account or token.')).toBeVisible();
 });
 
 test('text enlarged to 200 percent keeps every route within the mobile viewport', async ({ page }) => {

@@ -10,16 +10,16 @@ pub fn markdown(inventory: &Inventory) -> String {
     writeln!(out, "> Read-only evidence report. An unknown check needs manual review; it is not proof that a dependency is absent.\n").unwrap();
 
     writeln!(out, "## Inventory totals\n").unwrap();
-    writeln!(out, "| Repositories | Workflows | Actions | Webhooks | Packages | Releases | Rules | Unknown checks | Risk points |").unwrap();
+    writeln!(out, "| Repositories | Workflows | Actions | Webhooks | Packages | Releases | Rules | Unknown checks |").unwrap();
     writeln!(
         out,
-        "| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"
+        "| ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |"
     )
     .unwrap();
     let s = &inventory.summary;
     writeln!(
         out,
-        "| {} | {} | {} | {} | {} | {} | {} | {} | {} |\n",
+        "| {} | {} | {} | {} | {} | {} | {} | {} |\n",
         s.repositories,
         s.workflows,
         s.action_dependencies,
@@ -27,13 +27,7 @@ pub fn markdown(inventory: &Inventory) -> String {
         s.packages,
         s.releases,
         s.rules,
-        s.unknown_checks,
-        s.risk_points
-    )
-    .unwrap();
-    writeln!(
-        out,
-        "Risk points rank review work only. They are not a migration-time estimate.\n"
+        s.unknown_checks
     )
     .unwrap();
 

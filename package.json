@@ -10,7 +10,8 @@
     "preview": "vite preview --config site/vite.config.ts",
     "typecheck": "tsc --noEmit -p tsconfig.json",
     "lint": "cargo fmt --check && cargo clippy --all-targets --all-features -- -D warnings",
-    "test": "cargo build --features claim-test-hook && cargo test --all-features && playwright test",
+    "test": "node scripts/ensure-rust-toolchain.mjs && cargo build --features claim-test-hook && cargo test --all-features && playwright test",
+    "test:msrv": "node scripts/ensure-rust-toolchain.mjs && cargo build --features claim-test-hook && playwright test",
     "test:site": "playwright test"
   },
   "devDependencies": {

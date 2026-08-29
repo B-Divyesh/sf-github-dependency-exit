@@ -1,0 +1,14 @@
+{
+  "url": "http://127.0.0.1:4173/",
+  "loadMs": 550,
+  "errors": [],
+  "a11y": {
+    "title": "GitHub Exit Inventory — map GitHub dependencies",
+    "lang": "en",
+    "h1": 1,
+    "main": true,
+    "imgsMissingAlt": 0,
+    "buttonsUnlabeled": 0,
+    "textLength": 2584
+  }
+}

@@ -176,8 +176,8 @@ h2 {
   line-height: 0.98;
 }
 h1 {
-  font-size: clamp(3rem, 7.5vw, 7.8rem);
-  max-width: 10ch;
+  font-size: clamp(3rem, 6.5vw, 6.6rem);
+  max-width: 11ch;
   margin-bottom: 24px;
 }
 h2 {
@@ -211,6 +211,10 @@ h3 {
 .hero-copy {
   position: relative;
   z-index: 1;
+}
+.hero h1 {
+  max-width: 100%;
+  overflow-wrap: normal;
 }
 .lede {
   font-size: clamp(1.12rem, 2vw, 1.45rem);
@@ -592,29 +596,6 @@ footer a {
   font-size: clamp(2.8rem, 6vw, 6.2rem);
   max-width: 11ch;
 }
-.risk-block {
-  min-width: 190px;
-  padding: 16px;
-  border: var(--rule);
-  background: var(--rust);
-  color: var(--chalk);
-}
-.risk-block strong {
-  display: block;
-  font:
-    900 4.5rem/1 "Arial Black",
-    Arial;
-}
-.risk-block span,
-.risk-block small {
-  display: block;
-}
-.risk-block span {
-  font-weight: 800;
-}
-.risk-block small {
-  margin-top: 8px;
-}
 .demo-main > .summary-strip {
   margin: 0 clamp(16px, 4vw, 64px) 32px;
 }
@@ -955,9 +936,6 @@ footer a {
   }
   .demo-banner > div {
     justify-content: space-between;
-  }
-  .risk-block {
-    width: 100%;
   }
   .demo-controls button {
     margin-left: 0;
