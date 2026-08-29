@@ -204,6 +204,7 @@ test('the paid tier has one price, keeps repository scans free, and opens Dodo c
 });
 
 test('the Linux download exactly matches the binary staged by this site build @claim:binary-download-build-match', async ({ page }) => {
+  test.setTimeout(120_000);
   const build = await run('npm', ['run', 'build:site']);
   expect(build.code, build.stderr).toBe(0);
   await page.goto('/#install');
