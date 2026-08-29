@@ -1,63 +1,46 @@
-# Handoff — GitHub Exit Inventory polish round 3
-
-## Independent verification 5 (candidate `8ac3e17d9a0ffc7146f4a928d680262c48246b2e`)
-
-**PASS.** Independent QA on 2026-08-29 UTC verified the deployed candidate at <https://github-dependency-exit.sociobot.in>. All 22 required claim commands, the complete local suite (4 Rust + 38 Playwright tests), typecheck, lint, production build, crate package, clean-consumer install, real public GitHub scan, browser/demo/privacy/accessibility/mobile/offline checks, and deployment identity check passed.
-
-The production JS, CSS, and Linux binary SHA-256 values match the fresh local build. Live Lighthouse mobile scored 99 Performance / 100 Accessibility / 100 Best Practices / 100 SEO. The license verification endpoint accepted 30 rapid invalid requests and returned 429 with `Retry-After: 3` on request 31. No defects were found at any severity. See [verification-5.md](verification-5.md) for exact commands, evidence, and scope.
+# Handoff — adversarial first-read review 4
 
 ## Result
 
-**PASS.** Every finding from review rounds 1–3 and every earlier verification report is fixed and rechecked. The repaired static site and CLI are live at <https://github-dependency-exit.sociobot.in>.
+**FAIL.** Review 4 was completed against <https://github-dependency-exit.sociobot.in> and commit `87a1535f2a490b4bf861f25a5788b588efc6a9bb`. No product code was changed. The full report is [review-4.md](review-4.md).
 
-## What changed
+## What was done
 
-- Added `paid-owner-scan`: a local billing fixture accepts a test license, the CLI scans two owner repositories, and one JSON plus Markdown report must contain both.
-- Added `refund-revokes-license`: a refunded fixture must stop the owner scan before any GitHub request and print recovery guidance.
-- Split price/free scope and Dodo-hosted checkout into explicit claims. `.factory/claims.json` now has 22 unique entries and a suite guard requires exactly one tagged test per claim.
-- Removed the unprovable merchant-of-record sentence. Landing, Terms, and README now use the tested wording “Checkout is hosted by Dodo” and explain that a refund makes the license inactive.
-- Replaced “Exit survey” with “GitHub dependency inventory” on the first screen.
-- Removed a Playwright race that could rebuild the shared CLI without its fixture hook during paid tests.
-- Added heading wrapping and grid min-size rules so home, demo, Privacy, Terms, and 404 have zero horizontal overflow at 200% text.
-- Advanced the service-worker cache to `github-exit-shell-2026-08-29-polish-3`.
-- Updated the catalog sentence and complete landing copy audit. The concrete-and-moss visual system, original artwork, CLI artifact class, and static deployment class remain unchanged.
+- Tested cold landing views in fresh 390 × 844 and 1440 × 1000 Chromium contexts.
+- Audited every landing and README copy item with word counts.
+- Exercised the one-click browser demo, reset, exit, storage isolation, request isolation, and offline reload.
+- Ran the real CLI demo from a fresh temporary directory and inspected both report formats.
+- Ran all 22 exact `.factory/claims.json` commands independently from clean clone `/tmp/gde-review4-clean.fAg7Eo`.
+- Rechecked every earlier review finding against production and source.
+- Checked route metadata, 404 behavior, focus restoration, links, console output, mobile overflow, touch targets, and WCAG 2 A/AA axe results.
+- Ran the factory URL verifier on Home, Demo, Privacy, and Terms.
+- Ran the complete test, typecheck, lint, build, and crate-package gates from the clean clone.
 
-## Verification
+## Verification result
 
-Clean remote clone: `/tmp/gde-polish3-release.O5lOAP` at implementation commit `68af341f84c574368538c6b172e9f6f4ced23275`.
+- 22/22 listed claim commands: PASS.
+- `npm test`: PASS — 4 Rust tests and 38 Playwright tests.
+- `npm run typecheck`: PASS.
+- `npm run lint`: PASS.
+- `npm run build`: PASS; `dist/site/` produced.
+- `cargo package --allow-dirty`: PASS.
+- Live route/accessibility audit: 12 route/viewport combinations passed with zero axe violations or unexpected console errors.
+- Live link crawl: 11 landing links resolved; checkout returned the expected hosted-session redirect.
+- Browser demo privacy/offline checks: PASS.
+- CLI demo: PASS; wrote 3-repository JSON and Markdown reports.
 
-- Every exact command in `.factory/claims.json`: **22/22 PASS**, each run independently.
-- `npm test`: **PASS** — 4 Rust tests and 38 Playwright unit/integration/browser/accessibility/privacy/offline tests.
-- `npm run typecheck`: **PASS**.
-- `npm run lint`: **PASS** (`cargo fmt --check`; clippy with warnings denied).
-- `npm run build`: **PASS**; output at `dist/site/`.
-- `cargo package --allow-dirty`: **PASS**; package contains 13 files, 109.3 KiB uncompressed and 28.0 KiB compressed.
-- Installed packaged CLI smoke test: `--help` passed; `demo` wrote `inventory.json` and `migration-checklist.md`.
-- Work-order build `npm ci && npm run build:site`: **PASS**.
-- Deployment `/opt/fleet/lib/deploy-static.sh github-dependency-exit dist/site`: **PASS** to the production custom domain.
-- `verify-url.sh`: **PASS** for `/`, `/?demo=1`, `/privacy`, and `/terms`; no console errors and required title/lang/main/alt/button checks passed.
-- Cold Playwright production audit: **PASS** on 12 desktop/mobile route combinations, including `/demo` and a true HTTP 404. All had one H1, one main, correct route metadata, zero WCAG 2 A/AA axe violations, zero mobile overflow, and no undersized visible controls.
-- Demo production audit: **PASS** for one-click entry, populated sample, banner, reset, Start for real, storage isolation, same-origin-only traffic, and offline reload.
-- History navigation: **PASS**; Back focuses the home H1 and Forward focuses the demo H1.
-- 200% text: **PASS** with zero horizontal overflow on home, demo, Privacy, Terms, and 404.
-- Link crawl: **PASS** for 11 rendered links; checkout returns 303 to a Dodo-hosted session.
-- Lighthouse mobile: **100 Performance / 100 Accessibility / 100 Best Practices / 100 SEO**; FCP 0.8 s, LCP 1.4 s, TBT 30 ms, CLS 0.
-- Budget: initial JavaScript 28,008 B, CSS 13,902 B, mobile hero 106,316 B.
-- Deployment identity: live JavaScript, CSS, and Linux binary SHA-256 values match the local deployment build.
+## Findings left for repair
 
-Evidence and screenshots are under [`.factory/evidence/polish-3`](evidence/polish-3/). The finding-by-finding map is [`.factory/polish-3.md`](polish-3.md).
+1. **F-4-1 / F-1-4 reopened — blocking:** `src/report.rs` still emits the undefined heading `## Exit surface`. Rename it to `## Inventory totals` and add generated-report regression coverage.
+2. **F-4-2 — blocking:** specific published claims lack matching claims-manifest entries and tagged observable tests: default temporary CLI output, browser/CLI sample parity, browser license storage, Rust 1.85 minimum support, downloaded-binary build identity, and GitHub Enterprise Server behavior.
 
-## Run locally
+## Evidence
 
-```sh
-npm ci
-npm test
-npm run typecheck
-npm run lint
-npm run build
-cargo package --allow-dirty
-```
+- Review: `.factory/review-4.md`
+- Independent claim log: `/tmp/gde-review4-claims.log`
+- Clean clone: `/tmp/gde-review4-clean.fAg7Eo`
+- Cold screenshots: `/tmp/gde-review4-mobile.png`, `/tmp/gde-review4-desktop.png`
+- URL verifier outputs: `/tmp/gde-review4-verify-{home,demo,privacy,terms}`
+- CLI output: `/tmp/github-exit-demo-9680-1787995633`
 
-## Known gaps and next steps
-
-None. Registry publication remains a factory release operation and was intentionally not performed from this repair work order.
+Temporary evidence paths are outside the repository and are not deployment artifacts.
