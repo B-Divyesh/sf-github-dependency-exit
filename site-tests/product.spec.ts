@@ -228,7 +228,7 @@ test('the service worker activates the current shell and refreshes navigations',
   const response = await request.get('/sw.js');
   expect(response.status()).toBe(200);
   const worker = await response.text();
-  expect(worker).toContain("const CACHE = 'github-exit-shell-2026-08-29-polish-3'");
+  expect(worker).toContain("const CACHE = 'github-exit-shell-2026-08-29-polish-4'");
   expect(worker).toContain('self.skipWaiting()');
   expect(worker).toContain('self.clients.claim()');
   expect(worker).toContain("event.request.mode === 'navigate'");
