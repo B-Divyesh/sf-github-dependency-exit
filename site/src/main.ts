@@ -73,7 +73,7 @@ function home(): string {
   return shell(`<main id="main">
     <section class="hero" aria-labelledby="hero-title">
       <div class="hero-copy">
-        <p class="eyebrow">EXIT SURVEY / READ-ONLY CLI</p>
+        <p class="eyebrow">GITHUB DEPENDENCY INVENTORY / READ-ONLY CLI</p>
         <h1 id="hero-title" tabindex="-1">Map what breaks before leaving GitHub</h1>
         <p class="lede">For small software teams planning a fallback, this CLI finds repository dependencies and builds a checked migration list.</p>
         <div class="hero-actions"><a class="button primary" href="/?demo=1" data-link>Try it with sample data</a><span>Opens a browser report. No account or token.</span></div>
@@ -121,7 +121,7 @@ Report written to /tmp/github-exit-demo-…</code></pre>
 
     <section class="price" id="price" aria-labelledby="price-title" tabindex="-1">
       <div class="price-stamp"><span>$39</span><small>ONE TIME</small></div>
-      <div><p class="eyebrow">TEAM SCAN LICENSE</p><h2 id="price-title">Scan every repository under one owner</h2><p>The free command scans one repository. The license adds owner-wide scans and one combined report.</p><a class="button primary" href="${BILLING}/checkout">Buy the team scan license</a><p class="fine">Sociobot/Dodo is the merchant of record. Refunds revoke the license.</p></div>
+      <div><p class="eyebrow">TEAM SCAN LICENSE</p><h2 id="price-title">Scan every repository under one owner</h2><p>The free command scans one repository. An active license adds owner-wide scans and one combined report.</p><a class="button primary" href="${BILLING}/checkout">Buy the team scan license</a><p class="fine">Checkout is hosted by Dodo. A refund makes the license inactive.</p></div>
       <form id="license-form" class="license-form"><label for="license">Have a license? Paste it here</label><div><input id="license" name="license" autocomplete="off" spellcheck="false"><button type="submit">Verify license</button></div><p id="license-status" class="status" role="status">No license saved in this browser.</p></form>
     </section>
   </main>`);
@@ -168,10 +168,10 @@ function privacy(): string { return legalPage('Your repository data stays with y
 function terms(): string { return legalPage('Use the inventory as a planning aid', 'Terms', [
   ['License', 'The software is provided under the MIT License. A paid license enables owner-wide scans for one purchaser.'],
   ['No compatibility promise', 'Alternative tools are candidates, not guarantees. Test each workflow and integration before a move.'],
-  ['Payments and refunds', 'Sociobot/Dodo is the merchant of record. A refund revokes the paid license.'],
+  ['Payments and refunds', 'Checkout is hosted by Dodo. A refund makes the paid license inactive.'],
   ['Your responsibility', 'Use a token you are allowed to use. Review report files before sharing them.']
 ]); }
-function legalPage(h1: string, label: string, sections: string[][]): string { return shell(`<main id="main" class="legal"><p class="eyebrow">${label.toUpperCase()} / UPDATED 2026-08-28</p><h1 tabindex="-1">${h1}</h1><p class="lede">Plain terms for a local command-line inventory.</p>${sections.map(([title, text]) => `<section><h2>${title}</h2><p>${text}</p></section>`).join('')}</main>`); }
+function legalPage(h1: string, label: string, sections: string[][]): string { return shell(`<main id="main" class="legal"><p class="eyebrow">${label.toUpperCase()} / UPDATED 2026-08-29</p><h1 tabindex="-1">${h1}</h1><p class="lede">Plain terms for a local command-line inventory.</p>${sections.map(([title, text]) => `<section><h2>${title}</h2><p>${text}</p></section>`).join('')}</main>`); }
 function notFound(): string { return shell(`<main id="main" class="not-found"><p class="coordinates">404 / PATH ENDS HERE</p><h1 tabindex="-1">This route is not in the inventory</h1><p>The page may have moved, or the address may be wrong.</p><a class="button primary" href="/" data-link>Return to the start</a></main>`); }
 
 function render(focusRoute = false): void {

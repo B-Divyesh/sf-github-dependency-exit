@@ -36,10 +36,31 @@
   },
   {
     "id": "paid-scope",
-    "claim": "$39 once for owner-wide scans; one-repository scans stay free",
+    "claim": "$39 once; one-repository scans stay free",
     "where": "landing facts and price section, README",
     "test": "npm test -- --grep @claim:paid-scope",
-    "sandbox": "fresh browser context; assert the price, free scope, and Sociobot checkout URL"
+    "sandbox": "fresh browser context; assert the displayed price and free one-repository scope"
+  },
+  {
+    "id": "dodo-hosted-checkout",
+    "claim": "Checkout is hosted by Dodo",
+    "where": "landing price section, terms, README",
+    "test": "npm test -- --grep @claim:dodo-hosted-checkout",
+    "sandbox": "fresh browser context; assert the Sociobot checkout redirects to a checkout.dodopayments.com session"
+  },
+  {
+    "id": "paid-owner-scan",
+    "claim": "An active license adds owner-wide scans and one combined report",
+    "where": "landing price section, terms, README",
+    "test": "npm test -- --grep @claim:paid-owner-scan",
+    "sandbox": "local billing and GitHub fixtures; accept a test license, scan two repositories, and assert both are in one JSON and Markdown report"
+  },
+  {
+    "id": "refund-revokes-license",
+    "claim": "A refund makes the paid license inactive",
+    "where": "landing price section, terms, README",
+    "test": "npm test -- --grep @claim:refund-revokes-license",
+    "sandbox": "local billing fixture returns reason refunded; assert the owner scan stops before GitHub requests and gives recovery guidance"
   },
   {
     "id": "public-no-token",

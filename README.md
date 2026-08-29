@@ -52,13 +52,13 @@ Use `--json` to write one parseable inventory to stdout for a script. The CLI se
 
 ## Scan an owner with a team license
 
-A $39 one-time license enables owner-wide scans and one combined report. Buy or restore a license on the product site, then run:
+An active $39 one-time license adds owner-wide scans and one combined report. Buy or restore a license on the product site, then run:
 
 ```sh
 GITHUB_TOKEN=github_pat_… GDE_LICENSE=sb_… github-exit scan --owner octo-org --output exit-report
 ```
 
-The CLI checks the license through the Sociobot billing API. It does not send repository metadata there. Sociobot/Dodo is the merchant of record.
+The CLI checks the license through the Sociobot billing API. It does not send repository metadata there. Checkout is hosted by Dodo. A refund makes the license inactive.
 
 ## What the evidence means
 

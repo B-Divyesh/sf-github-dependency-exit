@@ -6,6 +6,25 @@ import { mkdtemp, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
+test('every manifest claim maps to exactly one tagged test', async () => {
+  const claims = JSON.parse(await readFile('.factory/claims.json', 'utf8')) as Array<{ id: string; test: string }>;
+  const sources = await Promise.all([
+    'site-tests/product.spec.ts',
+    'site-tests/cli-regression.spec.ts',
+    'tests/cli.rs',
+    'src/main.rs',
+  ].map(path => readFile(path, 'utf8')));
+  const tags = sources.join('\n').matchAll(/@claim:([a-z0-9-]+)/g);
+  const counts = new Map<string, number>();
+  for (const match of tags) counts.set(match[1], (counts.get(match[1]) ?? 0) + 1);
+  expect(new Set(claims.map(claim => claim.id)).size).toBe(claims.length);
+  for (const claim of claims) {
+    expect(counts.get(claim.id), `${claim.id} must have one tagged test`).toBe(1);
+    expect(claim.test).toContain(`@claim:${claim.id}`);
+  }
+  expect([...counts.keys()].filter(id => !claims.some(claim => claim.id === id))).toEqual([]);
+});
+
 test('the primary action opens a populated sandbox @claim:sample-demo', async ({ page }) => {
   await page.goto('/');
   const sample = page.getByRole('link', { name: 'Try it with sample data' });
@@ -113,10 +132,16 @@ test('sample JSON downloads with the report counts @claim:json-export', async ({
   expect(data.checklist.length).toBeGreaterThan(5);
 });
 
-test('the paid tier has one price, keeps repository scans free, and starts checkout @claim:paid-scope', async ({ page, request }) => {
+test('the paid tier has one price, keeps repository scans free, and opens Dodo checkout @claim:paid-scope @claim:dodo-hosted-checkout', async ({ page, request }) => {
   await page.goto('/#price');
   await expect(page.getByText('$39', { exact: true })).toBeVisible();
   await expect(page.getByText('The free command scans one repository.')).toBeVisible();
+  await expect(page.getByLabel('Product facts')).toContainText('$39 once; one-repository scans stay free');
+  await expect(page.getByText('Checkout is hosted by Dodo.')).toBeVisible();
+  expect(await readFile('README.md', 'utf8')).toContain('Checkout is hosted by Dodo.');
+  await page.goto('/terms');
+  await expect(page.getByText('Checkout is hosted by Dodo.')).toBeVisible();
+  await page.goto('/#price');
   const checkout = page.getByRole('link', { name: 'Buy the team scan license' });
   await expect(checkout).toHaveAttribute('href', 'https://api.sociobot.in/api/v1/products/github-dependency-exit/checkout');
   const response = await request.get('https://api.sociobot.in/api/v1/products/github-dependency-exit/checkout', { maxRedirects: 0 });
@@ -128,7 +153,7 @@ test('the service worker activates the current shell and refreshes navigations',
   const response = await request.get('/sw.js');
   expect(response.status()).toBe(200);
   const worker = await response.text();
-  expect(worker).toContain("const CACHE = 'github-exit-shell-2026-08-28-polish-1'");
+  expect(worker).toContain("const CACHE = 'github-exit-shell-2026-08-29-polish-3'");
   expect(worker).toContain('self.skipWaiting()');
   expect(worker).toContain('self.clients.claim()');
   expect(worker).toContain("event.request.mode === 'navigate'");
@@ -177,6 +202,12 @@ test('landing preview names migration dependencies without design metaphors', as
   await expect(page.getByRole('heading', { name: 'See migration dependencies beyond Git history' })).toBeVisible();
   await expect(page.getByText('A repository model showing connected migration dependencies.')).toBeVisible();
   await expect(page.getByText(/exit surface|accumulated load/i)).toHaveCount(0);
+});
+
+test('the first-screen label uses the product inventory term', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.getByText('GITHUB DEPENDENCY INVENTORY / READ-ONLY CLI')).toBeVisible();
+  await expect(page.getByText(/exit survey/i)).toHaveCount(0);
 });
 
 test('Back and Forward focus the heading for the restored route', async ({ page }) => {

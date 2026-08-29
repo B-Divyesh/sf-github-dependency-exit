@@ -208,6 +208,76 @@ test('repository metadata goes only to GitHub and Sociobot receives only the lic
   }
 });
 
+test('an active license writes one owner-wide report containing every repository @claim:paid-owner-scan', async ({ page }) => {
+  await page.goto('/#price');
+  await expect(page.getByText('An active license adds owner-wide scans and one combined report.')).toBeVisible();
+  expect(await readFile('README.md', 'utf8')).toContain('An active $39 one-time license adds owner-wide scans and one combined report.');
+  const billingRequests: string[] = [];
+  const github = await startFixture((request, response) => {
+    const path = request.url ?? '';
+    if (path.startsWith('/orgs/moss-team/repos?')) {
+      return json(response, [repository('moss-team/trail-api'), repository('moss-team/field-console')]);
+    }
+    if (path.includes('/actions/workflows')) return json(response, { workflows: [] });
+    if (path.includes('/branches/main/protection')) return json(response, { required_status_checks: {} });
+    return json(response, []);
+  });
+  const billing = await startFixture((request, response) => {
+    billingRequests.push(request.url ?? '');
+    json(response, { valid: true, reason: 'ok' });
+  });
+  try {
+    const output = await tempOutput();
+    const result = await run(
+      ['scan', '--owner', 'moss-team', '--license', 'sb_test_active', '--api-base', github.base, '--output', output],
+      { GITHUB_EXIT_CLAIM_BILLING_BASE: `${billing.base}/api/v1` },
+    );
+    expect(result.code).toBe(0);
+    expect(billingRequests).toEqual(['/api/v1/products/github-dependency-exit/verify?license=sb_test_active']);
+    const inventory = JSON.parse(await readFile(join(output, 'inventory.json'), 'utf8'));
+    expect(inventory.scope).toBe('moss-team');
+    expect(inventory.summary.repositories).toBe(2);
+    expect(inventory.repositories.map((item: { full_name: string }) => item.full_name)).toEqual([
+      'moss-team/trail-api',
+      'moss-team/field-console',
+    ]);
+    const checklist = await readFile(join(output, 'migration-checklist.md'), 'utf8');
+    expect(checklist).toContain('# GitHub exit inventory: moss-team');
+    expect(checklist).toContain('### moss-team/trail-api');
+    expect(checklist).toContain('### moss-team/field-console');
+    expect(result.stderr).toContain('Scanned 2 repositories.');
+  } finally {
+    await Promise.all([github.close(), billing.close()]);
+  }
+});
+
+test('a refunded license stops an owner-wide scan with recovery guidance @claim:refund-revokes-license', async ({ page }) => {
+  await page.goto('/terms');
+  await expect(page.getByText('A refund makes the paid license inactive.')).toBeVisible();
+  expect(await readFile('README.md', 'utf8')).toContain('A refund makes the license inactive.');
+  const githubRequests: string[] = [];
+  const github = await startFixture((request, response) => {
+    githubRequests.push(request.url ?? '');
+    json(response, []);
+  });
+  const billing = await startFixture((_request, response) => {
+    json(response, { valid: false, reason: 'refunded' });
+  });
+  try {
+    const output = await tempOutput();
+    const result = await run(
+      ['scan', '--owner', 'moss-team', '--license', 'sb_test_refunded', '--api-base', github.base, '--output', output],
+      { GITHUB_EXIT_CLAIM_BILLING_BASE: `${billing.base}/api/v1` },
+    );
+    expect(result.code).toBe(2);
+    expect(result.stderr).toContain('The license is not active (refunded).');
+    expect(result.stderr).toContain('Paste an active license or use --repo.');
+    expect(githubRequests).toEqual([]);
+  } finally {
+    await Promise.all([github.close(), billing.close()]);
+  }
+});
+
 test('the CLI demo writes both reports without any network request @claim:cli-demo-no-network', async () => {
   const attemptedRequests: string[] = [];
   const denyProxy = await startFixture((request, response) => {
