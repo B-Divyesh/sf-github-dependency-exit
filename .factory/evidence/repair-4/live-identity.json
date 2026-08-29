@@ -1,0 +1,122 @@
+[
+  {
+    "path": "404.css",
+    "status": 200,
+    "bytes": 2649,
+    "localSha256": "251b56133f0775872d1e20530d9993a1cf3484f685c3a577eb4bfe3088f7140c",
+    "remoteSha256": "251b56133f0775872d1e20530d9993a1cf3484f685c3a577eb4bfe3088f7140c",
+    "match": true
+  },
+  {
+    "path": "404.html",
+    "status": 200,
+    "bytes": 2701,
+    "localSha256": "80840d60383a966c7f6017646796ba18d5f5dc756e7bd50cd609b0b831eeb862",
+    "remoteSha256": "80840d60383a966c7f6017646796ba18d5f5dc756e7bd50cd609b0b831eeb862",
+    "match": true
+  },
+  {
+    "path": "apple-touch-icon.png",
+    "status": 200,
+    "bytes": 252,
+    "localSha256": "9d958c628dce9d0b9843da0a61cedb8b04045f34f32ca3aae4519e18505d16be",
+    "remoteSha256": "9d958c628dce9d0b9843da0a61cedb8b04045f34f32ca3aae4519e18505d16be",
+    "match": true
+  },
+  {
+    "path": "assets/exit-cutaway-mobile.webp",
+    "status": 200,
+    "bytes": 106316,
+    "localSha256": "385a7cbdded030a9ed2b51678e60cbaf10427be874066beada5a0a135caea261",
+    "remoteSha256": "385a7cbdded030a9ed2b51678e60cbaf10427be874066beada5a0a135caea261",
+    "match": true
+  },
+  {
+    "path": "assets/exit-cutaway.webp",
+    "status": 200,
+    "bytes": 294430,
+    "localSha256": "47ed1aff23c10d19faf16ad86ce1d0269c22f0ffbe10f67406d1390d92872bb3",
+    "remoteSha256": "47ed1aff23c10d19faf16ad86ce1d0269c22f0ffbe10f67406d1390d92872bb3",
+    "match": true
+  },
+  {
+    "path": "assets/index-BkhjvEza.js",
+    "status": 200,
+    "bytes": 28472,
+    "localSha256": "978f2655431a2fc66ceec004c23214bae4ab13e718459b397f8967e807760274",
+    "remoteSha256": "978f2655431a2fc66ceec004c23214bae4ab13e718459b397f8967e807760274",
+    "match": true
+  },
+  {
+    "path": "assets/index-BkhjvEza.js.map",
+    "status": 200,
+    "bytes": 30716,
+    "localSha256": "3a9474e389a1e4ad8da61adfa424d8412b8ed4efac80956d4d2386fdf7723a32",
+    "remoteSha256": "3a9474e389a1e4ad8da61adfa424d8412b8ed4efac80956d4d2386fdf7723a32",
+    "match": true
+  },
+  {
+    "path": "assets/index-CGImsVZO.css",
+    "status": 200,
+    "bytes": 13738,
+    "localSha256": "7defc1ae6d583df334b68a9880caf0b025debd2834933f98651c1b4a759f9815",
+    "remoteSha256": "7defc1ae6d583df334b68a9880caf0b025debd2834933f98651c1b4a759f9815",
+    "match": true
+  },
+  {
+    "path": "assets/og-exit-inventory.webp",
+    "status": 200,
+    "bytes": 157696,
+    "localSha256": "5b16cbd33bcee2223d7c63ee5adf651cb5d280a972657dfe9198d43b2cb745d7",
+    "remoteSha256": "5b16cbd33bcee2223d7c63ee5adf651cb5d280a972657dfe9198d43b2cb745d7",
+    "match": true
+  },
+  {
+    "path": "downloads/github-exit-linux-x86_64",
+    "status": 200,
+    "bytes": 5813568,
+    "localSha256": "73d3c381595fec87edb4086f07679c9850da3020f68cd9af8cb2cf1c689942e6",
+    "remoteSha256": "73d3c381595fec87edb4086f07679c9850da3020f68cd9af8cb2cf1c689942e6",
+    "match": true
+  },
+  {
+    "path": "favicon.svg",
+    "status": 200,
+    "bytes": 238,
+    "localSha256": "fe8a930470e7d631735417cf5e01a01c7de942e7a9680bd978b68d6c8a12874e",
+    "remoteSha256": "fe8a930470e7d631735417cf5e01a01c7de942e7a9680bd978b68d6c8a12874e",
+    "match": true
+  },
+  {
+    "path": "index.html",
+    "status": 200,
+    "bytes": 1916,
+    "localSha256": "6d5e32755fcba90e2df286df72440648c37e327826529111b3c082e95db94210",
+    "remoteSha256": "6d5e32755fcba90e2df286df72440648c37e327826529111b3c082e95db94210",
+    "match": true
+  },
+  {
+    "path": "robots.txt",
+    "status": 200,
+    "bytes": 88,
+    "localSha256": "22a61f772346065246e2b2876cb0182187cef23b67fe73838cc1c3ded2f57afd",
+    "remoteSha256": "22a61f772346065246e2b2876cb0182187cef23b67fe73838cc1c3ded2f57afd",
+    "match": true
+  },
+  {
+    "path": "sitemap.xml",
+    "status": 200,
+    "bytes": 401,
+    "localSha256": "7c33df59cd06b07fc9f401db42e286ac8525ba637afb7f54070c0ba2ff83ecc5",
+    "remoteSha256": "7c33df59cd06b07fc9f401db42e286ac8525ba637afb7f54070c0ba2ff83ecc5",
+    "match": true
+  },
+  {
+    "path": "sw.js",
+    "status": 200,
+    "bytes": 1305,
+    "localSha256": "a60d3aefaa47651794a2fce7995e4d1ea841fbf2c0c144f96a8c0c84f9570c4a",
+    "remoteSha256": "a60d3aefaa47651794a2fce7995e4d1ea841fbf2c0c144f96a8c0c84f9570c4a",
+    "match": true
+  }
+]

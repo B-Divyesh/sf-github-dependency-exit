@@ -1,0 +1,99 @@
+{
+  "home": {
+    "path": "/",
+    "status": 200,
+    "headers": {
+      "cache-control": "public, must-revalidate, max-age=30",
+      "content-encoding": "br",
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.sociobot.in; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.sociobot.in; frame-ancestors 'none'; upgrade-insecure-requests",
+      "content-type": "text/html",
+      "date": "Sat, 29 Aug 2026 19:26:09 GMT",
+      "etag": "\"55999481\"",
+      "last-modified": "Sat, 29 Aug 2026 19:22:23 GMT",
+      "permissions-policy": "camera=(), microphone=(), geolocation=()",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+      "transfer-encoding": "chunked",
+      "vary": "Accept-Encoding",
+      "x-content-type-options": "nosniff",
+      "x-dns-prefetch-control": "off",
+      "x-xss-protection": "1; mode=block"
+    }
+  },
+  "asset": {
+    "path": "/assets/index-CGImsVZO.css",
+    "status": 200,
+    "headers": {
+      "cache-control": "public, max-age=31536000, immutable",
+      "content-encoding": "br",
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.sociobot.in; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.sociobot.in; frame-ancestors 'none'; upgrade-insecure-requests",
+      "content-type": "text/css",
+      "date": "Sat, 29 Aug 2026 19:26:09 GMT",
+      "etag": "\"55999481\"",
+      "last-modified": "Sat, 29 Aug 2026 19:22:23 GMT",
+      "permissions-policy": "camera=(), microphone=(), geolocation=()",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+      "transfer-encoding": "chunked",
+      "vary": "Accept-Encoding",
+      "x-content-type-options": "nosniff",
+      "x-dns-prefetch-control": "off",
+      "x-xss-protection": "1; mode=block"
+    }
+  },
+  "download": {
+    "path": "/downloads/github-exit-linux-x86_64",
+    "status": 200,
+    "headers": {
+      "cache-control": "public, max-age=86400",
+      "content-disposition": "attachment",
+      "content-length": "5813568",
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.sociobot.in; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.sociobot.in; frame-ancestors 'none'; upgrade-insecure-requests",
+      "content-type": "application/octet-stream",
+      "date": "Sat, 29 Aug 2026 19:26:10 GMT",
+      "etag": "\"55999481\"",
+      "last-modified": "Sat, 29 Aug 2026 19:22:23 GMT",
+      "permissions-policy": "camera=(), microphone=(), geolocation=()",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+      "x-content-type-options": "nosniff",
+      "x-dns-prefetch-control": "off",
+      "x-xss-protection": "1; mode=block"
+    }
+  },
+  "missing": {
+    "path": "/repair-4-response-policy-missing",
+    "status": 404,
+    "headers": {
+      "cache-control": "public, must-revalidate, max-age=30",
+      "content-length": "2701",
+      "content-security-policy": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self' https://api.sociobot.in; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self' https://api.sociobot.in; frame-ancestors 'none'; upgrade-insecure-requests",
+      "content-type": "text/html",
+      "date": "Sat, 29 Aug 2026 19:26:10 GMT",
+      "etag": "\"55999481\"",
+      "last-modified": "Sat, 29 Aug 2026 19:22:23 GMT",
+      "permissions-policy": "camera=(), microphone=(), geolocation=()",
+      "referrer-policy": "strict-origin-when-cross-origin",
+      "strict-transport-security": "max-age=10886400; includeSubDomains; preload",
+      "x-content-type-options": "nosniff",
+      "x-dns-prefetch-control": "off",
+      "x-xss-protection": "1; mode=block"
+    }
+  },
+  "checkout": {
+    "status": 303,
+    "locationHost": "checkout.dodopayments.com"
+  },
+  "licenseRateLimit": {
+    "successful": 5,
+    "limited": {
+      "index": 6,
+      "status": 429,
+      "retryAfter": "2",
+      "rateLimitAfter": "2"
+    },
+    "recovered": {
+      "status": 200
+    }
+  }
+}
