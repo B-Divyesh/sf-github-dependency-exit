@@ -270,4 +270,12 @@ mod tests {
         assert!(validate_repo("acme/api").is_ok());
         assert!(validate_repo("https://github.com/acme/api").is_err());
     }
+    #[test]
+    fn validates_api_base_before_scanning() {
+        assert!(GithubClient::new("https://api.github.com", None).is_ok());
+        assert!(GithubClient::new("http://127.0.0.1:3000/api/v3", None).is_ok());
+        assert!(GithubClient::new("not-a-url", None).is_err());
+        assert!(GithubClient::new("ftp://example.test", None).is_err());
+        assert!(GithubClient::new("https://example.test/api?v=3", None).is_err());
+    }
 }

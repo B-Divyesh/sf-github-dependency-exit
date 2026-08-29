@@ -743,6 +743,9 @@ footer a {
   padding: 28px 0;
   border-top: 2px solid var(--ink);
 }
+.check-row[hidden] {
+  display: none;
+}
 .check-row h3 {
   font-size: 1.4rem;
 }

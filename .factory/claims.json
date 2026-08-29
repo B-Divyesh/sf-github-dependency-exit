@@ -130,7 +130,7 @@
     "claim": "Stops when GitHub reports a rate limit",
     "where": "README",
     "test": "npm test -- --grep @claim:rate-limit-stop",
-    "sandbox": "local API fixture; first follow-up request returns 403 with x-ratelimit-remaining: 0"
+    "sandbox": "local API fixtures; first follow-up returns either 403 with zero remaining or 429 with Retry-After; assert immediate nonzero exit and no reports"
   },
   {
     "id": "script-json",

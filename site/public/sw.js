@@ -1,4 +1,4 @@
-const CACHE = 'github-exit-shell-2026-08-29-polish-5';
+const CACHE = 'github-exit-shell-2026-08-29-repair-4';
 const CORE = ['/', '/?demo=1', '/demo', '/privacy', '/terms', '/assets/exit-cutaway-mobile.webp', '/assets/exit-cutaway.webp', '/favicon.svg'];
 
 self.addEventListener('install', event => {

@@ -1,7 +1,7 @@
 import { test, expect } from '@playwright/test';
 import { createServer, type IncomingMessage, type ServerResponse } from 'node:http';
 import { spawn } from 'node:child_process';
-import { mkdtemp, readFile } from 'node:fs/promises';
+import { mkdtemp, readFile, readdir } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 
@@ -111,21 +111,40 @@ test('every list endpoint follows the page boundary @claim:paginated-inventory',
   } finally { await fixture.close(); }
 });
 
-test('a GitHub rate-limit response stops further requests and fails safely @claim:rate-limit-stop', async () => {
-  const requested: string[] = [];
-  const fixture = await startFixture((request, response) => {
-    const path = request.url ?? '';
-    requested.push(path);
-    if (path === '/repos/limited/repo') return json(response, repository('limited/repo'), 200, 1);
-    return json(response, { message: 'API rate limit exceeded' }, 403, 0);
-  });
-  try {
-    const output = await tempOutput();
-    const result = await run(['scan', '--repo', 'limited/repo', '--api-base', fixture.base, '--output', output]);
-    expect(result.code).toBe(2);
-    expect(result.stderr).toContain('GitHub rate limit reached');
-    expect(requested).toHaveLength(2);
-  } finally { await fixture.close(); }
+test('GitHub primary and secondary rate limits stop further requests and fail safely @claim:rate-limit-stop', async () => {
+  const cases = [
+    { status: 403, remaining: 0, retryAfter: undefined, message: 'API rate limit exceeded' },
+    { status: 429, remaining: undefined, retryAfter: '60', message: 'You have exceeded a secondary rate limit' },
+  ] as const;
+
+  for (const rateLimit of cases) {
+    const requested: string[] = [];
+    const fixture = await startFixture((request, response) => {
+      const path = request.url ?? '';
+      requested.push(path);
+      if (path === '/repos/limited/repo') return json(response, repository('limited/repo'), 200, 1);
+      if (rateLimit.retryAfter) response.setHeader('retry-after', rateLimit.retryAfter);
+      return json(response, { message: rateLimit.message }, rateLimit.status, rateLimit.remaining);
+    });
+    try {
+      const output = await tempOutput();
+      const result = await run(['scan', '--repo', 'limited/repo', '--api-base', fixture.base, '--output', output]);
+      expect(result.code).toBe(2);
+      expect(result.stderr).toContain('GitHub rate limit reached');
+      if (rateLimit.retryAfter) expect(result.stderr).toContain('Retry after 60 seconds');
+      expect(requested).toHaveLength(2);
+      expect(await readdir(output)).toEqual([]);
+    } finally { await fixture.close(); }
+  }
+});
+
+test('a malformed API base is rejected with recovery guidance before scanning', async () => {
+  const output = await tempOutput();
+  const result = await run(['scan', '--repo', 'octocat/Hello-World', '--api-base', 'not-a-url', '--output', output]);
+  expect(result.code).toBe(2);
+  expect(result.stderr).toContain('--api-base must be an absolute HTTP or HTTPS GitHub API URL');
+  expect(result.stderr).not.toContain('builder error');
+  expect(await readdir(output)).toEqual([]);
 });
 
 test('a GitHub Enterprise Server 3.14 API works through --api-base @claim:ghes-api-base', async () => {
@@ -392,12 +411,14 @@ function repository(fullName: string) {
 
 function workflowRecord() { return { name: 'CI', path: '.github/workflows/ci.yml', state: 'active', html_url: 'https://example.test/actions' }; }
 
-function json(response: ServerResponse, body: unknown, status = 200, remaining = 4999): void {
+function json(response: ServerResponse, body: unknown, status = 200, remaining: number | undefined = 4999): void {
   response.statusCode = status;
   response.setHeader('content-type', 'application/json');
-  response.setHeader('x-ratelimit-remaining', String(remaining));
-  response.setHeader('x-ratelimit-limit', '5000');
-  response.setHeader('x-ratelimit-reset', '1893456000');
+  if (remaining !== undefined) {
+    response.setHeader('x-ratelimit-remaining', String(remaining));
+    response.setHeader('x-ratelimit-limit', '5000');
+    response.setHeader('x-ratelimit-reset', '1893456000');
+  }
   response.end(JSON.stringify(body));
 }
 

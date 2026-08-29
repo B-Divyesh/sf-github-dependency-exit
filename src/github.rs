@@ -23,6 +23,15 @@ struct ApiResult {
 
 impl GithubClient {
     pub fn new(base: &str, token: Option<&str>) -> Result<Self, String> {
+        let parsed_base = Url::parse(base).map_err(|_| api_base_error())?;
+        if !matches!(parsed_base.scheme(), "http" | "https")
+            || parsed_base.host_str().is_none()
+            || parsed_base.cannot_be_a_base()
+            || parsed_base.query().is_some()
+            || parsed_base.fragment().is_some()
+        {
+            return Err(api_base_error());
+        }
         let mut headers = HeaderMap::new();
         headers.insert(USER_AGENT, HeaderValue::from_static("github-exit/0.1"));
         headers.insert(
@@ -41,7 +50,7 @@ impl GithubClient {
             .map_err(|error| format!("Could not create the GitHub client: {error}"))?;
         Ok(Self {
             client,
-            base: base.trim_end_matches('/').to_string(),
+            base: parsed_base.as_str().trim_end_matches('/').to_string(),
             rate_limit: None,
             rate_limit_error: None,
         })
@@ -490,6 +499,12 @@ impl GithubClient {
         };
         let status = response.status().as_u16();
         let headers = response.headers().clone();
+        let retry_after = headers
+            .get("retry-after")
+            .and_then(|value| value.to_str().ok())
+            .map(str::trim)
+            .filter(|value| !value.is_empty())
+            .map(str::to_string);
         if let (Some(remaining), Some(limit), Some(reset)) = (
             header_u64(&headers, "x-ratelimit-remaining"),
             header_u64(&headers, "x-ratelimit-limit"),
@@ -501,14 +516,33 @@ impl GithubClient {
                 reset_unix: reset,
             });
         }
-        if status == 403
-            && self
-                .rate_limit
-                .as_ref()
-                .is_some_and(|limit| limit.remaining == 0)
-        {
-            let message =
-                "GitHub rate limit reached. Wait until the reset time, then run again.".to_string();
+        let value = response.json::<Value>().ok();
+        let response_message = value
+            .as_ref()
+            .map(|value| text_at(value, "/message"))
+            .filter(|message| !message.is_empty());
+        let lower_message = response_message
+            .as_deref()
+            .unwrap_or_default()
+            .to_ascii_lowercase();
+        let exhausted = header_u64(&headers, "x-ratelimit-remaining") == Some(0);
+        let rate_limited = status == 429
+            || (status == 403
+                && (exhausted
+                    || retry_after.is_some()
+                    || lower_message.contains("rate limit")
+                    || lower_message.contains("abuse detection")));
+        if rate_limited {
+            let message = match retry_after.as_deref() {
+                Some(seconds) if seconds.parse::<u64>().is_ok() => format!(
+                    "GitHub rate limit reached. Retry after {seconds} seconds, then run again."
+                ),
+                Some(value) => format!(
+                    "GitHub rate limit reached. Retry after GitHub's Retry-After time ({value}), then run again."
+                ),
+                None => "GitHub rate limit reached. Wait until the reset time, then run again."
+                    .to_string(),
+            };
             self.rate_limit_error = Some(message.clone());
             return ApiResult {
                 value: None,
@@ -517,7 +551,6 @@ impl GithubClient {
                 source,
             };
         }
-        let value = response.json::<Value>().ok();
         if (200..300).contains(&status) {
             ApiResult {
                 value,
@@ -526,11 +559,7 @@ impl GithubClient {
                 source,
             }
         } else {
-            let message = value
-                .as_ref()
-                .map(|value| text_at(value, "/message"))
-                .filter(|message| !message.is_empty())
-                .unwrap_or_else(|| format!("HTTP {status}"));
+            let message = response_message.unwrap_or_else(|| format!("HTTP {status}"));
             ApiResult {
                 value: None,
                 status,
@@ -545,6 +574,10 @@ impl GithubClient {
             .clone()
             .unwrap_or_else(|| message.to_string())
     }
+}
+
+fn api_base_error() -> String {
+    "--api-base must be an absolute HTTP or HTTPS GitHub API URL (for example, https://api.github.com).".into()
 }
 
 pub fn finalize(mut inventory: Inventory) -> Inventory {

@@ -84,7 +84,24 @@ test('the browser demo sends no data off site @claim:demo-privacy', async ({ pag
   });
   await page.goto('/?demo=1');
   await page.getByRole('button', { name: 'field-console' }).click();
-  await page.getByLabel('Show checklist area').selectOption('Actions');
+  const areaFilter = page.getByLabel('Show checklist area');
+  const checklistRows = page.locator('.check-row');
+  const expectedCounts = new Map([
+    ['Actions', 2],
+    ['Webhooks', 1],
+    ['GitHub Apps and OAuth', 1],
+    ['Branch rules', 1],
+    ['Issue links', 1],
+    ['Packages', 2],
+  ]);
+  for (const [area, count] of expectedCounts) {
+    await areaFilter.selectOption(area);
+    const visibleRows = checklistRows.filter({ visible: true });
+    await expect(visibleRows).toHaveCount(count);
+    expect(await visibleRows.evaluateAll(rows => rows.map(row => (row as HTMLElement).dataset.area))).toEqual(Array(count).fill(area));
+  }
+  await areaFilter.selectOption('all');
+  await expect(checklistRows.filter({ visible: true })).toHaveCount(8);
   await expect(page.getByText('mosswood-labs/field-console', { exact: true }).first()).toBeVisible();
   expect(offsite).toEqual([]);
   expect(await page.evaluate(() => ({
@@ -228,7 +245,7 @@ test('the service worker activates the current shell and refreshes navigations',
   const response = await request.get('/sw.js');
   expect(response.status()).toBe(200);
   const worker = await response.text();
-  expect(worker).toContain("const CACHE = 'github-exit-shell-2026-08-29-polish-5'");
+  expect(worker).toContain("const CACHE = 'github-exit-shell-2026-08-29-repair-4'");
   expect(worker).toContain('self.skipWaiting()');
   expect(worker).toContain('self.clients.claim()');
   expect(worker).toContain("event.request.mode === 'navigate'");
