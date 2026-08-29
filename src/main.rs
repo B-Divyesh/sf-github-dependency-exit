@@ -210,17 +210,17 @@ fn verify_license(license: &str) -> Result<(), String> {
 
 fn billing_base() -> String {
     #[cfg(feature = "claim-test-hook")]
-    if let Ok(candidate) = env::var("GITHUB_EXIT_CLAIM_BILLING_BASE")
-        && let Ok(parsed) = url::Url::parse(&candidate)
-    {
-        let local = parsed.host_str().is_some_and(|host| {
-            host == "localhost"
-                || host
-                    .parse::<std::net::IpAddr>()
-                    .is_ok_and(|address| address.is_loopback())
-        });
-        if local && parsed.scheme() == "http" {
-            return candidate.trim_end_matches('/').to_string();
+    if let Ok(candidate) = env::var("GITHUB_EXIT_CLAIM_BILLING_BASE") {
+        if let Ok(parsed) = url::Url::parse(&candidate) {
+            let local = parsed.host_str().is_some_and(|host| {
+                host == "localhost"
+                    || host
+                        .parse::<std::net::IpAddr>()
+                        .is_ok_and(|address| address.is_loopback())
+            });
+            if local && parsed.scheme() == "http" {
+                return candidate.trim_end_matches('/').to_string();
+            }
         }
     }
     BILLING_BASE.to_string()

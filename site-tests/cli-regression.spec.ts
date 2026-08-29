@@ -98,6 +98,29 @@ test('a GitHub rate-limit response stops further requests and fails safely @clai
   } finally { await fixture.close(); }
 });
 
+test('a GitHub Enterprise Server 3.14 API works through --api-base @claim:ghes-api-base', async () => {
+  const requested: string[] = [];
+  const fixture = await startFixture((request, response) => {
+    const path = request.url ?? '';
+    requested.push(path);
+    response.setHeader('x-github-enterprise-version', '3.14.17');
+    if (path === '/api/v3/repos/enterprise/repo') return json(response, repository('enterprise/repo'));
+    if (path.includes('/actions/workflows')) return json(response, { workflows: [] });
+    if (path.includes('/branches/main/protection')) return json(response, { message: 'Not Found' }, 404);
+    return json(response, []);
+  });
+  try {
+    const output = await tempOutput();
+    const result = await run(['scan', '--repo', 'enterprise/repo', '--api-base', `${fixture.base}/api/v3`, '--output', output]);
+    expect(result.code).toBe(0);
+    expect(requested.length).toBeGreaterThan(5);
+    expect(requested.every(path => path.startsWith('/api/v3/'))).toBe(true);
+    const inventory = JSON.parse(await readFile(join(output, 'inventory.json'), 'utf8'));
+    expect(inventory.source).toBe(`${fixture.base}/api/v3`);
+    expect(inventory.repositories[0].full_name).toBe('enterprise/repo');
+  } finally { await fixture.close(); }
+});
+
 test('JSON mode reserves stdout for one parseable inventory @claim:script-json', async () => {
   const output = await tempOutput();
   const result = await run(['demo', '--json', '--output', output]);

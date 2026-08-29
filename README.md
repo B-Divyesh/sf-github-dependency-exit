@@ -48,7 +48,7 @@ GITHUB_TOKEN=github_pat_… github-exit scan --repo octo-org/private-api --outpu
 
 Start with repository **Metadata: read**. Add read access for Actions, administration, webhooks, and packages only when those checks matter. The report creates unknown checklist work when GitHub access is incomplete. The token is never written to a report.
 
-Use `--json` to write one parseable inventory to stdout for a script. The CLI sends progress to stderr. It follows every page of GitHub list results and stops when GitHub reports a rate limit. Use `--api-base` for a GitHub Enterprise Server API.
+Use `--json` to write one parseable inventory to stdout for a script. The CLI sends progress to stderr. It follows every page of GitHub list results and stops when GitHub reports a rate limit. Use `--api-base` with a GitHub Enterprise Server 3.14 REST API endpoint.
 
 ## Scan an owner with a team license
 
@@ -88,7 +88,7 @@ cargo package --allow-dirty
 
 ## Privacy and security
 
-Live scans call the chosen GitHub API. Owner-wide scans also verify the supplied license with Sociobot. Browser demo data is bundled into the site and sends no data off site. Read [Privacy](https://github-dependency-exit.sociobot.in/privacy) and [Terms](https://github-dependency-exit.sociobot.in/terms).
+Live scans call the chosen GitHub API. Owner-wide scans also verify the supplied license with Sociobot. Browser demo data is bundled into the site and sends no data off site. Remove a saved browser license from the Price section. Read [Privacy](https://github-dependency-exit.sociobot.in/privacy) and [Terms](https://github-dependency-exit.sociobot.in/terms).
 
 ## License
 

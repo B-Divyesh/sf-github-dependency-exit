@@ -2,6 +2,7 @@
 name = "github-exit"
 version = "0.1.0"
 edition = "2024"
+rust-version = "1.85"
 description = "Inventory the GitHub dependencies that make a repository move costly"
 license = "MIT"
 repository = "https://github.com/B-Divyesh/sf-github-dependency-exit"

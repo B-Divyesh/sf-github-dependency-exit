@@ -9,7 +9,7 @@ pub fn markdown(inventory: &Inventory) -> String {
     writeln!(out, "Schema: `{}`\n", inventory.schema_version).unwrap();
     writeln!(out, "> Read-only evidence report. An unknown check needs manual review; it is not proof that a dependency is absent.\n").unwrap();
 
-    writeln!(out, "## Exit surface\n").unwrap();
+    writeln!(out, "## Inventory totals\n").unwrap();
     writeln!(out, "| Repositories | Workflows | Actions | Webhooks | Packages | Releases | Rules | Unknown checks | Risk points |").unwrap();
     writeln!(
         out,

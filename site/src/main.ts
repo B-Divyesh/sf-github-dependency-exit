@@ -122,7 +122,7 @@ Report written to /tmp/github-exit-demo-…</code></pre>
     <section class="price" id="price" aria-labelledby="price-title" tabindex="-1">
       <div class="price-stamp"><span>$39</span><small>ONE TIME</small></div>
       <div><p class="eyebrow">TEAM SCAN LICENSE</p><h2 id="price-title">Scan every repository under one owner</h2><p>The free command scans one repository. An active license adds owner-wide scans and one combined report.</p><a class="button primary" href="${BILLING}/checkout">Buy the team scan license</a><p class="fine">Checkout is hosted by Dodo. A refund makes the license inactive.</p></div>
-      <form id="license-form" class="license-form"><label for="license">Have a license? Paste it here</label><div><input id="license" name="license" autocomplete="off" spellcheck="false"><button type="submit">Verify license</button></div><p id="license-status" class="status" role="status">No license saved in this browser.</p></form>
+      <form id="license-form" class="license-form"><label for="license">Have a license? Paste it here</label><div><input id="license" name="license" autocomplete="off" spellcheck="false"><button type="submit">Verify license</button><button id="clear-license" type="button" hidden>Remove saved license</button></div><p id="license-status" class="status" role="status">No license saved in this browser.</p></form>
     </section>
   </main>`);
 }
@@ -163,7 +163,7 @@ function privacy(): string { return legalPage('Your repository data stays with y
   ['What the CLI reads', 'The CLI requests repository metadata from GitHub. It writes reports only to the folder you choose.'],
   ['What this site stores', 'The demo stores nothing. If you paste a license, this browser stores the token and its last verification result.'],
   ['Who receives data', 'GitHub receives API requests from the CLI. Sociobot receives a license token when you verify a purchase. Repository metadata is not sent to Sociobot.'],
-  ['How to remove data', 'Delete the report folder to remove CLI output. Clear this site’s storage to remove a saved license.']
+  ['How to remove data', 'Delete the report folder to remove CLI output. Use Remove saved license on Price to clear saved license data.']
 ]); }
 function terms(): string { return legalPage('Use the inventory as a planning aid', 'Terms', [
   ['License', 'The software is provided under the MIT License. A paid license enables owner-wide scans for one purchaser.'],
@@ -201,8 +201,41 @@ function bindDemo(): void {
   document.querySelector('#download-json')?.addEventListener('click', () => { const url = URL.createObjectURL(new Blob([JSON.stringify(inventory, null, 2)], {type: 'application/json'})); const anchor = document.createElement('a'); anchor.href = url; anchor.download = 'github-exit-sample-inventory.json'; anchor.click(); URL.revokeObjectURL(url); });
 }
 
-function bindLicense(): void { document.querySelector<HTMLFormElement>('#license-form')?.addEventListener('submit', event => { event.preventDefault(); const form = event.currentTarget as HTMLFormElement; const token = new FormData(form).get('license')?.toString().trim(); if (!token) return setLicenseStatus('Paste a license token first.', false); localStorage.setItem(LICENSE_KEY, token); verifyLicense(token, true); }); const token = localStorage.getItem(LICENSE_KEY); if (token) verifyLicense(token, false); }
-function handleLicenseReturn(): void { const url = new URL(location.href); const token = url.searchParams.get('license'); if (!token) return; localStorage.setItem(LICENSE_KEY, token); url.searchParams.delete('license'); history.replaceState({}, '', url.pathname + url.search + url.hash); verifyLicense(token, true); }
+function bindLicense(): void {
+  document.querySelector<HTMLFormElement>('#license-form')?.addEventListener('submit', event => {
+    event.preventDefault();
+    const form = event.currentTarget as HTMLFormElement;
+    const token = new FormData(form).get('license')?.toString().trim();
+    if (!token) return setLicenseStatus('Paste a license token first.', false);
+    localStorage.setItem(LICENSE_KEY, token);
+    updateLicenseControls();
+    void verifyLicense(token, true);
+  });
+  document.querySelector<HTMLButtonElement>('#clear-license')?.addEventListener('click', () => {
+    localStorage.removeItem(LICENSE_KEY);
+    localStorage.removeItem(VERDICT_KEY);
+    document.querySelector<HTMLFormElement>('#license-form')?.reset();
+    updateLicenseControls();
+    setLicenseStatus('No license saved in this browser.', false);
+  });
+  const token = localStorage.getItem(LICENSE_KEY);
+  updateLicenseControls();
+  if (token) void verifyLicense(token, false);
+}
+function handleLicenseReturn(): void {
+  const url = new URL(location.href);
+  const token = url.searchParams.get('license');
+  if (!token) return;
+  localStorage.setItem(LICENSE_KEY, token);
+  updateLicenseControls();
+  url.searchParams.delete('license');
+  history.replaceState({}, '', url.pathname + url.search + url.hash);
+  void verifyLicense(token, true);
+}
+function updateLicenseControls(): void {
+  const clear = document.querySelector<HTMLButtonElement>('#clear-license');
+  if (clear) clear.hidden = !localStorage.getItem(LICENSE_KEY);
+}
 async function verifyLicense(token: string, force: boolean): Promise<void> { const cached = readVerdict(); if (!force && cached && Date.now() - cached.checkedAt < 86_400_000) { setLicenseStatus(cached.valid ? 'Team scans are active on this browser.' : 'The saved license is no longer active.', cached.valid); return; } setLicenseStatus('Checking the license…', false); try { const response = await fetch(`${BILLING}/verify?license=${encodeURIComponent(token)}`); const verdict = await response.json() as {valid: boolean; reason?: string}; localStorage.setItem(VERDICT_KEY, JSON.stringify({valid: verdict.valid, checkedAt: Date.now()})); setLicenseStatus(verdict.valid ? 'Team scans are active on this browser.' : `The license is not active (${verdict.reason ?? 'invalid'}).`, verdict.valid); } catch { if (cached?.valid) setLicenseStatus('Team scans remain active from the last check. Verification is offline.', true); else setLicenseStatus('The license could not be checked. Check your connection, then try again.', false); } }
 function readVerdict(): {valid: boolean; checkedAt: number} | null { try { return JSON.parse(localStorage.getItem(VERDICT_KEY) ?? 'null'); } catch { return null; } }
 function setLicenseStatus(message: string, valid: boolean): void { const status = document.querySelector('#license-status'); if (status) { status.textContent = message; status.classList.toggle('valid', valid); } }

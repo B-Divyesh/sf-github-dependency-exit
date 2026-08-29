@@ -2,6 +2,7 @@ import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
 import { createServer } from 'node:http';
 import { spawn } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { mkdtemp, readFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
@@ -48,6 +49,33 @@ test('the CLI demo writes JSON and Markdown without setup @claim:cli-demo @claim
   expect(markdown).toContain('unknown');
 });
 
+test('the CLI demo creates and reports its default temporary folder @claim:cli-demo-temp-dir', async () => {
+  const workingDirectory = await mkdtemp(join(tmpdir(), 'github-exit-demo-working-'));
+  const result = await run(join(process.cwd(), 'target/debug/github-exit'), ['demo'], { cwd: workingDirectory });
+  expect(result.code).toBe(0);
+  expect(result.stdout).toBe('');
+  const directory = result.stderr.match(/Report written to (.+)/)?.[1]?.trim();
+  expect(directory).toMatch(/^\/tmp\/github-exit-demo-/);
+  const json = JSON.parse(await readFile(join(directory!, 'inventory.json'), 'utf8'));
+  expect(json.summary.repositories).toBe(3);
+  expect(await readFile(join(directory!, 'migration-checklist.md'), 'utf8')).toContain('## Inventory totals');
+});
+
+test('the browser report and CLI demo use one identical sample fixture @claim:demo-fixture-parity', async ({ page }) => {
+  await page.goto('/?demo=1');
+  await expect(page.getByText('This browser report uses the same data as').first()).toBeVisible();
+  const browserDownload = page.waitForEvent('download');
+  await page.getByRole('button', { name: 'Download sample JSON' }).click();
+  const downloadedFile = await browserDownload;
+  const browserPath = await downloadedFile.path();
+  expect(browserPath).not.toBeNull();
+  const browserJson = JSON.parse(await readFile(browserPath!, 'utf8'));
+  const output = await mkdtemp(join(tmpdir(), 'github-exit-demo-parity-'));
+  const result = await run('target/debug/github-exit', ['demo', '--json', '--output', output]);
+  expect(result.code).toBe(0);
+  expect(JSON.parse(result.stdout)).toEqual(browserJson);
+});
+
 test('the browser demo sends no data off site @claim:demo-privacy', async ({ page }) => {
   const offsite: string[] = [];
   page.on('request', request => {
@@ -86,6 +114,32 @@ test('demo state is isolated, resettable, and can be left without copying data',
   await expect(page.locator('#install')).toBeFocused();
   await expect(page.getByRole('heading', { name: 'Run the demo before adding a token' })).toBeInViewport();
   await expect(page.getByText('Demo — sample data, nothing is saved')).toHaveCount(0);
+});
+
+test('pasted browser licenses are verified, stored locally, and removable @claim:browser-license-storage', async ({ page }) => {
+  const requests: string[] = [];
+  await page.route('https://api.sociobot.in/**', async route => {
+    requests.push(route.request().url());
+    await route.fulfill({ contentType: 'application/json', headers: { 'access-control-allow-origin': '*' }, body: JSON.stringify({ valid: true, reason: 'ok' }) });
+  });
+  await page.goto('/#price');
+  await page.getByLabel('Have a license? Paste it here').fill('fixture-license');
+  await page.getByRole('button', { name: 'Verify license' }).click();
+  await expect(page.getByRole('status')).toHaveText('Team scans are active on this browser.');
+  expect(requests).toEqual([`${'https://api.sociobot.in/api/v1/products/github-dependency-exit'}/verify?license=fixture-license`]);
+  expect(await page.evaluate(() => ({
+    license: localStorage.getItem('sb_license:github-dependency-exit'),
+    verdict: JSON.parse(localStorage.getItem('sb_license_verdict:github-dependency-exit') ?? 'null'),
+  }))).toMatchObject({ license: 'fixture-license', verdict: { valid: true } });
+  await page.getByRole('button', { name: 'Remove saved license' }).click();
+  await expect(page.getByRole('status')).toHaveText('No license saved in this browser.');
+  expect(await page.evaluate(() => ({
+    license: localStorage.getItem('sb_license:github-dependency-exit'),
+    verdict: localStorage.getItem('sb_license_verdict:github-dependency-exit'),
+  }))).toEqual({ license: null, verdict: null });
+  await page.goto('/privacy');
+  await expect(page.getByText('If you paste a license, this browser stores the token and its last verification result.')).toBeVisible();
+  await expect(page.getByText('Use Remove saved license on Price to clear saved license data.')).toBeVisible();
 });
 
 test('live inventory requests are read-only @claim:read-only-api @claim:public-no-token @claim:no-migration', async () => {
@@ -147,6 +201,26 @@ test('the paid tier has one price, keeps repository scans free, and opens Dodo c
   const response = await request.get('https://api.sociobot.in/api/v1/products/github-dependency-exit/checkout', { maxRedirects: 0 });
   expect(response.status()).toBe(303);
   expect(response.headers().location).toMatch(/^https:\/\/checkout\.dodopayments\.com\/session\//);
+});
+
+test('the Linux download exactly matches the binary staged by this site build @claim:binary-download-build-match', async ({ page }) => {
+  const build = await run('npm', ['run', 'build:site']);
+  expect(build.code, build.stderr).toBe(0);
+  await page.goto('/#install');
+  await expect(page.getByRole('link', { name: 'Download Linux binary' })).toHaveAttribute('href', '/downloads/github-exit-linux-x86_64');
+  const [built, staged] = await Promise.all([
+    readFile('target/release/github-exit'),
+    readFile('dist/site/downloads/github-exit-linux-x86_64'),
+  ]);
+  expect(createHash('sha256').update(staged).digest('hex')).toBe(createHash('sha256').update(built).digest('hex'));
+});
+
+test('Rust 1.85 builds the locked CLI package @claim:rust-1-85-build', async () => {
+  test.setTimeout(120_000);
+  const targetDirectory = await mkdtemp(join(tmpdir(), 'github-exit-rust-185-'));
+  const build = await run('rustup', ['run', '1.85.0', 'cargo', 'build', '--locked', '--target-dir', targetDirectory]);
+  expect(build.code, `${build.stdout}\n${build.stderr}`).toBe(0);
+  expect(build.stderr).toMatch(/Finished|Compiling/);
 });
 
 test('the service worker activates the current shell and refreshes navigations', async ({ request }) => {
@@ -293,9 +367,9 @@ test('text enlarged to 200 percent keeps every route within the mobile viewport'
   }
 });
 
-function run(command: string, args: string[]): Promise<{code: number|null; stdout: string; stderr: string}> {
+function run(command: string, args: string[], options: { cwd?: string; env?: NodeJS.ProcessEnv } = {}): Promise<{code: number|null; stdout: string; stderr: string}> {
   return new Promise(resolve => {
-    const child = spawn(command, args, { cwd: process.cwd(), env: process.env });
+    const child = spawn(command, args, { cwd: options.cwd ?? process.cwd(), env: { ...process.env, ...options.env } });
     let stdout = ''; let stderr = '';
     child.stdout.on('data', chunk => stdout += chunk);
     child.stderr.on('data', chunk => stderr += chunk);

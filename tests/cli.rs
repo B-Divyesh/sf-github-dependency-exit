@@ -13,6 +13,9 @@ fn demo_writes_both_reports() {
     assert!(temp.path().join("inventory.json").exists());
     assert!(temp.path().join("migration-checklist.md").exists());
     let report = std::fs::read_to_string(temp.path().join("migration-checklist.md")).unwrap();
+    assert!(report.contains("## Inventory totals"));
+    assert!(!report.to_ascii_lowercase().contains("exit surface"));
+    assert!(!report.to_ascii_lowercase().contains("accumulated load"));
     assert!(report.contains("unknown"));
     assert!(report.contains("Forgejo Actions"));
 }

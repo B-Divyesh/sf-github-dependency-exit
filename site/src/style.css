@@ -518,6 +518,11 @@ h3 {
 .license-form button {
   box-shadow: none;
 }
+#clear-license {
+  grid-column: 1 / -1;
+  justify-self: start;
+  margin-top: 8px;
+}
 .status {
   font-size: 0.82rem;
   margin: 14px 0 0;

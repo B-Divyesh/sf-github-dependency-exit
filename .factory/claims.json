@@ -14,11 +14,32 @@
     "sandbox": "fresh temporary directory; bundled sample data; no token"
   },
   {
+    "id": "cli-demo-temp-dir",
+    "claim": "The default CLI demo creates a temporary report folder and prints its path",
+    "where": "README bundled demo instructions",
+    "test": "npm test -- --grep @claim:cli-demo-temp-dir",
+    "sandbox": "fresh working directory; run exactly github-exit demo; parse the printed path and inspect both reports"
+  },
+  {
+    "id": "demo-fixture-parity",
+    "claim": "The browser and CLI demos use the same sample inventory",
+    "where": "browser demo introduction and .factory/demo.md",
+    "test": "npm test -- --grep @claim:demo-fixture-parity",
+    "sandbox": "fresh browser demo download deep-compared with github-exit demo --json"
+  },
+  {
     "id": "demo-privacy",
     "claim": "The browser demo sends no data off site and saves no browser data",
     "where": "landing facts, demo banner, privacy page",
     "test": "npm test -- --grep @claim:demo-privacy",
     "sandbox": "fresh browser context; capture every request while using demo filters; assert local and session storage stay empty"
+  },
+  {
+    "id": "browser-license-storage",
+    "claim": "A pasted browser license is stored locally, verified, and can be removed",
+    "where": "Price license form and Privacy page",
+    "test": "npm test -- --grep @claim:browser-license-storage",
+    "sandbox": "intercept the license verification; submit a fixture token; assert the two local keys, request, and removal"
   },
   {
     "id": "read-only-api",
@@ -152,5 +173,26 @@
     "where": "landing terminal and .factory/demo.md",
     "test": "npm test -- --grep @claim:cli-demo-no-network",
     "sandbox": "fresh temporary directory with all standard HTTP proxies pointed to a rejecting local tripwire; assert zero requests and both reports"
+  },
+  {
+    "id": "rust-1-85-build",
+    "claim": "The CLI builds with Rust 1.85",
+    "where": "landing Install section and README",
+    "test": "npm test -- --grep @claim:rust-1-85-build",
+    "sandbox": "locked cargo build with the Rust 1.85.0 toolchain in a fresh target directory"
+  },
+  {
+    "id": "binary-download-build-match",
+    "claim": "The Linux download matches the binary built for the site release",
+    "where": "landing Install section",
+    "test": "npm test -- --grep @claim:binary-download-build-match",
+    "sandbox": "run the site build; assert the download link and SHA-256 equality between release and staged executable"
+  },
+  {
+    "id": "ghes-api-base",
+    "claim": "The CLI scans a GitHub Enterprise Server 3.14 REST API through --api-base",
+    "where": "README scan instructions",
+    "test": "npm test -- --grep @claim:ghes-api-base",
+    "sandbox": "GitHub Enterprise Server 3.14 fixture under /api/v3; assert all requests use that base and a report is written"
   }
 ]

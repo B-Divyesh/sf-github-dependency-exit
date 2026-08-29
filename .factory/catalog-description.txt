@@ -1,1 +1,1 @@
-Map GitHub dependencies and build a checked migration list before changing forges.
+Map GitHub dependencies and write a checked migration list before leaving GitHub.

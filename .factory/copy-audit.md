@@ -84,6 +84,7 @@ Audited from the rendered `/` route on 2026-08-29. Counts treat hyphenated terms
 | Have a license? | 3 |
 | Paste it here. | 3 |
 | Verify license | 2 |
+| Remove saved license | 3 |
 | No license saved in this browser. | 6 |
 | Map GitHub dependencies before a move. | 6 |
 | Privacy / Terms / Built by Param Factory | 7 |
@@ -95,8 +96,9 @@ Audited from the rendered `/` route on 2026-08-29. Counts treat hyphenated terms
 - Sentences over 22 words: none.
 - Banned words: none.
 - Undefined design metaphors: none.
+- Generated report wording: `Inventory totals` names the report summary table; `exit surface` and `accumulated load` are absent.
 - First screen aloud: the job, team, sample action, local report boundary, and price fit in one short pass.
-- Catalog description: 82 characters, starts with “Map”, and contains no banned words.
+- Catalog description: 81 characters, starts with “Map”, and contains no banned words.
 
 ## Terminology
 
