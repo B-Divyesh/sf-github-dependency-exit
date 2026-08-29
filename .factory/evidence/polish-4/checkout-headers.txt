@@ -1,8 +1,6 @@
-HTTP/2 303
-date: Sat, 29 Aug 2026 10:26:34 GMT
-access-control-allow-credentials: true
-location: https://checkout.dodopayments.com/session/cks_0NmRARFqScrfFATJTOmeG
-set-cookie: ARRAffinity=27a68b7e77a8b7692bcb4c16e2a8a32d44ecdf1f351d0e078d158af264a88edc;Path=/;HttpOnly;Secure;Domain=api.sociobot.in
-set-cookie: ARRAffinitySameSite=27a68b7e77a8b7692bcb4c16e2a8a32d44ecdf1f351d0e078d158af264a88edc;Path=/;HttpOnly;SameSite=None;Secure;Domain=api.sociobot.in
-vary: origin, access-control-request-method, access-control-request-headers
-content-length: 0
+Live request: https://api.sociobot.in/api/v1/products/github-dependency-exit/checkout
+HTTP status: 303
+Location host: checkout.dodopayments.com
+Location path: /session/[ephemeral-session-id-redacted]
+
+Captured 2026-08-29 UTC. Transient routing cookies and checkout-session identifiers were intentionally omitted.
