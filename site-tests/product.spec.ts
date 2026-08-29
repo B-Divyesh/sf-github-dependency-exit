@@ -38,7 +38,7 @@ test('the primary action opens a populated sandbox @claim:sample-demo', async ({
 
 test('the CLI demo writes JSON and Markdown without setup @claim:cli-demo @claim:local-reports', async () => {
   const output = await mkdtemp(join(tmpdir(), 'github-exit-claim-'));
-  const result = await run('cargo', ['run', '--quiet', '--', 'demo', '--output', output]);
+  const result = await run('target/debug/github-exit', ['demo', '--output', output]);
   expect(result.code).toBe(0);
   expect(result.stderr).toContain('Report written to');
   const json = JSON.parse(await readFile(join(output, 'inventory.json'), 'utf8'));
